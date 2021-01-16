@@ -31,7 +31,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="com.example.projet_3_oc_maru.Fragments.MainFragment"
         android:id="@+id/MainFragment"
         android:layout_marginTop="60dp"
