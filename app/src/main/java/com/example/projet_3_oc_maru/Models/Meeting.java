@@ -2,28 +2,32 @@ package com.example.projet_3_oc_maru.Models;
 
 import java.util.List;
 
-public class RoomMeet {
+public class Meeting {
     /** Identifier Letters*/
     private String id;
 
     /**Subject */
     private String subject;
 
-    /**Hours of RoomMeet */
+    /**Hours of Meeting */
     private String hour;
 
-    /**Avatar colors for RoomMeet */
+    /**Avatar colors for Meeting */
     private String colorsAvatar;
 
-    /**List of participants'emails */
-    private List<String>ListEmails;
+    /**Place for Meeting */
+    private Integer numberRoom;
 
-    public RoomMeet (String id,String subject,String hour ,String colorsAvatar,List<String>ListEmails){
+    /**List of participants'emails */
+    private String ListEmails;
+
+    public Meeting(String id, String subject, String hour , String colorsAvatar, String ListEmails, Integer numberRoom){
         this.id=id;
         this.subject=subject;
         this.hour=hour;
         this.colorsAvatar=colorsAvatar;
         this.ListEmails=ListEmails;
+        this.numberRoom=numberRoom;
     }
 
     /**Getters */
@@ -43,8 +47,12 @@ public class RoomMeet {
         return colorsAvatar;
     }
 
-    public List<String> getListEmails() {
+    public String getListEmails() {
         return ListEmails;
+    }
+
+    public Integer getNumberRoom() {
+        return numberRoom;
     }
 
     /**Setters */
@@ -64,7 +72,11 @@ public class RoomMeet {
         this.colorsAvatar = colorsAvatar;
     }
 
-    public void setListEmails(List<String> listEmails) {
+    public void setListEmails(String listEmails) {
         ListEmails = listEmails;
+    }
+
+    public void setNumberRoom(Integer numberRoom) {
+        this.numberRoom = numberRoom;
     }
 }
