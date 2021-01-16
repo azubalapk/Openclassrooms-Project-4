@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activities.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -29,5 +30,12 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <fragment
+        android:name="com.example.projet_3_oc_maru.Fragments.MainFragment"
+        android:id="@+id/MainFragment"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
