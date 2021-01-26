@@ -46,7 +46,7 @@
         android:id="@+id/MainFragment"
         android:name="com.example.projet_3_oc_maru.Fragments.MainFragment"
         android:layout_width="match_parent"
-        android:layout_height="715dp"
+        android:layout_height="675dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
