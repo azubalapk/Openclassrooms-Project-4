@@ -8,9 +8,9 @@ import java.util.List;
 
 public abstract class DummyMeetingGenerator {
     public static List<Meeting> DUMMY_ROOM_MEETS = Arrays.asList(
-            new Meeting("A","Peach","14h00","F096B5","maxime@lamzone.com,alex@lamzone.com",1),
-            new Meeting("B","Mario","16h00","B7DEAC","paul@lamzone.com,viviane@lamzone.com",2),
-            new Meeting("C","Luigi","19h00","B7DEAC","amandine@lamzone.com,luc@lamzone.com",3)
+            new Meeting("A","Peach","14h00",0x0000ff,"maxime@lamzone.com,alex@lamzone.com",1),
+            new Meeting("B","Mario","16h00",0xFF5E755F,"paul@lamzone.com,viviane@lamzone.com",2),
+            new Meeting("C","Luigi","19h00",0xFF5E755F,"amandine@lamzone.com,luc@lamzone.com",3)
 
     );
 

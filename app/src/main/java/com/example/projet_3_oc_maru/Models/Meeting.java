@@ -1,7 +1,5 @@
 package com.example.projet_3_oc_maru.Models;
 
-import java.util.List;
-
 public class Meeting {
     /** Identifier Letters*/
     private String id;
@@ -13,7 +11,7 @@ public class Meeting {
     private String hour;
 
     /**Avatar colors for Meeting */
-    private String colorsAvatar;
+    private Integer colorsAvatar;
 
     /**Place for Meeting */
     private Integer numberRoom;
@@ -21,7 +19,7 @@ public class Meeting {
     /**List of participants'emails */
     private String ListEmails;
 
-    public Meeting(String id, String subject, String hour , String colorsAvatar, String ListEmails, Integer numberRoom){
+    public Meeting(String id, String subject, String hour , Integer colorsAvatar, String ListEmails, Integer numberRoom){
         this.id=id;
         this.subject=subject;
         this.hour=hour;
@@ -43,7 +41,7 @@ public class Meeting {
         return hour;
     }
 
-    public String getColorsAvatar(){
+    public Integer getColorsAvatar(){
         return colorsAvatar;
     }
 
@@ -68,7 +66,7 @@ public class Meeting {
         this.hour = hour;
     }
 
-    public void setColorsAvatar(String colorsAvatar) {
+    public void setColorsAvatar(Integer colorsAvatar) {
         this.colorsAvatar = colorsAvatar;
     }
 
