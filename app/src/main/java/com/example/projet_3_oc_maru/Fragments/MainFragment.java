@@ -14,8 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projet_3_oc_maru.DI.DI;
 import com.example.projet_3_oc_maru.Models.Meeting;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.events.DeleteMeetingEvent;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.ui.MyMeetingsRecyclerViewAdapter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -45,7 +49,7 @@ public class MainFragment extends Fragment {
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+
         initList();
         return view;
     }
@@ -55,5 +59,21 @@ public class MainFragment extends Fragment {
         mRecyclerView.setAdapter(new MyMeetingsRecyclerViewAdapter(mMeetings));
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onDeleteNeighbour(DeleteMeetingEvent event) {
+        mApiService.deleteRoomMeet(event.meeting);
+        initList();
+    }
 }

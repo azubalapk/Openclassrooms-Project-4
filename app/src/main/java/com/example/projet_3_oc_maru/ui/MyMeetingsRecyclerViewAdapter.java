@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet_3_oc_maru.Models.Meeting;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.events.DeleteMeetingEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         holder.mMeetingLineTwo.setText(meeting.getListEmails());
         holder.mMeetingAvatar.setColorFilter(meeting.getColorsAvatar());
         holder.mDeleteButton.setOnClickListener(v -> {
+            EventBus.getDefault().post(new DeleteMeetingEvent(meeting));
         });
     }
     @Override
