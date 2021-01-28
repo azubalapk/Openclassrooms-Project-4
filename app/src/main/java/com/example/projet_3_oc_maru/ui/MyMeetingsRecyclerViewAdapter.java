@@ -34,7 +34,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         Meeting meeting = mMeetings.get(position);
         holder.mMeetingLineOne.setText("Réunion"+meeting.getId()+"-"+meeting.getHour()+"-Salle"+meeting.getNumberRoom()+"-"+meeting.getSubject());
         holder.mMeetingLineTwo.setText(meeting.getListEmails());
-        holder.mMeetingAvatar.setBackgroundColor(meeting.getColorsAvatar());
+        holder.mMeetingAvatar.setColorFilter(meeting.getColorsAvatar());
         holder.mDeleteButton.setOnClickListener(v -> {
         });
     }
