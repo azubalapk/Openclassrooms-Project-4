@@ -1,5 +1,6 @@
 package com.example.projet_3_oc_maru.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.projet_3_oc_maru.R;
@@ -24,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        fab.setOnClickListener(v -> {
+            Intent AddMeetingActivity = new Intent(MainActivity.this, AddMeetingActivity.class);
+            startActivity(AddMeetingActivity);
+        });
     }
 
 
