@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet_3_oc_maru.Models.Meeting;
+import com.example.projet_3_oc_maru.Models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.events.DeleteMeetingEvent;
 
@@ -35,9 +36,9 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingLineOne.setText("Réunion"+meeting.getId()+"-"+meeting.getHour()+"-Salle"+meeting.getNumberRoom()+"-"+meeting.getSubject());
-        holder.mMeetingLineTwo.setText(meeting.getListEmails());
-        holder.mMeetingAvatar.setColorFilter(meeting.getColorsAvatar());
+        holder.mMeetingLineOne.setText("Réunion"+meeting.getId()+"-"+meeting.getTimeBegin()+"-Salle"+ meeting.getMeetingRoom().getmNameRoomMeeting()+"-"+meeting.getSubject());
+        holder.mMeetingLineTwo.setText(meeting.getParticipants());
+        holder.mMeetingAvatar.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
         holder.mDeleteButton.setOnClickListener(v -> {
             EventBus.getDefault().post(new DeleteMeetingEvent(meeting));
         });

@@ -1,35 +1,26 @@
 package com.example.projet_3_oc_maru.Models;
 
 public class Meeting {
-    /** Identifier Letters*/
-    private String id;
 
-    /**Subject */
+    private int id;
     private String subject;
+    private String timeBegin;
+    private String timeEnd;
+    private String participants;
+    private RoomMeeting meetingRoom;
 
-    /**Hours of Meeting */
-    private String hour;
-
-    /**Avatar colors for Meeting */
-    private Integer colorsAvatar;
-
-    /**Place for Meeting */
-    private Integer numberRoom;
-
-    /**List of participants'emails */
-    private String ListEmails;
-
-    public Meeting(String id, String subject, String hour , Integer colorsAvatar, String ListEmails, Integer numberRoom){
+    public Meeting(Integer id, String subject, String timeBegin,String timeEnd ,  String participants,RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
-        this.hour=hour;
-        this.colorsAvatar=colorsAvatar;
-        this.ListEmails=ListEmails;
-        this.numberRoom=numberRoom;
+        this.timeBegin=timeBegin;
+        this.timeEnd=timeEnd;
+        this.participants=participants;
+        this.meetingRoom=meetingRoom;
+
     }
 
     /**Getters */
-    public String getId(){
+    public Integer getId(){
         return id;
     }
 
@@ -37,44 +28,34 @@ public class Meeting {
         return subject;
     }
 
-    public String getHour(){
-        return hour;
+    public String getTimeBegin(){
+        return timeBegin;
     }
 
-    public Integer getColorsAvatar(){
-        return colorsAvatar;
+    public String getTimeEnd(){
+        return timeEnd;
     }
 
-    public String getListEmails() {
-        return ListEmails;
+    public String getParticipants() {
+        return participants;
     }
 
-    public Integer getNumberRoom() {
-        return numberRoom;
-    }
+    public RoomMeeting getMeetingRoom() { return meetingRoom;}
 
-    /**Setters */
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
 
-    public void setHour(String hour) {
-        this.hour = hour;
-    }
+        /**Setters */
+    public void setId(Integer id) { this.id = id; }
 
-    public void setColorsAvatar(Integer colorsAvatar) {
-        this.colorsAvatar = colorsAvatar;
-    }
+    public void setSubject(String subject) { this.subject = subject; }
 
-    public void setListEmails(String listEmails) {
-        ListEmails = listEmails;
-    }
+    public void setTimeBegin(String timeBegin) { this.timeBegin = timeBegin; }
 
-    public void setNumberRoom(Integer numberRoom) {
-        this.numberRoom = numberRoom;
-    }
+    public void setTimeEnd(String timeEnd) { this.timeEnd = timeEnd; }
+
+    public void setParticipants(String participants) { this.participants = participants; }
+
+    public void setMeetingRoom(RoomMeeting meetingRoom) { this.meetingRoom = meetingRoom; }
+
+
 }
