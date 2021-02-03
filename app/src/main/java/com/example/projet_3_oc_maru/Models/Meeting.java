@@ -9,7 +9,7 @@ public class Meeting {
     private String participants;
     private RoomMeeting meetingRoom;
 
-    public Meeting(Integer id, String subject, String timeBegin,String timeEnd ,  String participants,RoomMeeting meetingRoom){
+    public Meeting(Integer id, String subject, String timeBegin, String timeEnd , String participants, RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
         this.timeBegin=timeBegin;
