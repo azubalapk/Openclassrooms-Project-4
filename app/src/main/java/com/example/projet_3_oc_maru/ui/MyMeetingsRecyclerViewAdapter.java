@@ -36,7 +36,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingLineOne.setText("Réunion"+meeting.getId()+"-"+meeting.getTimeBegin()+"-Salle"+ meeting.getMeetingRoom().getmNameRoomMeeting()+"-"+meeting.getSubject());
+        holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getTimeBegin()+"/"+meeting.getTimeEnd()+"-Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
         holder.mMeetingLineTwo.setText(meeting.getParticipants());
         holder.mMeetingAvatar.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
         holder.mDeleteButton.setOnClickListener(v -> {
