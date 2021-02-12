@@ -2,14 +2,14 @@ package com.example.projet_3_oc_maru.Models;
 
 public class Meeting {
 
-    private int id;
+    private String id;
     private String subject;
     private String timeBegin;
     private String timeEnd;
     private String participants;
     private RoomMeeting meetingRoom;
 
-    public Meeting(Integer id, String subject, String timeBegin, String timeEnd , String participants, RoomMeeting meetingRoom){
+    public Meeting(String id, String subject, String timeBegin, String timeEnd , String participants, RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
         this.timeBegin=timeBegin;
@@ -19,8 +19,10 @@ public class Meeting {
 
     }
 
+
+
     /**Getters */
-    public Integer getId(){
+    public String getId(){
         return id;
     }
 
@@ -45,7 +47,7 @@ public class Meeting {
 
 
         /**Setters */
-    public void setId(Integer id) { this.id = id; }
+    public void setId(String id) { this.id = id; }
 
     public void setSubject(String subject) { this.subject = subject; }
 

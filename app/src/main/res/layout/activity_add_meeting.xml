@@ -118,32 +118,19 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/RoomMeetingLyt"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+
+
+        <NumberPicker
+            android:id="@+id/numberRoomMeeting"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp">
+            />
 
-            <EditText
-                android:id="@+id/RoomMeeting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:minLines="1"
-                android:ems="10"
-                android:hint="Choose number for Room Meeting"
-                android:inputType="textMultiLine"
-             />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/create"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:layout_gravity="center"
             app:cornerRadius="20dp"
             android:layout_marginTop="20dp"
