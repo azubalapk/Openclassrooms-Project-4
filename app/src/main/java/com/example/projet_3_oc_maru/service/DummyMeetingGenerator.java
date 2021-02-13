@@ -5,6 +5,7 @@ import com.example.projet_3_oc_maru.Models.RoomMeeting;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class DummyMeetingGenerator {
@@ -15,7 +16,7 @@ public abstract class DummyMeetingGenerator {
 
     );
 
-    static List<Meeting> generateRoomMeets() {
+    static List<Meeting> generateMeetings() {
         return new ArrayList<>(DUMMY_ROOM_MEETS);
     }
 

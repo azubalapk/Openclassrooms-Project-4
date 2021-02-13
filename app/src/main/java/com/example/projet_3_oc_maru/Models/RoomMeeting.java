@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 public class RoomMeeting {
     private String mNameRoomMeeting;
     private int mRoomMeetingColor;
-    private final Integer id;
+    private final  Integer id;
 
 
     public RoomMeeting(Integer id ,String mNameRoomMeeting, int mRoomMeetingColor) {
@@ -24,7 +24,7 @@ public class RoomMeeting {
     }
 
     @NonNull
-    public static RoomMeeting getRoomMeetingById(int id) {
+    public static RoomMeeting getRoomMeetingById(Integer id) {
         for (RoomMeeting roomMeeting : getAllRoomMeetings()) {
             if (roomMeeting.id == id)
                 return roomMeeting;
