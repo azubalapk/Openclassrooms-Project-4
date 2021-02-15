@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
@@ -35,14 +35,14 @@
 
     <TextView
         android:id="@+id/item_line_Two"
-        android:layout_width="150dp"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_list_avatar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
+        app:layout_constraintVertical_bias="0.686" />
 
     <ImageButton
         android:id="@+id/item_list_delete_button"
