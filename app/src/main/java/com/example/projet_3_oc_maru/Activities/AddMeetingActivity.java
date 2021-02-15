@@ -32,8 +32,9 @@ public class AddMeetingActivity extends AppCompatActivity  {
     TextInputLayout timeBegin;
     TextInputLayout timeEnd;
     TextInputLayout participantsMeeting;
-    EditText timeBeginMeeting;
-    Button btnTimePicker;
+
+    EditText timeBeginMeeting,timeEndMeeting;
+    Button btnTimePickerBegin,btnTimePickerEnd;
 
     private int  mHour, mMinute;
 
@@ -50,8 +51,11 @@ public class AddMeetingActivity extends AppCompatActivity  {
         Button createNewRoomMeetingButton = findViewById(R.id.create);
 
 
-         btnTimePicker= findViewById(R.id.btn_time_begin);
+         btnTimePickerBegin= findViewById(R.id.btn_time_begin);
+         btnTimePickerEnd = findViewById(R.id.btn_time_end);
+
         timeBeginMeeting = findViewById(R.id.timeBeginMeeting);
+        timeEndMeeting = findViewById(R.id.timeEndMeeting);
 
 
 
@@ -75,7 +79,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
             finish();
         });
 
-        btnTimePicker.setOnClickListener(v -> {
+        btnTimePickerBegin.setOnClickListener(v -> {
 
             // Get Current Time
             final Calendar c = Calendar.getInstance();
@@ -87,6 +91,28 @@ public class AddMeetingActivity extends AppCompatActivity  {
                     (view, hourOfDay, minute) -> {
 
                 timeBeginMeeting.setText(hourOfDay + ":" + minute);
+
+
+
+                    }, mHour, mMinute, false);
+            timePickerDialog.show();
+
+        });
+
+
+
+        btnTimePickerEnd.setOnClickListener(v -> {
+
+            // Get Current Time
+            final Calendar c = Calendar.getInstance();
+            mHour = c.get(Calendar.HOUR_OF_DAY);
+            mMinute = c.get(Calendar.MINUTE);
+
+            // Launch Time Picker Dialog
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    (view, hourOfDay, minute) -> {
+
+                        timeEndMeeting.setText(hourOfDay + ":" + minute);
 
 
 
