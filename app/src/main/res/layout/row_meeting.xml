@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/item_line_One"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="28dp"
@@ -35,14 +35,14 @@
 
     <TextView
         android:id="@+id/item_line_Two"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_list_avatar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691" />
+        app:layout_constraintVertical_bias="0.432" />
 
     <ImageButton
         android:id="@+id/item_list_delete_button"
