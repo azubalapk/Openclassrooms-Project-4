@@ -80,7 +80,6 @@ public class AddMeetingActivity extends AppCompatActivity  {
         });
 
         btnTimePickerBegin.setOnClickListener(v -> {
-
             // Get Current Time
             final Calendar c = Calendar.getInstance();
             mHour = c.get(Calendar.HOUR_OF_DAY);
@@ -92,17 +91,13 @@ public class AddMeetingActivity extends AppCompatActivity  {
 
                 timeBeginMeeting.setText(hourOfDay + ":" + minute);
 
-
-
                     }, mHour, mMinute, false);
             timePickerDialog.show();
-
         });
 
 
 
         btnTimePickerEnd.setOnClickListener(v -> {
-
             // Get Current Time
             final Calendar c = Calendar.getInstance();
             mHour = c.get(Calendar.HOUR_OF_DAY);
@@ -114,26 +109,10 @@ public class AddMeetingActivity extends AppCompatActivity  {
 
                         timeEndMeeting.setText(hourOfDay + ":" + minute);
 
-
-
                     }, mHour, mMinute, false);
             timePickerDialog.show();
-
         });
 
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
 
 }
