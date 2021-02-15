@@ -26,25 +26,18 @@ import java.util.List;
 
 
 public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdapter.OnShareClickedListener {
-
-    private MeetingApiService mApiService;
-    private List<Meeting> mMeetings;
-    private RecyclerView mRecyclerView;
-    private MyMeetingsRecyclerViewAdapter mAdapter;
-
+    MeetingApiService mApiService;
+    RecyclerView mRecyclerView;
+    MyMeetingsRecyclerViewAdapter mAdapter;
 
     public MainFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getMeetingApiService();
-
-
-
     }
 
     @Override
@@ -55,40 +48,27 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-
-
-
         initList();
-
         return view;
     }
 
-
     private void initList() {
-        mMeetings= mApiService.getMeetings();
+        List<Meeting> mMeetings = mApiService.getMeetings();
         mAdapter =new MyMeetingsRecyclerViewAdapter(mMeetings);
         mRecyclerView.setAdapter(mAdapter);
-
         mAdapter.setOnShareClickedListener(this);
-
-
-
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
         mAdapter.notifyDataSetChanged();
-        //initList();
     }
-
-
 
     @Override
     public void ShareClicked(Meeting meeting) {
         mApiService.deleteMeeting(meeting);
-        //mMeetings.remove(event.meeting);
         mAdapter.notifyDataSetChanged();
     }
+
 }
