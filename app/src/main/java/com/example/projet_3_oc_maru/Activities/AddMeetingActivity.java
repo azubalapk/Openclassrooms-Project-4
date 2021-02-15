@@ -32,9 +32,10 @@ public class AddMeetingActivity extends AppCompatActivity  {
     TextInputLayout timeBegin;
     TextInputLayout timeEnd;
     TextInputLayout participantsMeeting;
+    NumberPicker numberRoomMeeting;
 
     EditText timeBeginMeeting,timeEndMeeting;
-    Button btnTimePickerBegin,btnTimePickerEnd;
+    Button btnTimePickerBegin,btnTimePickerEnd,createNewRoomMeetingButton;
 
     private int  mHour, mMinute;
 
@@ -43,29 +44,36 @@ public class AddMeetingActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meeting);
+
+        setUpViews();
+        initializeNumberPickerForSelectRoomMeeting();
+        UserClickOnButtonForCreateNewMeeting();
+        UserClickOnButtonForSelectTimeBegin();
+        UserClickOnButtonForSelectTimeEnd();
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+    }
+    public void setUpViews() {
         idMeeting = findViewById(R.id.idMeetingLyt);
         subjectMeeting = findViewById(R.id.subjectMeetingLyt);
         timeBegin = findViewById(R.id.timeBeginMeetingLyt);
         timeEnd = findViewById(R.id.timeEndLyt);
         participantsMeeting = findViewById(R.id.participantsMeetingLyt);
-        Button createNewRoomMeetingButton = findViewById(R.id.create);
-
-
-         btnTimePickerBegin= findViewById(R.id.btn_time_begin);
-         btnTimePickerEnd = findViewById(R.id.btn_time_end);
-
+        createNewRoomMeetingButton = findViewById(R.id.create);
+        btnTimePickerBegin= findViewById(R.id.btn_time_begin);
+        btnTimePickerEnd = findViewById(R.id.btn_time_end);
         timeBeginMeeting = findViewById(R.id.timeBeginMeeting);
         timeEndMeeting = findViewById(R.id.timeEndMeeting);
-
-
-
-        NumberPicker numberRoomMeeting = findViewById(R.id.numberRoomMeeting);
+        numberRoomMeeting = findViewById(R.id.numberRoomMeeting);
+    }
+    public void initializeNumberPickerForSelectRoomMeeting(){
         numberRoomMeeting.setMinValue(1);
         numberRoomMeeting.setMaxValue(10);
         numberRoomMeeting.setWrapSelectorWheel(true);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
 
-
+    public void UserClickOnButtonForCreateNewMeeting(){
         createNewRoomMeetingButton.setOnClickListener(v -> {
             Meeting meeting = new Meeting(
                     Objects.requireNonNull(idMeeting.getEditText()).getText().toString(),
@@ -78,7 +86,9 @@ public class AddMeetingActivity extends AppCompatActivity  {
             DI.getMeetingApiService().createMeeting(meeting);
             finish();
         });
+    }
 
+    public void UserClickOnButtonForSelectTimeBegin(){
         btnTimePickerBegin.setOnClickListener(v -> {
             // Get Current Time
             final Calendar c = Calendar.getInstance();
@@ -89,14 +99,14 @@ public class AddMeetingActivity extends AppCompatActivity  {
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
 
-                timeBeginMeeting.setText(hourOfDay + ":" + minute);
+                        timeBeginMeeting.setText(hourOfDay + ":" + minute);
 
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         });
+    }
 
-
-
+    public void UserClickOnButtonForSelectTimeEnd(){
         btnTimePickerEnd.setOnClickListener(v -> {
             // Get Current Time
             final Calendar c = Calendar.getInstance();
@@ -112,7 +122,6 @@ public class AddMeetingActivity extends AppCompatActivity  {
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         });
-
     }
 
 }
