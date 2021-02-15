@@ -33,11 +33,10 @@ public class AddMeetingActivity extends AppCompatActivity  {
     TextInputLayout timeEnd;
     TextInputLayout participantsMeeting;
     NumberPicker numberRoomMeeting;
-
     EditText timeBeginMeeting,timeEndMeeting;
     Button btnTimePickerBegin,btnTimePickerEnd,createNewRoomMeetingButton;
 
-    private int  mHour, mMinute;
+    int  mHour, mMinute;
 
 
     @Override
@@ -51,10 +50,10 @@ public class AddMeetingActivity extends AppCompatActivity  {
         UserClickOnButtonForSelectTimeBegin();
         UserClickOnButtonForSelectTimeEnd();
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
     }
+
     public void setUpViews() {
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         idMeeting = findViewById(R.id.idMeetingLyt);
         subjectMeeting = findViewById(R.id.subjectMeetingLyt);
         timeBegin = findViewById(R.id.timeBeginMeetingLyt);

@@ -3,6 +3,9 @@ package com.example.projet_3_oc_maru.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.projet_3_oc_maru.DI.DI;
+import com.example.projet_3_oc_maru.Models.Meeting;
+import com.example.projet_3_oc_maru.Models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -15,23 +18,31 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
 
-    private static final int REQUEST_CODE_ACTIVITY = 20;
+public class MainActivity extends AppCompatActivity {
+    Toolbar toolbar;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setUpViews();
+        UserClickOnButtonForOpenAddMeetingActivity();
+    }
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+    public void setUpViews() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        fab = findViewById(R.id.fab);
+    }
+
+    public void UserClickOnButtonForOpenAddMeetingActivity(){
         fab.setOnClickListener(v -> {
             Intent AddMeetingActivity = new Intent(MainActivity.this, AddMeetingActivity.class);
             startActivity(AddMeetingActivity);
         });
     }
-
 
 }
