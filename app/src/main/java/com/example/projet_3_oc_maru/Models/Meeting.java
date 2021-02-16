@@ -1,17 +1,24 @@
 package com.example.projet_3_oc_maru.Models;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
+
 public class Meeting {
 
     private String id;
     private String subject;
-    private String timeBegin;
-    private String timeEnd;
+    private LocalDate date;
+    private LocalTime timeEnd;
     private String participants;
+    private LocalTime timeBegin;
     private RoomMeeting meetingRoom;
 
-    public Meeting(String id, String subject, String timeBegin, String timeEnd , String participants, RoomMeeting meetingRoom){
+    public Meeting(String id, String subject, LocalDate date,LocalTime timeBegin, LocalTime timeEnd , String participants, RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
+        this.date=date;
         this.timeBegin=timeBegin;
         this.timeEnd=timeEnd;
         this.participants=participants;
@@ -30,11 +37,9 @@ public class Meeting {
         return subject;
     }
 
-    public String getTimeBegin(){
-        return timeBegin;
-    }
+    public LocalDate getDate() { return date; }
 
-    public String getTimeEnd(){
+    public LocalTime getTimeEnd(){
         return timeEnd;
     }
 
@@ -44,20 +49,26 @@ public class Meeting {
 
     public RoomMeeting getMeetingRoom() { return meetingRoom;}
 
+    public LocalTime getTimeBegin() {
+        return timeBegin;
+    }
 
 
-        /**Setters */
+
+    /**Setters */
     public void setId(String id) { this.id = id; }
 
     public void setSubject(String subject) { this.subject = subject; }
 
-    public void setTimeBegin(String timeBegin) { this.timeBegin = timeBegin; }
+    public void setDate(LocalDate date) {this.date = date;}
 
-    public void setTimeEnd(String timeEnd) { this.timeEnd = timeEnd; }
+    public void setTimeEnd(LocalTime timeEnd) { this.timeEnd = timeEnd; }
 
     public void setParticipants(String participants) { this.participants = participants; }
 
     public void setMeetingRoom(RoomMeeting meetingRoom) { this.meetingRoom = meetingRoom; }
 
-
+    public void setTimeBegin(LocalTime timeBegin) {
+        this.timeBegin = timeBegin;
+    }
 }
