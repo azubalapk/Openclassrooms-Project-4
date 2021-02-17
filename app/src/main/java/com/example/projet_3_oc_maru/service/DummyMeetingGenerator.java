@@ -3,6 +3,7 @@ package com.example.projet_3_oc_maru.service;
 
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.example.projet_3_oc_maru.Models.Meeting;
@@ -22,6 +23,8 @@ public abstract class DummyMeetingGenerator {
             new Meeting("3","Reception",LocalDate.of(2021,02,16),LocalTime.of(19,00),LocalTime.of(20,00),"amandine@lamzone.com,luc@lamzone.com",RoomMeeting.getRoomMeetingById(5))
 
     );
+
+
 
 
 

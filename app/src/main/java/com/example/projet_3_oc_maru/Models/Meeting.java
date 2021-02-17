@@ -1,5 +1,9 @@
 package com.example.projet_3_oc_maru.Models;
 
+import androidx.annotation.NonNull;
+
+import com.example.projet_3_oc_maru.DI.DI;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -28,6 +32,8 @@ public class Meeting {
 
 
 
+
+
     /**Getters */
     public String getId(){
         return id;
@@ -51,6 +57,15 @@ public class Meeting {
 
     public LocalTime getTimeBegin() {
         return timeBegin;
+    }
+
+    @NonNull
+    public static Meeting getMeetingById(String id) {
+        for (Meeting meeting : DI.getMeetingApiService().getMeetings()) {
+            if (meeting.id == id)
+                return meeting;
+        }
+        return null;
     }
 
 
