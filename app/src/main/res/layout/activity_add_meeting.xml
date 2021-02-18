@@ -21,12 +21,25 @@
         app:layout_constraintVertical_bias="0.19" />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Indiquer le numero de salle "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.726" />
+
     <EditText
         android:id="@+id/timeEndMeeting"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="End Time of Meeting"
+        android:textStyle="bold"
         android:inputType="textMultiLine"
         android:lines="1"
         android:minLines="1"
@@ -35,14 +48,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
-
+        app:layout_constraintVertical_bias="0.269" />
 
     <EditText
         android:id="@+id/dateMeeting"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textStyle="bold"
         android:hint="date of Meeting"
         android:inputType="textMultiLine"
         android:lines="1"
@@ -84,6 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textStyle="bold"
         android:hint="Participants e-mails"
         android:inputType="textMultiLine"
         android:lines="4"
@@ -130,6 +144,7 @@
         android:hint="Choose number for Id Meeting"
         android:inputType="textMultiLine"
         android:lines="1"
+        android:textStyle="bold"
         android:minLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -143,6 +158,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textStyle="bold"
         android:hint="The subject of Meeting"
         android:inputType="textMultiLine"
         android:lines="1"
@@ -161,6 +177,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textStyle="bold"
         android:hint="Start Time of Meeting"
         android:inputType="textMultiLine"
         android:lines="1"

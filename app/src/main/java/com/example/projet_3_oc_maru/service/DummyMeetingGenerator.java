@@ -3,7 +3,6 @@ package com.example.projet_3_oc_maru.service;
 
 import android.os.Build;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.example.projet_3_oc_maru.Models.Meeting;
@@ -28,8 +27,12 @@ public abstract class DummyMeetingGenerator {
 
 
 
+
+
     static List<Meeting> generateMeetings() {
         return new ArrayList<>(DUMMY_ROOM_MEETS);
     }
+
+
 
 }

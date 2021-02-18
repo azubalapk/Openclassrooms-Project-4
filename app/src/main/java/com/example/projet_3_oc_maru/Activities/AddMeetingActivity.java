@@ -99,8 +99,8 @@ public class AddMeetingActivity extends AppCompatActivity  {
                     RoomMeeting.getRoomMeetingById(numberRoomMeetingNp.getValue())
             );
 
-            DI.getMeetingApiService().createMeeting(meeting);
-            finish();
+                DI.getMeetingApiService().createMeeting(meeting);
+                finish();
 
         });
     }
@@ -120,7 +120,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
                          dateMeeting.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                          if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
-                             dateObject =LocalDate.of(year,monthOfYear,dayOfMonth);
+                             dateObject =LocalDate.of(year,monthOfYear+1,dayOfMonth);
                          }
                      }, mYear, mMonth, mDay);
              datePickerDialog.show();
@@ -144,7 +144,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
                         }
 
 
-                    }, mHour, mMinute, false);
+                    }, mHour, mMinute, true);
             timePickerDialog.show();
         });
 
@@ -165,7 +165,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
                             timeEndObject = LocalTime.of(hourOfDay,minute);
                         }
 
-                    }, mHour, mMinute, false);
+                    }, mHour, mMinute, true);
             timePickerDialog.show();
         });
     }
