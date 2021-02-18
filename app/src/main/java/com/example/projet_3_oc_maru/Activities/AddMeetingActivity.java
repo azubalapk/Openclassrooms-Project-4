@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projet_3_oc_maru.DI.DI;
@@ -25,10 +26,10 @@ public class AddMeetingActivity extends AppCompatActivity  {
 
     EditText idMeeting;
     EditText subjectMeeting;
-    EditText timeBegin;
-    EditText timeEnd;
+    TextView timeBegin;
+    TextView timeEnd;
     EditText participantsMeeting;
-    EditText dateMeeting;
+    TextView dateMeeting;
     NumberPicker numberRoomMeetingNp;
 
 
@@ -59,7 +60,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
     }
 
     public void setUpViews() {
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         idMeeting = findViewById(R.id.idMeeting);
         subjectMeeting = findViewById(R.id.subjectMeeting);
         timeBegin = findViewById(R.id.timeBeginMeeting);
