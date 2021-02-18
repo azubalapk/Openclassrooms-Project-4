@@ -67,19 +67,11 @@ public class AddMeetingActivity extends AppCompatActivity  {
         timeEnd = findViewById(R.id.timeEndMeeting);
         participantsMeeting = findViewById(R.id.participantsMeeting);
         dateMeeting = findViewById(R.id.dateMeeting);
-
         createNewRoomMeetingButton = findViewById(R.id.create);
         btnDate = findViewById(R.id.btn_date);
         btnTimePickerBegin= findViewById(R.id.btn_time_begin);
         btnTimePickerEnd = findViewById(R.id.btn_time_end);
-
         numberRoomMeetingNp = findViewById(R.id.numberRoomMeeting);
-
-
-
-
-
-
     }
 
     public void initializeNumberPickerForSelectRoomMeeting(){
