@@ -1,12 +1,16 @@
 package com.example.projet_3_oc_maru.Activities;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -49,6 +53,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meeting);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setUpViews();
         initializeNumberPickerForSelectRoomMeeting();
@@ -57,10 +62,15 @@ public class AddMeetingActivity extends AppCompatActivity  {
         UserClickOnButtonForSelectTimeBegin();
         UserClickOnButtonForSelectTimeEnd();
 
+
+
     }
 
     public void setUpViews() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
         idMeeting = findViewById(R.id.idMeeting);
         subjectMeeting = findViewById(R.id.subjectMeeting);
         timeBegin = findViewById(R.id.timeBeginMeeting);
@@ -79,6 +89,18 @@ public class AddMeetingActivity extends AppCompatActivity  {
         numberRoomMeetingNp.setMaxValue(10);
         numberRoomMeetingNp.setWrapSelectorWheel(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     public void UserClickOnButtonForCreateNewMeeting(){
         createNewRoomMeetingButton.setOnClickListener(v -> {
