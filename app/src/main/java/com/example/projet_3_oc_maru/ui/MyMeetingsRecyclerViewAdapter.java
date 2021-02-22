@@ -43,6 +43,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
     }
 
 
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -50,22 +51,15 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         return new ViewHolder(view);
     }
 
-
-
-
-
-
-
         @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+",le "+meeting.getDate().toString()+", \nde "+meeting.getTimeBegin().toString()+" à "+meeting.getTimeEnd().toString()+","+"\nSalle "+ meeting.getMeetingRoom().getmNameRoomMeeting()+", à propos de "+ meeting.getSubject());
+        holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDate().toString()+"-"+meeting.getTimeBegin().toString()+"/"+meeting.getTimeEnd().toString()+"\n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
         holder.mMeetingLineTwo.setText(meeting.getParticipants());
         holder.mMeetingAvatar.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
 
         holder.mDeleteButton.setOnClickListener(v -> {
             mCallback.ShareClicked(meeting);
-
         });
     }
     @Override

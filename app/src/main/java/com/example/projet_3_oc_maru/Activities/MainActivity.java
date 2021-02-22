@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpViews();
-        UserClickOnButtonForOpenAddMeetingActivity();
+        userClickOnButtonForOpenAddMeetingActivity();
     }
 
     public void setUpViews() {
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab);
     }
 
-    public void UserClickOnButtonForOpenAddMeetingActivity(){
+    public void userClickOnButtonForOpenAddMeetingActivity(){
         fab.setOnClickListener(v -> {
             Intent AddMeetingActivity = new Intent(MainActivity.this, AddMeetingActivity.class);
             startActivity(AddMeetingActivity);

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projet3OCMaRéu">
         <activity
-            android:parentActivityName=".Activities.MainActivity"
+
             android:name=".Activities.AddMeetingActivity">
 
 

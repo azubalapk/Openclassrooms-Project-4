@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class Meeting {
 
-    private String id;
+    private int id;
     private String subject;
     private LocalDate date;
     private LocalTime timeEnd;
@@ -19,7 +19,7 @@ public class Meeting {
     private LocalTime timeBegin;
     private RoomMeeting meetingRoom;
 
-    public Meeting(String id, String subject, LocalDate date,LocalTime timeBegin, LocalTime timeEnd , String participants, RoomMeeting meetingRoom){
+    public Meeting(int id, String subject, LocalDate date,LocalTime timeBegin, LocalTime timeEnd , String participants, RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
         this.date=date;
@@ -35,7 +35,7 @@ public class Meeting {
 
 
     /**Getters */
-    public String getId(){
+    public int getId(){
         return id;
     }
 
@@ -60,7 +60,7 @@ public class Meeting {
     }
 
     @NonNull
-    public static Meeting getMeetingById(String id) {
+    public static Meeting getMeetingById(int id) {
         for (Meeting meeting : DI.getMeetingApiService().getMeetings()) {
             if (meeting.id == id)
                 return meeting;
@@ -71,7 +71,7 @@ public class Meeting {
 
 
     /**Setters */
-    public void setId(String id) { this.id = id; }
+    public void setId(int id) { this.id = id; }
 
     public void setSubject(String subject) { this.subject = subject; }
 

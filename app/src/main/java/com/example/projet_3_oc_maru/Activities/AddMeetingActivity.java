@@ -28,7 +28,7 @@ import java.util.Objects;
 
 public class AddMeetingActivity extends AppCompatActivity  {
 
-    EditText idMeeting;
+    int idMeeting;
     EditText subjectMeeting;
     TextView timeBegin;
     TextView timeEnd;
@@ -57,21 +57,14 @@ public class AddMeetingActivity extends AppCompatActivity  {
 
         setUpViews();
         initializeNumberPickerForSelectRoomMeeting();
-        UserClickOnButtonForCreateNewMeeting();
-        UserClickOnButtonForSelectDate();
-        UserClickOnButtonForSelectTimeBegin();
-        UserClickOnButtonForSelectTimeEnd();
-
-
+        userClickOnButtonForCreateNewMeeting();
+        userClickOnButtonForSelectDate();
+        userClickOnButtonForSelectTimeBegin();
+        userClickOnButtonForSelectTimeEnd();
 
     }
 
     public void setUpViews() {
-
-
-
-
-        idMeeting = findViewById(R.id.idMeeting);
         subjectMeeting = findViewById(R.id.subjectMeeting);
         timeBegin = findViewById(R.id.timeBeginMeeting);
         timeEnd = findViewById(R.id.timeEndMeeting);
@@ -94,7 +87,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -102,10 +95,10 @@ public class AddMeetingActivity extends AppCompatActivity  {
     }
 
 
-    public void UserClickOnButtonForCreateNewMeeting(){
+    public void userClickOnButtonForCreateNewMeeting(){
         createNewRoomMeetingButton.setOnClickListener(v -> {
             Meeting meeting = new Meeting(
-                    idMeeting.getText().toString(),
+                    idMeeting = DI.getMeetingApiService().getMeetings().size()+1,
                     subjectMeeting.getText().toString(),
                     dateObject,
                     timeBeginObject,
@@ -113,21 +106,18 @@ public class AddMeetingActivity extends AppCompatActivity  {
                     participantsMeeting.getText().toString(),
                     RoomMeeting.getRoomMeetingById(numberRoomMeetingNp.getValue())
             );
-
                 DI.getMeetingApiService().createMeeting(meeting);
                 finish();
-
         });
     }
 
-    public void UserClickOnButtonForSelectDate(){
+    public void userClickOnButtonForSelectDate(){
          btnDate.setOnClickListener(v -> {
              // Get Current Date
              final Calendar c = Calendar.getInstance();
              mYear = c.get(Calendar.YEAR);
              mMonth = c.get(Calendar.MONTH);
              mDay = c.get(Calendar.DAY_OF_MONTH);
-
 
              DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                      (view, year, monthOfYear, dayOfMonth) -> {
@@ -142,7 +132,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
          });
     }
 
-    public void UserClickOnButtonForSelectTimeBegin(){
+    public void userClickOnButtonForSelectTimeBegin(){
         btnTimePickerBegin.setOnClickListener(v -> {
             // Get Current Time
             final Calendar c = Calendar.getInstance();
@@ -162,9 +152,9 @@ public class AddMeetingActivity extends AppCompatActivity  {
                     }, mHour, mMinute, true);
             timePickerDialog.show();
         });
-
     }
-    public void UserClickOnButtonForSelectTimeEnd(){
+
+    public void userClickOnButtonForSelectTimeEnd(){
         btnTimePickerEnd.setOnClickListener(v -> {
             // Get Current Time
             final Calendar c = Calendar.getInstance();
@@ -184,4 +174,5 @@ public class AddMeetingActivity extends AppCompatActivity  {
             timePickerDialog.show();
         });
     }
+
 }
