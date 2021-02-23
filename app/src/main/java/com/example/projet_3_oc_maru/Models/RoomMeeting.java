@@ -14,6 +14,10 @@ public class RoomMeeting {
         this.mRoomMeetingColor = mRoomMeetingColor;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getmNameRoomMeeting() {
         return mNameRoomMeeting;
     }

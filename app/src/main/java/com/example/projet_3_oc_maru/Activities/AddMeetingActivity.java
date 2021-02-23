@@ -141,9 +141,38 @@ public class AddMeetingActivity extends AppCompatActivity  {
                 toast.show();
 
             }else{
-                DI.getMeetingApiService().createMeeting(meeting);
-                finish();
+                /* Gestion de la disponibilité des salles */
+                boolean timeProblem = false;
+                boolean reserved = false;
+                for (Meeting m : DI.getMeetingApiService().getMeetings()) {
+                    if (m.getMeetingRoom().getId().equals(numberRoomMeetingNp.getValue()) &&
+                            ((LocalDateTime.of(dateObject,timeBeginObject).isBefore(m.getDateTimeEnd()) && LocalDateTime.of(dateObject,timeBeginObject).isAfter(m.getDateTimeBegin()))
+                                    || (LocalDateTime.of(dateObject,timeEndObject).isBefore(m.getDateTimeEnd()) && LocalDateTime.of(dateObject,timeEndObject).isAfter(m.getDateTimeBegin()))
+                                    || LocalDateTime.of(dateObject,timeBeginObject).isEqual(m.getDateTimeBegin())
+                                    || LocalDateTime.of(dateObject,timeEndObject).isEqual(m.getDateTimeEnd())
+                                    || m.getDateTimeBegin().isAfter(LocalDateTime.of(dateObject,timeBeginObject)) && m.getDateTimeBegin().isBefore(LocalDateTime.of(dateObject,timeEndObject))
+                                    || m.getDateTimeEnd().isBefore(LocalDateTime.of(dateObject,timeEndObject)) && m.getDateTimeEnd().isAfter(LocalDateTime.of(dateObject,timeBeginObject)))) {
+                        reserved = true;
+                        break;
+                    } else if (LocalDateTime.of(dateObject,timeBeginObject).isAfter(LocalDateTime.of(dateObject,timeEndObject)) || LocalDateTime.of(dateObject,timeBeginObject).isEqual(LocalDateTime.of(dateObject,timeEndObject))) {
 
+                        timeProblem = true;
+                    }
+                }
+                if (timeProblem) {
+                    text = "Veuillez vérifier les heures de début et de fin";
+                    toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                } else if (reserved) {
+                    text = "Cette salle est déjà réservée";
+                    toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+                } else {
+                    DI.getMeetingApiService().createMeeting(meeting);
+                    finish();
+                }
             }
 
         });
