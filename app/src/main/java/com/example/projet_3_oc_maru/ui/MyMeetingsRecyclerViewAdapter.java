@@ -1,6 +1,7 @@
 package com.example.projet_3_oc_maru.ui;
 
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,10 +53,11 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         return new ViewHolder(view);
     }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDate().toString()+"-"+meeting.getTimeBegin().toString()+"/"+meeting.getTimeEnd().toString()+"\n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
+        holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDateTimeBegin().getYear()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getDayOfMonth()+"-"+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"\n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
         holder.mMeetingLineTwo.setText(meeting.getParticipants());
         holder.mMeetingAvatar.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
 

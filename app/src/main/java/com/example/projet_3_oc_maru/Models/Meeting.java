@@ -7,24 +7,22 @@ import com.example.projet_3_oc_maru.DI.DI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
+import java.time.chrono.ChronoLocalDateTime;
 
 public class Meeting {
 
     private int id;
     private String subject;
-    private LocalDate date;
-    private LocalTime timeEnd;
+    private LocalDateTime dateTimeBegin;
+    private LocalDateTime dateTimeEnd;
     private String participants;
-    private LocalTime timeBegin;
     private RoomMeeting meetingRoom;
 
-    public Meeting(int id, String subject, LocalDate date,LocalTime timeBegin, LocalTime timeEnd , String participants, RoomMeeting meetingRoom){
+    public Meeting(int id, String subject,LocalDateTime dateTimeBegin, LocalDateTime dateTimeEnd , String participants, RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
-        this.date=date;
-        this.timeBegin=timeBegin;
-        this.timeEnd=timeEnd;
+        this.dateTimeBegin=dateTimeBegin;
+        this.dateTimeEnd=dateTimeEnd;
         this.participants=participants;
         this.meetingRoom=meetingRoom;
 
@@ -43,10 +41,12 @@ public class Meeting {
         return subject;
     }
 
-    public LocalDate getDate() { return date; }
+    public LocalDateTime getDateTimeBegin() {
+        return dateTimeBegin;
+    }
 
-    public LocalTime getTimeEnd(){
-        return timeEnd;
+    public LocalDateTime getDateTimeEnd() {
+        return dateTimeEnd;
     }
 
     public String getParticipants() {
@@ -55,9 +55,7 @@ public class Meeting {
 
     public RoomMeeting getMeetingRoom() { return meetingRoom;}
 
-    public LocalTime getTimeBegin() {
-        return timeBegin;
-    }
+
 
     @NonNull
     public static Meeting getMeetingById(int id) {
@@ -68,22 +66,22 @@ public class Meeting {
         return null;
     }
 
-
-
     /**Setters */
     public void setId(int id) { this.id = id; }
 
     public void setSubject(String subject) { this.subject = subject; }
 
-    public void setDate(LocalDate date) {this.date = date;}
+    public void setDateTimeBegin(LocalDateTime dateTimeBegin) {
+        this.dateTimeBegin = dateTimeBegin;
+    }
 
-    public void setTimeEnd(LocalTime timeEnd) { this.timeEnd = timeEnd; }
+    public void setDateTimeEnd(LocalDateTime dateTimeEnd) {
+        this.dateTimeEnd = dateTimeEnd;
+    }
 
     public void setParticipants(String participants) { this.participants = participants; }
 
     public void setMeetingRoom(RoomMeeting meetingRoom) { this.meetingRoom = meetingRoom; }
 
-    public void setTimeBegin(LocalTime timeBegin) {
-        this.timeBegin = timeBegin;
-    }
+
 }

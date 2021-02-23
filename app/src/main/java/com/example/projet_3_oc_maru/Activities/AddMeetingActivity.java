@@ -1,6 +1,7 @@
 package com.example.projet_3_oc_maru.Activities;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -20,6 +21,7 @@ import com.example.projet_3_oc_maru.Models.Meeting;
 import com.example.projet_3_oc_maru.Models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
 
@@ -40,6 +42,7 @@ public class AddMeetingActivity extends AppCompatActivity  {
     LocalTime timeBeginObject;
     int  mHour, mMinute,mYear,mMonth,mDay;
 
+    @RequiresApi(api = VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,17 +92,17 @@ public class AddMeetingActivity extends AppCompatActivity  {
         }
     }
 
-
+    @RequiresApi(api = VERSION_CODES.O)
     public void userClickOnButtonForCreateNewMeeting(){
+
         createNewRoomMeetingButton.setOnClickListener(v -> {
 
 
             Meeting meeting = new Meeting(
                     idMeeting ,
                     subjectMeeting.getText().toString(),
-                    dateObject,
-                    timeBeginObject,
-                    timeEndObject,
+                    LocalDateTime.of(dateObject,timeBeginObject),
+                    LocalDateTime.of(dateObject,timeEndObject),
                     participantsMeeting.getText().toString(),
                     RoomMeeting.getRoomMeetingById(numberRoomMeetingNp.getValue())
             );
@@ -137,11 +140,11 @@ public class AddMeetingActivity extends AppCompatActivity  {
                 toast = Toast.makeText(context, text, duration);
                 toast.show();
 
-            }else {
+            }else{
                 DI.getMeetingApiService().createMeeting(meeting);
                 finish();
-            }
 
+            }
 
         });
     }
