@@ -1,9 +1,7 @@
 package com.example.projet_3_oc_maru.Activities;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -24,7 +22,7 @@ import com.example.projet_3_oc_maru.R;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
-import java.util.Objects;
+
 
 public class AddMeetingActivity extends AppCompatActivity  {
 
@@ -33,21 +31,14 @@ public class AddMeetingActivity extends AppCompatActivity  {
     TextView timeBegin;
     TextView timeEnd;
     EditText participantsMeeting;
+    TextView displayIdMeeting;
     TextView dateMeeting;
     NumberPicker numberRoomMeetingNp;
-
-
-
-
-
     Button btnTimePickerBegin,btnTimePickerEnd,createNewRoomMeetingButton,btnDate;
-
     LocalDate dateObject;
     LocalTime timeEndObject;
     LocalTime timeBeginObject;
-
     int  mHour, mMinute,mYear,mMonth,mDay;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +53,13 @@ public class AddMeetingActivity extends AppCompatActivity  {
         userClickOnButtonForSelectTimeBegin();
         userClickOnButtonForSelectTimeEnd();
 
+        idMeeting = DI.getMeetingApiService().getMeetings().size()+1;
+        displayIdMeeting.setText("Reunion "+idMeeting);
+
     }
 
     public void setUpViews() {
+        displayIdMeeting =findViewById(R.id.idMeeting);
         subjectMeeting = findViewById(R.id.subjectMeeting);
         timeBegin = findViewById(R.id.timeBeginMeeting);
         timeEnd = findViewById(R.id.timeEndMeeting);
@@ -97,8 +92,10 @@ public class AddMeetingActivity extends AppCompatActivity  {
 
     public void userClickOnButtonForCreateNewMeeting(){
         createNewRoomMeetingButton.setOnClickListener(v -> {
+
+
             Meeting meeting = new Meeting(
-                    idMeeting = DI.getMeetingApiService().getMeetings().size()+1,
+                    idMeeting ,
                     subjectMeeting.getText().toString(),
                     dateObject,
                     timeBeginObject,
@@ -106,10 +103,49 @@ public class AddMeetingActivity extends AppCompatActivity  {
                     participantsMeeting.getText().toString(),
                     RoomMeeting.getRoomMeetingById(numberRoomMeetingNp.getValue())
             );
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_LONG;
+            CharSequence text ;
+            Toast toast ;
+
+            if (subjectMeeting.getText().toString().equals("")) {
+                text ="Veuillez SVP nommer le sujet de votre réunion" ;
+                toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+            }else
+            if (dateObject.toString().equals("")) {
+                text = "Veuillez SVP définir une date";
+                toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+            }else
+            if (timeBeginObject.toString().equals("")) {
+                text = "Veuillez SVP définir l'heure de début";
+                toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+            }else
+            if (timeEndObject.toString().equals("")) {
+                text = "Veuillez SVP définir l'heure de fin";
+                toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+            }else
+            if(participantsMeeting.getText().toString().equals("")) {
+                text = "Veuillez SVP renseigner les adresses mail des participants";
+                toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+            }else {
                 DI.getMeetingApiService().createMeeting(meeting);
                 finish();
+            }
+
+
         });
     }
+
 
     public void userClickOnButtonForSelectDate(){
          btnDate.setOnClickListener(v -> {
