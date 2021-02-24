@@ -1,15 +1,14 @@
 package com.example.projet_3_oc_maru.Models;
 
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import androidx.annotation.NonNull;
-
+import androidx.annotation.RequiresApi;
 import com.example.projet_3_oc_maru.DI.DI;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.chrono.ChronoLocalDateTime;
 
-public class Meeting {
+public class Meeting implements Parcelable {
 
     private int id;
     private String subject;
@@ -29,8 +28,30 @@ public class Meeting {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    protected Meeting(Parcel in) {
+        id = in.readInt();
+        subject = in.readString();
+        dateTimeBegin = (LocalDateTime) in.readSerializable();
+        dateTimeEnd = (LocalDateTime) in.readSerializable();
+        participants = in.readString();
+        meetingRoom = in.readParcelable(RoomMeeting.class.getClassLoader());
 
 
+    }
+
+    public static final Creator<Meeting> CREATOR = new Creator<Meeting>() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        public Meeting createFromParcel(Parcel in) {
+            return new Meeting(in);
+        }
+
+        @Override
+        public Meeting[] newArray(int size) {
+            return new Meeting[size];
+        }
+    };
 
     /**Getters */
     public int getId(){
@@ -84,4 +105,20 @@ public class Meeting {
     public void setMeetingRoom(RoomMeeting meetingRoom) { this.meetingRoom = meetingRoom; }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(subject);
+        dest.writeSerializable(dateTimeEnd);
+        dest.writeSerializable(dateTimeBegin);
+        dest.writeString(participants);
+        dest.writeParcelable(meetingRoom,flags);
+
+    }
 }

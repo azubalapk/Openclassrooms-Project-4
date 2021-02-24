@@ -1,8 +1,11 @@
 package com.example.projet_3_oc_maru.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
-public class RoomMeeting {
+public class RoomMeeting implements Parcelable {
     private String mNameRoomMeeting;
     private int mRoomMeetingColor;
     private final  Integer id;
@@ -13,6 +16,28 @@ public class RoomMeeting {
         this.mNameRoomMeeting = mNameRoomMeeting;
         this.mRoomMeetingColor = mRoomMeetingColor;
     }
+
+    protected RoomMeeting(Parcel in) {
+        mNameRoomMeeting = in.readString();
+        mRoomMeetingColor = in.readInt();
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+    }
+
+    public static final Creator<RoomMeeting> CREATOR = new Creator<RoomMeeting>() {
+        @Override
+        public RoomMeeting createFromParcel(Parcel in) {
+            return new RoomMeeting(in);
+        }
+
+        @Override
+        public RoomMeeting[] newArray(int size) {
+            return new RoomMeeting[size];
+        }
+    };
 
     public Integer getId() {
         return id;
@@ -52,4 +77,20 @@ public class RoomMeeting {
         };
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mNameRoomMeeting);
+        dest.writeInt(mRoomMeetingColor);
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+    }
 }

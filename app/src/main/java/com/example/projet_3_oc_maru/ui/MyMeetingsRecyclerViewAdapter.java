@@ -1,5 +1,6 @@
 package com.example.projet_3_oc_maru.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -8,29 +9,18 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
-import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.projet_3_oc_maru.Activities.MainActivity;
-import com.example.projet_3_oc_maru.Fragments.MainFragment;
+import com.example.projet_3_oc_maru.Activities.DetailMeetingActivity;
 import com.example.projet_3_oc_maru.Models.Meeting;
-import com.example.projet_3_oc_maru.Models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
-
-
-
-
-import java.util.ArrayList;
 import java.util.List;
-
-import static android.app.Activity.RESULT_OK;
 
 public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingsRecyclerViewAdapter.ViewHolder> {
 
     private final List<Meeting> mMeetings;
     OnShareClickedListener mCallback;
+
 
     public MyMeetingsRecyclerViewAdapter(List<Meeting> items) {
         mMeetings = items;
@@ -64,6 +54,12 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         holder.mDeleteButton.setOnClickListener(v -> {
             mCallback.ShareClicked(meeting);
         });
+            holder.itemView.setOnClickListener(v -> {
+                final Context context = holder.itemView.getContext();
+                Intent intent = new Intent(context, DetailMeetingActivity.class);
+                intent.putExtra("detailMeeting", meeting);
+                context.startActivity(intent);
+            });
     }
     @Override
     public int getItemCount() {
@@ -89,6 +85,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
         }
     }
+
 
 
 }
