@@ -24,16 +24,8 @@ public abstract class DummyMeetingGenerator {
 
     );
 
-
-
-
-
-
-
     static List<Meeting> generateMeetings() {
         return new ArrayList<>(DUMMY_ROOM_MEETS);
     }
-
-
 
 }
