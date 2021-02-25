@@ -76,17 +76,6 @@ public class Meeting implements Parcelable {
 
     public RoomMeeting getMeetingRoom() { return meetingRoom;}
 
-
-
-    @NonNull
-    public static Meeting getMeetingById(int id) {
-        for (Meeting meeting : DI.getMeetingApiService().getMeetings()) {
-            if (meeting.id == id)
-                return meeting;
-        }
-        return null;
-    }
-
     /**Setters */
     public void setId(int id) { this.id = id; }
 
