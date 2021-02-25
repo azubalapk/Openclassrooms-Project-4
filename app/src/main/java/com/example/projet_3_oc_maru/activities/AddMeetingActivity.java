@@ -25,8 +25,10 @@ import com.example.projet_3_oc_maru.utils.ToastUtil;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Objects;
+import java.util.TimeZone;
 
 public class AddMeetingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -225,8 +227,12 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     }
     public void getCurrentTime(){
         final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
+        TimeZone tz =TimeZone.getTimeZone("GMT+1");
+        c.setTimeZone(tz);
         mMinute = c.get(Calendar.MINUTE);
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMonth = c.get(Calendar.MONTH);
+        mHour = c.get(Calendar.HOUR_OF_DAY);
     }
 
 }
