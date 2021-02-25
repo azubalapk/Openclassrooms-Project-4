@@ -175,7 +175,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
              mYear = c.get(Calendar.YEAR);
              mMonth = c.get(Calendar.MONTH);
              mDay = c.get(Calendar.DAY_OF_MONTH);
-             
+
              DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                      (view, year, monthOfYear, dayOfMonth) -> {
 
@@ -192,9 +192,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     public void userClickOnButtonForSelectTimeBegin(){
         btnTimePickerBegin.setOnClickListener(v -> {
 
-            final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-            mMinute = c.get(Calendar.MINUTE);
+            getCurrentTime();
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
@@ -211,9 +209,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     public void userClickOnButtonForSelectTimeEnd(){
         btnTimePickerEnd.setOnClickListener(v -> {
 
-            final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-            mMinute = c.get(Calendar.MINUTE);
+            getCurrentTime();
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
@@ -226,6 +222,11 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                     }, mHour, mMinute, true);
             timePickerDialog.show();
         });
+    }
+    public void getCurrentTime(){
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
     }
 
 }
