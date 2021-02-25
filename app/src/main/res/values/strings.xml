@@ -12,7 +12,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name="planets_array">
+    <string-array name="roomsMeeting_array">
         <item>Birdo</item>
         <item>Daisy</item>
         <item>Donkey Kong</item>

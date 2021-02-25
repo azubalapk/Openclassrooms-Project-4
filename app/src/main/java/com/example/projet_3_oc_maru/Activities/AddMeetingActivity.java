@@ -80,7 +80,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
     public void setUpSpinnerRoomMeeting(){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.planets_array, android.R.layout.simple_spinner_item);
+                R.array.roomsMeeting_array, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner

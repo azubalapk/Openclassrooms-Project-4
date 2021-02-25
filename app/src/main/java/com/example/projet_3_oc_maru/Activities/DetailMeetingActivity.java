@@ -19,12 +19,7 @@ import java.util.Objects;
 public class DetailMeetingActivity extends AppCompatActivity {
     ImageView avatarMeeting;
     TextView detailLineOne,detailLineTwo,detailLineThree;
-    int idMeeting;
-    String subjectMeeting;
-    LocalDateTime timeBeginMeeting;
-    LocalDateTime timeEndMeeting;
-    String participantsMeetings;
-    RoomMeeting roomMeeting;
+
     Meeting meeting;
 
 
@@ -35,30 +30,22 @@ public class DetailMeetingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_meeting);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        prepareApiServiceAndNeighbour();
+        getMeetingParcelable();
         meetingNotNull();
 
     }
-    public void prepareApiServiceAndNeighbour(){
+    public void getMeetingParcelable(){
         meeting = getIntent().getParcelableExtra("detailMeeting");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void meetingNotNull(){
         if (meeting != null) {
-            getMeeting();
             setUpViews();
             setTextAndImage();
         }
     }
-    public void getMeeting(){
-        idMeeting =meeting.getId();
-        subjectMeeting=meeting.getSubject();
-        timeBeginMeeting=meeting.getDateTimeBegin();
-        timeEndMeeting=meeting.getDateTimeEnd();
-        participantsMeetings=meeting.getParticipants();
-        roomMeeting=meeting.getMeetingRoom();
-    }
+
     public void setUpViews(){
         avatarMeeting = findViewById(R.id.item_detail_avatar);
         detailLineOne = findViewById(R.id.detailLineOne);
@@ -67,10 +54,12 @@ public class DetailMeetingActivity extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setTextAndImage(){
-        avatarMeeting.setColorFilter(roomMeeting.getmRoomMeetingColor());
-        detailLineOne.setText("Réunion "+idMeeting+"-"+timeBeginMeeting.getYear()+"/"+timeBeginMeeting.getMonthValue()+"/"+timeBeginMeeting.getDayOfMonth()+"-"+timeBeginMeeting.getHour()+"h"+timeBeginMeeting.getMinute()+"/"+timeEndMeeting.getHour()+"h"+timeEndMeeting.getMinute());
-        detailLineTwo.setText("Sujet"+subjectMeeting+"Salle "+ roomMeeting.getmNameRoomMeeting()+"("+roomMeeting.getId()+")");
-        detailLineThree.setText(participantsMeetings);
+        avatarMeeting.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
+        detailLineOne.setText("  Réunion "+meeting.getId()+"-"+meeting.getDateTimeBegin().getYear()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getDayOfMonth()+
+                "-"+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute());
+
+        detailLineTwo.setText("  Sujet :"+meeting.getSubject()+", Salle :"+meeting.getMeetingRoom().getmNameRoomMeeting()+"("+meeting.getMeetingRoom().getId()+")");
+        detailLineThree.setText("  Particpants :"+meeting.getParticipants());
     }
 
     @Override
