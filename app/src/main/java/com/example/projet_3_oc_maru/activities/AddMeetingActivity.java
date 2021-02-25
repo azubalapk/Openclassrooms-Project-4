@@ -17,12 +17,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.utils.ToastUtil;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -39,14 +39,14 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     LocalTime timeEndObject,timeBeginObject;
     int  idMeeting,mHour, mMinute,mYear,mMonth,mDay,positionRoomMeetings;
     Spinner spinnerRoomMeeting;
+    Context context;
 
     @RequiresApi(api = VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meeting);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+        getContext();
         setUpViews();
         userClickOnButtonForCreateNewMeeting();
         userClickOnButtonForSelectDate();
@@ -54,14 +54,18 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         userClickOnButtonForSelectTimeEnd();
         setIdMeetingAndDisplayThis();
         setUpSpinnerRoomMeeting();
-
     }
     public void setIdMeetingAndDisplayThis(){
         idMeeting = DI.getMeetingApiService().getMeetings().size()+1;
         displayIdMeeting.setText("Reunion "+idMeeting);
     }
 
+    public void getContext(){
+        context = getApplicationContext();
+    }
+
     public void setUpViews() {
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         displayIdMeeting =findViewById(R.id.idMeeting);
         subjectMeeting = findViewById(R.id.subjectMeeting);
         timeBegin = findViewById(R.id.timeBeginMeeting);
@@ -76,7 +80,6 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         spinnerRoomMeeting.setOnItemSelectedListener(this);
     }
 
-
     public void setUpSpinnerRoomMeeting(){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.roomsMeeting_array, android.R.layout.simple_spinner_item);
@@ -84,18 +87,15 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinnerRoomMeeting.setAdapter(adapter);
-
-
     }
+
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         positionRoomMeetings = pos + 1;
 
     }
 
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) {}
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
@@ -108,13 +108,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             }
         }
 
-    public void PrepareAndDisplayToast(CharSequence text){
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_LONG;
-        Toast toast ;
-        toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
+
 
     @RequiresApi(api = VERSION_CODES.O)
     public void userClickOnButtonForCreateNewMeeting(){
@@ -127,19 +121,19 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             );
 
             if (subjectMeeting.getText().toString().equals("")) {
-                PrepareAndDisplayToast("Veuillez SVP nommer le sujet de votre réunion");
+                ToastUtil.DisplayToastLong("Veuillez SVP nommer le sujet de votre réunion",context);
 
             }else if (dateObject.toString().equals("")) {
-                PrepareAndDisplayToast("Veuillez SVP définir une date");
+                ToastUtil.DisplayToastLong("Veuillez SVP définir une date",context);
 
             }else if (timeBeginObject.toString().equals("")) {
-                PrepareAndDisplayToast("Veuillez SVP définir l'heure de début");
+                ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de début",context);
 
             }else if (timeEndObject.toString().equals("")) {
-                PrepareAndDisplayToast("Veuillez SVP définir l'heure de fin");
+                ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de fin",context);
 
             }else if(participantsMeeting.getText().toString().equals("")) {
-                PrepareAndDisplayToast("Veuillez SVP renseigner les adresses mail des participants");
+                ToastUtil.DisplayToastLong("Veuillez SVP renseigner les adresses mail des participants",context);
 
             }else{
                 /* Gestion de la disponibilité des salles */
@@ -161,10 +155,10 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                     }
                 }
                 if (timeProblem) {
-                    PrepareAndDisplayToast("Veuillez vérifier les heures de début et de fin");
+                    ToastUtil.DisplayToastLong("Veuillez vérifier les heures de début et de fin",context);
 
                 } else if (reserved) {
-                    PrepareAndDisplayToast("Cette salle est déjà réservée");
+                    ToastUtil.DisplayToastLong("Cette salle est déjà réservée",context);
 
                 } else {
                     DI.getMeetingApiService().createMeeting(meeting);
