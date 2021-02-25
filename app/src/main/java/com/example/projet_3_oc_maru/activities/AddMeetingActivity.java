@@ -21,6 +21,7 @@ import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.utils.CurrentDateOrTimeUtil;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 
 import java.time.LocalDate;
@@ -55,6 +56,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         setIdMeetingAndDisplayThis();
         setUpSpinnerRoomMeeting();
     }
+    @RequiresApi(api = VERSION_CODES.O)
     public void setIdMeetingAndDisplayThis(){
         idMeeting = DI.getMeetingApiService().getMeetings().size()+1;
         displayIdMeeting.setText("Reunion "+idMeeting);
@@ -170,7 +172,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
     public void userClickOnButtonForSelectDate(){
          btnDate.setOnClickListener(v -> {
-             getCurrentDateAndTime();
+             CurrentDateOrTimeUtil.getCurrentDate();
 
              DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                      (view, year, monthOfYear, dayOfMonth) -> {
@@ -187,8 +189,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
     public void userClickOnButtonForSelectTimeBegin(){
         btnTimePickerBegin.setOnClickListener(v -> {
+            CurrentDateOrTimeUtil.getCurrentTime();
 
-            getCurrentDateAndTime();
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
                         timeBegin.setText(hourOfDay + ":" + minute);
@@ -203,8 +205,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
     public void userClickOnButtonForSelectTimeEnd(){
         btnTimePickerEnd.setOnClickListener(v -> {
+            CurrentDateOrTimeUtil.getCurrentTime();
 
-            getCurrentDateAndTime();
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
 
@@ -218,12 +220,4 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         });
     }
 
-    public void getCurrentDateAndTime(){
-        final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
-    }
 }
