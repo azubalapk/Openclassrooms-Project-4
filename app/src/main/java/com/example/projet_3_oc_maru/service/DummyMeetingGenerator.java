@@ -5,12 +5,9 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.projet_3_oc_maru.Models.Meeting;
-import com.example.projet_3_oc_maru.Models.RoomMeeting;
-
-import java.time.LocalDate;
+import com.example.projet_3_oc_maru.models.Meeting;
+import com.example.projet_3_oc_maru.models.RoomMeeting;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.example.projet_3_oc_maru.service;
 
-import com.example.projet_3_oc_maru.Models.Meeting;
+import com.example.projet_3_oc_maru.models.Meeting;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.Activities;
+package com.example.projet_3_oc_maru.activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,11 +9,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.projet_3_oc_maru.Models.Meeting;
-import com.example.projet_3_oc_maru.Models.RoomMeeting;
+import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class DetailMeetingActivity extends AppCompatActivity {

@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.projet_3_oc_maru.Activities.DetailMeetingActivity;
-import com.example.projet_3_oc_maru.Models.Meeting;
+import com.example.projet_3_oc_maru.activities.DetailMeetingActivity;
+import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
 import java.util.List;
 
@@ -20,7 +20,6 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
     private final List<Meeting> mMeetings;
     OnShareClickedListener mCallback;
-
 
     public MyMeetingsRecyclerViewAdapter(List<Meeting> items) {
         mMeetings = items;
@@ -33,8 +32,6 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
     public interface OnShareClickedListener {
          void ShareClicked(Meeting meeting);
     }
-
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -54,12 +51,13 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         holder.mDeleteButton.setOnClickListener(v -> {
             mCallback.ShareClicked(meeting);
         });
-            holder.itemView.setOnClickListener(v -> {
-                final Context context = holder.itemView.getContext();
-                Intent intent = new Intent(context, DetailMeetingActivity.class);
-                intent.putExtra("detailMeeting", meeting);
-                context.startActivity(intent);
-            });
+
+        holder.itemView.setOnClickListener(v -> {
+            final Context context = holder.itemView.getContext();
+            Intent intent = new Intent(context, DetailMeetingActivity.class);
+            intent.putExtra("detailMeeting", meeting);
+            context.startActivity(intent);
+        });
     }
     @Override
     public int getItemCount() {
@@ -71,9 +69,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         public ImageView mMeetingAvatar;
         public TextView mMeetingLineOne;
         public TextView mMeetingLineTwo;
-
         public ImageButton mDeleteButton;
-
 
         public ViewHolder(View view) {
             super(view);
@@ -81,11 +77,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
             mMeetingLineOne=view.findViewById(R.id.item_line_One);
             mMeetingLineTwo=view.findViewById(R.id.item_line_Two);
             mDeleteButton=view.findViewById(R.id.item_list_delete_button);
-
-
         }
     }
-
-
 
 }

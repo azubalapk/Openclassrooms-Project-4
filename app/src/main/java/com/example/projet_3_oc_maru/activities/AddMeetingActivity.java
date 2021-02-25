@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.Activities;
+package com.example.projet_3_oc_maru.activities;
 
 
 import androidx.annotation.RequiresApi;
@@ -15,14 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.projet_3_oc_maru.DI.DI;
-import com.example.projet_3_oc_maru.Models.Meeting;
-import com.example.projet_3_oc_maru.Models.RoomMeeting;
+import com.example.projet_3_oc_maru.di.DI;
+import com.example.projet_3_oc_maru.models.Meeting;
+import com.example.projet_3_oc_maru.models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

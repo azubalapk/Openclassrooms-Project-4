@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.Activities;
+package com.example.projet_3_oc_maru.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

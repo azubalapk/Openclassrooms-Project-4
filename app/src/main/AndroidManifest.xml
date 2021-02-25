@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projet3OCMaRéu">
-        <activity android:name=".Activities.DetailMeetingActivity"></activity>
-        <activity android:name=".Activities.AddMeetingActivity"></activity>
+        <activity android:name=".activities.DetailMeetingActivity"></activity>
+        <activity android:name=".activities.AddMeetingActivity"></activity>
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Projet3OCMaRéu.NoActionBar">
             <intent-filter>

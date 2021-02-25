@@ -4,7 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.projet_3_oc_maru.Models.Meeting;
+import com.example.projet_3_oc_maru.models.Meeting;
 
 import java.util.List;
 
