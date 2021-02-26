@@ -3,6 +3,7 @@ package com.example.projet_3_oc_maru.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.fragments.MainFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     FloatingActionButton fab;
+    MainFragment mainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fab = findViewById(R.id.fab);
+        mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.MainFragment);
+
     }
 
     public void userClickOnButtonForOpenAddMeetingActivity(){

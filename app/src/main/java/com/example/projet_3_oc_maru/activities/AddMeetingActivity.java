@@ -49,12 +49,13 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_add_meeting);
         getContext();
         setUpViews();
-        userClickOnButtonForCreateNewMeeting();
         userClickOnButtonForSelectDate();
         userClickOnButtonForSelectTimeBegin();
         userClickOnButtonForSelectTimeEnd();
+        userClickOnButtonForCreateNewMeeting();
         setIdMeetingAndDisplayThis();
         setUpSpinnerRoomMeeting();
+
     }
     @RequiresApi(api = VERSION_CODES.O)
     public void setIdMeetingAndDisplayThis(){
@@ -114,59 +115,61 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
     @RequiresApi(api = VERSION_CODES.O)
     public void userClickOnButtonForCreateNewMeeting(){
-
         createNewRoomMeetingButton.setOnClickListener(v -> {
 
-            Meeting meeting = new Meeting(idMeeting , subjectMeeting.getText().toString(),
-                    LocalDateTime.of(dateObject,timeBeginObject), LocalDateTime.of(dateObject,timeEndObject),
-                    participantsMeeting.getText().toString(), RoomMeeting.getRoomMeetingById(positionRoomMeetings)
-            );
+
 
             if (subjectMeeting.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP nommer le sujet de votre réunion",context);
 
-            }else if (dateObject.toString().equals("")) {
+            }else if (dateMeeting.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP définir une date",context);
 
-            }else if (timeBeginObject.toString().equals("")) {
+            }else if (timeBegin.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de début",context);
 
-            }else if (timeEndObject.toString().equals("")) {
+            }else if (timeEnd.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de fin",context);
 
             }else if(participantsMeeting.getText().toString().equals("")) {
-                ToastUtil.DisplayToastLong("Veuillez SVP renseigner les adresses mail des participants",context);
+                ToastUtil.DisplayToastLong("Veuillez SVP renseigner les adresses mail des participants", context);
+            }else {
 
-            }else{
+                Meeting meeting = new Meeting(idMeeting , subjectMeeting.getText().toString(),
+                        LocalDateTime.of(dateObject,timeBeginObject), LocalDateTime.of(dateObject,timeEndObject),
+                        participantsMeeting.getText().toString(), RoomMeeting.getRoomMeetingById(positionRoomMeetings)
+                );
+
                 /* Gestion de la disponibilité des salles */
                 boolean timeProblem = false;
                 boolean reserved = false;
                 for (Meeting m : DI.getMeetingApiService().getMeetings()) {
                     if (m.getMeetingRoom().getId().equals(positionRoomMeetings) &&
-                            ((LocalDateTime.of(dateObject,timeBeginObject).isBefore(m.getDateTimeEnd()) && LocalDateTime.of(dateObject,timeBeginObject).isAfter(m.getDateTimeBegin()))
-                                    || (LocalDateTime.of(dateObject,timeEndObject).isBefore(m.getDateTimeEnd()) && LocalDateTime.of(dateObject,timeEndObject).isAfter(m.getDateTimeBegin()))
-                                    || LocalDateTime.of(dateObject,timeBeginObject).isEqual(m.getDateTimeBegin())
-                                    || LocalDateTime.of(dateObject,timeEndObject).isEqual(m.getDateTimeEnd())
-                                    || m.getDateTimeBegin().isAfter(LocalDateTime.of(dateObject,timeBeginObject)) && m.getDateTimeBegin().isBefore(LocalDateTime.of(dateObject,timeEndObject))
-                                    || m.getDateTimeEnd().isBefore(LocalDateTime.of(dateObject,timeEndObject)) && m.getDateTimeEnd().isAfter(LocalDateTime.of(dateObject,timeBeginObject)))) {
+                            ((LocalDateTime.of(dateObject, timeBeginObject).isBefore(m.getDateTimeEnd()) && LocalDateTime.of(dateObject, timeBeginObject).isAfter(m.getDateTimeBegin()))
+                                    || (LocalDateTime.of(dateObject, timeEndObject).isBefore(m.getDateTimeEnd()) && LocalDateTime.of(dateObject, timeEndObject).isAfter(m.getDateTimeBegin()))
+                                    || LocalDateTime.of(dateObject, timeBeginObject).isEqual(m.getDateTimeBegin())
+                                    || LocalDateTime.of(dateObject, timeEndObject).isEqual(m.getDateTimeEnd())
+                                    || m.getDateTimeBegin().isAfter(LocalDateTime.of(dateObject, timeBeginObject)) && m.getDateTimeBegin().isBefore(LocalDateTime.of(dateObject, timeEndObject))
+                                    || m.getDateTimeEnd().isBefore(LocalDateTime.of(dateObject, timeEndObject)) && m.getDateTimeEnd().isAfter(LocalDateTime.of(dateObject, timeBeginObject)))) {
                         reserved = true;
                         break;
-                    } else if (LocalDateTime.of(dateObject,timeBeginObject).isAfter(LocalDateTime.of(dateObject,timeEndObject)) || LocalDateTime.of(dateObject,timeBeginObject).isEqual(LocalDateTime.of(dateObject,timeEndObject))) {
+                    } else if (LocalDateTime.of(dateObject, timeBeginObject).isAfter(LocalDateTime.of(dateObject, timeEndObject)) || LocalDateTime.of(dateObject, timeBeginObject).isEqual(LocalDateTime.of(dateObject, timeEndObject))) {
 
                         timeProblem = true;
                     }
                 }
                 if (timeProblem) {
-                    ToastUtil.DisplayToastLong("Veuillez vérifier les heures de début et de fin",context);
+                    ToastUtil.DisplayToastLong("Veuillez vérifier les heures de début et de fin", context);
 
                 } else if (reserved) {
-                    ToastUtil.DisplayToastLong("Cette salle est déjà réservée",context);
+                    ToastUtil.DisplayToastLong("Cette salle est déjà réservée", context);
 
                 } else {
                     DI.getMeetingApiService().createMeeting(meeting);
                     finish();
                 }
             }
+
         });
     }
 
