@@ -117,8 +117,6 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     public void userClickOnButtonForCreateNewMeeting(){
         createNewRoomMeetingButton.setOnClickListener(v -> {
 
-
-
             if (subjectMeeting.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP nommer le sujet de votre réunion",context);
 

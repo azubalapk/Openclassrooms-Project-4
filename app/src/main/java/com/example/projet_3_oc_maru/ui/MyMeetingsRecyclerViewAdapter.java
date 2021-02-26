@@ -44,7 +44,14 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDateTimeBegin().getYear()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getDayOfMonth()+"-"+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"\n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
+
+        if (meeting.getDateTimeBegin().getMinute()==0){
+            holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDateTimeBegin().getYear()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getDayOfMonth()+"-"+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0 \n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
+        }else {
+            holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDateTimeBegin().getYear()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getDayOfMonth()+"-"+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"\n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
+        }
+
+
         holder.mMeetingLineTwo.setText(meeting.getParticipants());
         holder.mMeetingAvatar.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
 
