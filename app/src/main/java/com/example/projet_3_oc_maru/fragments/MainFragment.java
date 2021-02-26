@@ -1,10 +1,13 @@
 package com.example.projet_3_oc_maru.fragments;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +18,7 @@ import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.ui.MyMeetingsRecyclerViewAdapter;
 import java.util.List;
 
-public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdapter.OnShareClickedListener {
+public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdapter.OnCallbackAdapterToMainFragment {
     MeetingApiService mApiService;
     RecyclerView mRecyclerView;
     MyMeetingsRecyclerViewAdapter mAdapter;
@@ -24,6 +27,7 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         // Required empty public constructor
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,7 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         List<Meeting> mMeetings = mApiService.getMeetings();
         mAdapter =new MyMeetingsRecyclerViewAdapter(mMeetings);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnShareClickedListener(this);
+        mAdapter.setOnCallbackAdapterToMainFragment(this);
     }
 
     @Override
@@ -56,7 +60,7 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
     }
 
     @Override
-    public void ShareClicked(Meeting meeting) {
+    public void shareCallbackAdapterToMainFragment(Meeting meeting) {
         mApiService.deleteMeeting(meeting);
         mAdapter.notifyDataSetChanged();
     }

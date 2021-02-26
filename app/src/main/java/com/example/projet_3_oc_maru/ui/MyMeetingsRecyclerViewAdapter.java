@@ -19,18 +19,18 @@ import java.util.List;
 public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingsRecyclerViewAdapter.ViewHolder> {
 
     private final List<Meeting> mMeetings;
-    OnShareClickedListener mCallback;
+    OnCallbackAdapterToMainFragment mCallback;
 
     public MyMeetingsRecyclerViewAdapter(List<Meeting> items) {
         mMeetings = items;
     }
 
-    public void setOnShareClickedListener(OnShareClickedListener mCallback) {
+    public void setOnCallbackAdapterToMainFragment(OnCallbackAdapterToMainFragment mCallback) {
         this.mCallback = mCallback;
     }
 
-    public interface OnShareClickedListener {
-         void ShareClicked(Meeting meeting);
+    public interface OnCallbackAdapterToMainFragment {
+         void shareCallbackAdapterToMainFragment(Meeting meeting);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         holder.mMeetingAvatar.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
 
         holder.mDeleteButton.setOnClickListener(v -> {
-            mCallback.ShareClicked(meeting);
+            mCallback.shareCallbackAdapterToMainFragment(meeting);
         });
 
         holder.itemView.setOnClickListener(v -> {
