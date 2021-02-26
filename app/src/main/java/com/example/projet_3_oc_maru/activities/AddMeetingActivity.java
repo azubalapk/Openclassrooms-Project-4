@@ -199,7 +199,13 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
-                        timeBegin.setText(hourOfDay + ":" + minute);
+                     if(minute == 0){
+                         timeBegin.setText(hourOfDay + ":" + minute+"0");
+                     }else {
+                         timeBegin.setText(hourOfDay + ":" + minute);
+                     }
+
+
                         if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
                             timeBeginObject=LocalTime.of(hourOfDay,minute);
                         }
@@ -216,8 +222,11 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
-
-                        timeEnd.setText(hourOfDay + ":" + minute);
+                        if(minute == 0){
+                            timeEnd.setText(hourOfDay + ":" + minute+"0");
+                        }else {
+                            timeEnd.setText(hourOfDay + ":" + minute);
+                        }
                         if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
                             timeEndObject = LocalTime.of(hourOfDay,minute);
                         }
