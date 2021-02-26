@@ -181,8 +181,11 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
              DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                      (view, year, monthOfYear, dayOfMonth) -> {
-
-                         dateMeeting.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                      if(monthOfYear<10){
+                          dateMeeting.setText(dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year);
+                      }else{
+                          dateMeeting.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                      }
 
                          if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
                              dateObject =LocalDate.of(year,monthOfYear+1,dayOfMonth);
