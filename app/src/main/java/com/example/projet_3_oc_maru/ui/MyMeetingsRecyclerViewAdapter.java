@@ -45,19 +45,27 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
 
-        if (meeting.getDateTimeBegin().getMinute()==0 ){
-            holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDateTimeBegin().getYear()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getDayOfMonth()+"-"+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0 \n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
-        }else {
-            holder.mMeetingLineOne.setText("Réunion "+meeting.getId()+"-"+meeting.getDateTimeBegin().getYear()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getDayOfMonth()+"-"+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"\n"+"Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
+        holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
+
+        holder.textViewIdMeet.setText("Réunion "+meeting.getId()+"-");
+
+        if(meeting.getDateTimeBegin().getMonthValue()<10){
+            holder.textViewDateMeet.setText(meeting.getDateTimeBegin().getDayOfMonth()+"/0"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getYear()+"-");
+        }else{
+            holder.textViewDateMeet.setText(meeting.getDateTimeBegin().getDayOfMonth()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getYear()+"-");
         }
 
+        holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
 
-        holder.mMeetingLineTwo.setText(meeting.getParticipants());
-        holder.mMeetingAvatar.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
+        if (meeting.getDateTimeBegin().getMinute()==0 ){
+            holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0");
+        }else{
+            holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0");
+        }
 
-        holder.mDeleteButton.setOnClickListener(v -> {
-            mCallback.shareCallbackAdapterToMainFragment(meeting);
-        });
+        holder.textViewParticipantsMeet.setText(meeting.getParticipants());
+
+        holder.imageButtonDeleteMeet.setOnClickListener(v -> { mCallback.shareCallbackAdapterToMainFragment(meeting);});
 
         holder.itemView.setOnClickListener(v -> {
             final Context context = holder.itemView.getContext();
@@ -73,17 +81,23 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView mMeetingAvatar;
-        public TextView mMeetingLineOne;
-        public TextView mMeetingLineTwo;
-        public ImageButton mDeleteButton;
+        public ImageView imageViewMeet;
+        public TextView textViewIdMeet;
+        public TextView textViewDateMeet;
+        public TextView textViewHoursMeet;
+        public TextView textViewRoomMeet;
+        public TextView textViewParticipantsMeet;
+        public ImageButton imageButtonDeleteMeet;
 
         public ViewHolder(View view) {
             super(view);
-            mMeetingAvatar= view.findViewById(R.id.item_list_avatar);
-            mMeetingLineOne=view.findViewById(R.id.item_line_One);
-            mMeetingLineTwo=view.findViewById(R.id.item_line_Two);
-            mDeleteButton=view.findViewById(R.id.item_list_delete_button);
+            imageViewMeet= view.findViewById(R.id.imageViewMeet);
+            textViewIdMeet=view.findViewById(R.id.textViewIdMeet);
+            textViewDateMeet=view.findViewById(R.id.textViewDateMeet);
+            textViewHoursMeet=view.findViewById(R.id.textViewHoursMeet);
+            textViewRoomMeet=view.findViewById(R.id.textViewRoomMeet);
+            textViewParticipantsMeet= view.findViewById(R.id.textViewParticipantsMeet);
+            imageButtonDeleteMeet=view.findViewById(R.id.imageButtonDeleteMeet);
         }
     }
 

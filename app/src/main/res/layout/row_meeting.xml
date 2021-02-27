@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/item_list_avatar"
+        android:id="@+id/imageViewMeet"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -19,33 +19,62 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/item_line_One"
-        android:layout_width="275dp"
+        android:id="@+id/textViewIdMeet"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/item_list_avatar"
+        app:layout_constraintStart_toEndOf="@id/imageViewMeet"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_line_Two"
+        android:id="@+id/textViewDateMeet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textViewIdMeet"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewHoursMeet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/textViewDateMeet"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRoomMeet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/textViewRoomMeet"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewParticipantsMeet"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="20dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="36dp"
         android:ellipsize="end"
         android:lines="1"
-
         android:scrollHorizontally="true"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/item_list_avatar"
-        app:layout_constraintTop_toTopOf="@id/item_line_One" />
+        app:layout_constraintStart_toEndOf="@id/imageViewMeet"
+        app:layout_constraintTop_toTopOf="@id/textViewIdMeet" />
 
     <ImageButton
-        android:id="@+id/item_list_delete_button"
+        android:id="@+id/imageButtonDeleteMeet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
