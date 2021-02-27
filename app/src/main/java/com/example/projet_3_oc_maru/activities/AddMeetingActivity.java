@@ -69,7 +69,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     public void setUpViews() {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         textViewId =findViewById(R.id.idMeeting);
-        editTextParticipants = findViewById(R.id.subjectMeeting);
+        editTextSubject = findViewById(R.id.subjectMeeting);
         textViewTimeBegin = findViewById(R.id.timeBeginMeeting);
         textViewTimeEnd = findViewById(R.id.timeEndMeeting);
         editTextParticipants = findViewById(R.id.participantsMeeting);
@@ -205,12 +205,16 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
-                     if(minute == 0){
-                         textViewTimeBegin.setText(hourOfDay + ":" + minute+"0");
-                     }else {
-                         textViewTimeBegin.setText(hourOfDay + ":" + minute);
-                     }
 
+                        if(minute == 0 && hourOfDay<10){
+                            textViewTimeBegin.setText("0"+hourOfDay + ":" + minute+"0");
+                        }else if(hourOfDay<10){
+                            textViewTimeBegin.setText("0"+hourOfDay + ":" + minute);
+                        }else if(minute ==0) {
+                            textViewTimeBegin.setText(hourOfDay + ":" + minute+"0");
+                        }else{
+                            textViewTimeBegin.setText(hourOfDay + ":" + minute);
+                        }
 
                         if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
                             localTimeBegin=LocalTime.of(hourOfDay,minute);
@@ -228,11 +232,17 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
-                        if(minute == 0){
+
+                        if(minute == 0 && hourOfDay<10){
+                            textViewTimeEnd.setText("0"+hourOfDay + ":" + minute+"0");
+                        }else if(hourOfDay<10){
+                            textViewTimeEnd.setText("0"+hourOfDay + ":" + minute);
+                        }else if(minute ==0) {
                             textViewTimeEnd.setText(hourOfDay + ":" + minute+"0");
-                        }else {
+                        }else{
                             textViewTimeEnd.setText(hourOfDay + ":" + minute);
                         }
+
                         if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
                             localTimeEnd = LocalTime.of(hourOfDay,minute);
                         }
