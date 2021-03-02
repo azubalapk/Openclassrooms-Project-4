@@ -56,6 +56,8 @@ public class DetailMeetingActivity extends AppCompatActivity {
 
         textViewDetailSubjectMeet.setText("A propos de : "+meeting.getSubject());
 
+        
+
         if(meeting.getDateTimeBegin().getMonthValue()<10){
             textViewDetailDateMeet.setText("Date : "+meeting.getDateTimeBegin().getDayOfMonth()+"/0"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getYear());
         }else{

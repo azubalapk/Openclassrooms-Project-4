@@ -42,13 +42,12 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        initList();
+        initList(mApiService.getMeetings());
         return view;
     }
 
-    private void initList() {
-        List<Meeting> mMeetings = mApiService.getMeetings();
-        mAdapter =new MyMeetingsRecyclerViewAdapter(mMeetings);
+    public void initList(List<Meeting> meetings) {
+        mAdapter =new MyMeetingsRecyclerViewAdapter(meetings);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnCallbackAdapterToMainFragment(this);
     }

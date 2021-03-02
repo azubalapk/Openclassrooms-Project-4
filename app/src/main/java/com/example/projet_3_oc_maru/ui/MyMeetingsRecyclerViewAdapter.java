@@ -12,17 +12,45 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.projet_3_oc_maru.activities.DetailMeetingActivity;
+import com.example.projet_3_oc_maru.activities.MainActivity;
+import com.example.projet_3_oc_maru.fragments.MainFragment;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.utils.ToastUtil;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingsRecyclerViewAdapter.ViewHolder> {
 
     private final List<Meeting> mMeetings;
     OnCallbackAdapterToMainFragment mCallback;
+    public static boolean isListFilter = false;
+    public static List<Meeting> filterList = new ArrayList<>();
 
     public MyMeetingsRecyclerViewAdapter(List<Meeting> items) {
-        mMeetings = items;
+        //On vide la liste filterList
+        filterList.clear();
+
+        //Si un filtre est déjà activé on le supprime pour les prochains filtres
+        if (isListFilter) {
+
+            isListFilter = false;
+        }
+
+        /* si un filtre est activé, on rempli la liste filterList avec les meetings correspondants */
+        for (Meeting m : items) {
+            if (m.isMeetingInFilterList()) {
+                filterList.add(m);
+                isListFilter = true;
+            }
+        }
+
+        if (isListFilter) {
+            mMeetings = filterList;
+        } else mMeetings = items;
+
+
     }
 
     public void setOnCallbackAdapterToMainFragment(OnCallbackAdapterToMainFragment mCallback) {
@@ -38,6 +66,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.row_meeting, parent, false);
         return new ViewHolder(view);
+
     }
 
         @RequiresApi(api = Build.VERSION_CODES.O)
@@ -65,7 +94,26 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
         holder.textViewParticipantsMeet.setText(meeting.getParticipants());
 
-        holder.imageButtonDeleteMeet.setOnClickListener(v -> { mCallback.shareCallbackAdapterToMainFragment(meeting);});
+        holder.imageButtonDeleteMeet.setOnClickListener(v -> {
+
+            if (isListFilter) {
+                filterList.remove(meeting);
+                mCallback.shareCallbackAdapterToMainFragment(meeting);
+                notifyDataSetChanged();
+
+                /*Si liste filtrée vide, lancement activité avec liste principale*/
+                if (filterList.isEmpty() && isListFilter) {
+                    Intent intent = new Intent(holder.itemView.getContext(), MainActivity.class);
+                    holder.itemView.getContext().startActivity(intent);
+                    ToastUtil.DisplayToastLong("La liste filtrée est vide", holder.itemView.getContext());
+                }
+
+                /* Sinon on se sert de l'event DeleteMeetingEvent */
+            } else {
+                mCallback.shareCallbackAdapterToMainFragment(meeting);
+        }
+
+        });
 
         holder.itemView.setOnClickListener(v -> {
             final Context context = holder.itemView.getContext();

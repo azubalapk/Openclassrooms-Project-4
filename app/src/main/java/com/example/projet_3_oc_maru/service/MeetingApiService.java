@@ -2,6 +2,7 @@ package com.example.projet_3_oc_maru.service;
 
 import com.example.projet_3_oc_maru.models.Meeting;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -26,4 +27,12 @@ public interface MeetingApiService {
      */
     void createMeeting(Meeting meeting);
 
+    /**
+     * Get all Meetings in order of Rooms (liste filtrée)
+     */
+    List<Meeting> getMeetingsFilterRoom(String salle);
+
+    List<Meeting> getMeetingsFilterDate(LocalDate date);
+
+    void resetFilter();
 }

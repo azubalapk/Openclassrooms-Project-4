@@ -1,8 +1,9 @@
 package com.example.projet_3_oc_maru.activities;
 
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -56,6 +57,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         setUpSpinnerRoomMeeting();
 
     }
+
     @RequiresApi(api = VERSION_CODES.O)
     public void setIdMeetingAndDisplayThis(){
         id = DI.getMeetingApiService().getMeetings().size()+1;
@@ -65,6 +67,9 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     public void getContext(){
         context = getApplicationContext();
     }
+   
+
+
 
     public void setUpViews() {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -127,6 +132,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
             }else if (textViewTimeEnd.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de fin",context);
+                
 
             }else if(editTextParticipants.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP renseigner les adresses mail des participants", context);

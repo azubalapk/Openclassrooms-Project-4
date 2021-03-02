@@ -16,6 +16,8 @@ public class Meeting implements Parcelable {
     private LocalDateTime dateTimeEnd;
     private String participants;
     private RoomMeeting meetingRoom;
+    /* boolean pour liste filtrée ou liste complète) */
+    private boolean isMeetingInFilterList;
 
     public Meeting(int id, String subject,LocalDateTime dateTimeBegin, LocalDateTime dateTimeEnd , String participants, RoomMeeting meetingRoom){
         this.id=id;
@@ -24,9 +26,16 @@ public class Meeting implements Parcelable {
         this.dateTimeEnd=dateTimeEnd;
         this.participants=participants;
         this.meetingRoom=meetingRoom;
+        this.isMeetingInFilterList = false;
 
     }
+    public boolean isMeetingInFilterList() {
+        return isMeetingInFilterList;
+    }
 
+    public void setMeetingInFilterList(boolean isMeetingInFilterList) {
+        this.isMeetingInFilterList = isMeetingInFilterList;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected Meeting(Parcel in) {
@@ -36,7 +45,6 @@ public class Meeting implements Parcelable {
         dateTimeEnd = (LocalDateTime) in.readSerializable();
         participants = in.readString();
         meetingRoom = in.readParcelable(RoomMeeting.class.getClassLoader());
-
 
     }
 
