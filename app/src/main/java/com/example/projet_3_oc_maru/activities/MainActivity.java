@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setUpViews();
         userClickOnButtonForOpenAddMeetingActivity();
         mApiService = DI.getMeetingApiService();
+
     }
 
     public void setUpViews() {
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.allSalles:
-                mApiService.getMeetings();
+
                 mainFragment.initList(mApiService.getMeetings());
                 toolbar.setTitle("Ma réunion");
 
