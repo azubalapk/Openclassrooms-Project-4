@@ -19,6 +19,7 @@ public class DummyMeetingApiService implements MeetingApiService {
 
     @Override
     public List<Meeting> getMeetings() {
+        resetFilter();
         return meetings;
     }
 

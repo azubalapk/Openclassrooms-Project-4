@@ -53,6 +53,7 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         mAdapter.setOnCallbackAdapterToMainFragment(this);
     }
 
+
     @Override
     public void onResume() {
         super.onResume();

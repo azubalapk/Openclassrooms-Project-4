@@ -23,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     MainFragment mainFragment;
     MeetingApiService mApiService;
     int mMonth,mYear,mDay;
+
 
 
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setUpViews();
         userClickOnButtonForOpenAddMeetingActivity();
         mApiService = DI.getMeetingApiService();
+
 
     }
 
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void userClickOnButtonForOpenAddMeetingActivity(){
         fab.setOnClickListener(v -> {
+
             Intent AddMeetingActivity = new Intent(MainActivity.this, AddMeetingActivity.class);
             startActivity(AddMeetingActivity);
         });
@@ -73,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
                 mainFragment.initList(mApiService.getMeetings());
                 toolbar.setTitle("Ma réunion");
-
                 return true;
 
             case R.id.selection_salle:
@@ -149,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
                 toolbar.setTitle("Ma réunion - Salle Pokey");
                 return true;
 
-
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -168,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!nothing) {
             mainFragment.initList(mApiService.getMeetingsFilterRoom(salle));
-            mApiService.getMeetingsFilterRoom(salle);
         } else {
             ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette salle", getApplicationContext());
         }
@@ -187,10 +187,13 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!nothing) {
             mainFragment.initList(mApiService.getMeetingsFilterDate(date));
-            mApiService.getMeetingsFilterDate(date);
         } else {
-            ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette salle", getApplicationContext());
+            ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette date", getApplicationContext());
         }
     }
+
+
+
+
 
 }
