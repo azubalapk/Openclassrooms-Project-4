@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public void setUpViews() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         fab = findViewById(R.id.fab);
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.MainFragment);
 
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
@@ -74,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.allSalles:
-
                 mainFragment.initList(mApiService.getMeetings());
-                toolbar.setTitle("Ma réunion");
                 return true;
 
             case R.id.selection_salle:
