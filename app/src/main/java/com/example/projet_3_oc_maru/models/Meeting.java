@@ -112,8 +112,8 @@ public class Meeting implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(subject);
-        dest.writeSerializable(dateTimeEnd);
         dest.writeSerializable(dateTimeBegin);
+        dest.writeSerializable(dateTimeEnd);
         dest.writeString(participants);
         dest.writeParcelable(meetingRoom,flags);
 
