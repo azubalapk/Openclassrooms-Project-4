@@ -78,19 +78,13 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
         holder.textViewIdMeet.setText("Réunion "+meeting.getId()+"-");
 
-        if(meeting.getDateTimeBegin().getMonthValue()<10){
-            holder.textViewDateMeet.setText(meeting.getDateTimeBegin().getDayOfMonth()+"/0"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getYear()+"-");
-        }else{
-            holder.textViewDateMeet.setText(meeting.getDateTimeBegin().getDayOfMonth()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getYear()+"-");
-        }
+        holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString());
+
 
         holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
 
-        if (meeting.getDateTimeBegin().getMinute()==0 ){
-            holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0");
-        }else{
-            holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0");
-        }
+        holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString()+"/"+meeting.getDateTimeEnd().toLocalTime().toString());
+
 
         holder.textViewParticipantsMeet.setText(meeting.getParticipants());
 

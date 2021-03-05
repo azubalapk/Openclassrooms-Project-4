@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class DetailMeetingActivity extends AppCompatActivity {
     ImageView imageViewDetailMeet;
-    TextView textViewDetailHoursMeet,textViewDetailIdMeet,textViewDetailDateMeet,textViewDetailSubjectMeet,textViewDetailParticipantsMeet,textViewDetailRoomMeet;
+    TextView textViewDetailHourMeetBegin,textViewDetailHourMeetEnd,textViewDetailIdMeet,textViewDetailDateMeet,textViewDetailSubjectMeet,textViewDetailParticipantsMeet,textViewDetailRoomMeet;
     Meeting meeting;
 
 
@@ -43,7 +43,8 @@ public class DetailMeetingActivity extends AppCompatActivity {
         imageViewDetailMeet = findViewById(R.id.imageViewDetailMeet);
         textViewDetailIdMeet =findViewById(R.id.textViewDetailIdMeet);
         textViewDetailSubjectMeet = findViewById(R.id.textViewDetailSubjectMeet);
-        textViewDetailHoursMeet = findViewById(R.id.textViewDetailHoursMeet);
+        textViewDetailHourMeetBegin = findViewById(R.id.textViewDetailHourMeetBegin);
+        textViewDetailHourMeetEnd = findViewById(R.id.textViewDetailHourMeetEnd);
         textViewDetailParticipantsMeet = findViewById(R.id.textViewDetailParticipantsMeet);
         textViewDetailDateMeet = findViewById(R.id.textViewDetailDateMeet);
         textViewDetailRoomMeet = findViewById(R.id.textViewDetailRoomMeet);
@@ -52,25 +53,18 @@ public class DetailMeetingActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setTextAndImage(){
         imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
+
         textViewDetailIdMeet.setText("Numéro : "+meeting.getId());
 
         textViewDetailSubjectMeet.setText("A propos de : "+meeting.getSubject());
 
-        
-
-        if(meeting.getDateTimeBegin().getMonthValue()<10){
-            textViewDetailDateMeet.setText("Date : "+meeting.getDateTimeBegin().getDayOfMonth()+"/0"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getYear());
-        }else{
-            textViewDetailDateMeet.setText("Date : "+meeting.getDateTimeBegin().getDayOfMonth()+"/"+meeting.getDateTimeBegin().getMonthValue()+"/"+meeting.getDateTimeBegin().getYear());
-        }
+        textViewDetailDateMeet.setText("Date : "+meeting.getDateTimeBegin().toLocalDate().toString());
 
         textViewDetailRoomMeet.setText("Salle : "+ meeting.getMeetingRoom().getmNameRoomMeeting());
 
-        if (meeting.getDateTimeBegin().getMinute()==0 ){
-            textViewDetailHoursMeet.setText("Durée : "+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0");
-        }else{
-            textViewDetailHoursMeet.setText("Durée : "+meeting.getDateTimeBegin().getHour()+"h"+meeting.getDateTimeBegin().getMinute()+"0/"+meeting.getDateTimeEnd().getHour()+"h"+meeting.getDateTimeEnd().getMinute()+"0");
-        }
+        textViewDetailHourMeetBegin.setText("Début :"+ meeting.getDateTimeBegin().toLocalTime().toString());
+
+        textViewDetailHourMeetEnd.setText("Fin :"+ meeting.getDateTimeEnd().toLocalTime().toString());
 
         textViewDetailParticipantsMeet.setText("Participants : "+meeting.getParticipants());
 
