@@ -4,7 +4,10 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+
+import com.example.projet_3_oc_maru.di.DI;
 
 import java.time.LocalDateTime;
 
@@ -100,6 +103,7 @@ public class Meeting implements Parcelable {
     public void setParticipants(String participants) { this.participants = participants; }
 
     public void setMeetingRoom(RoomMeeting meetingRoom) { this.meetingRoom = meetingRoom; }
+
 
 
     @Override

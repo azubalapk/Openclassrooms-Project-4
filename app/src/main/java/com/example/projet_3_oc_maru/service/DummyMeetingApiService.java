@@ -24,6 +24,11 @@ public class DummyMeetingApiService implements MeetingApiService {
     }
 
     @Override
+    public List<Meeting> getRes() {
+        return res;
+    }
+
+    @Override
     public void deleteMeeting(Meeting meeting) {
         meetings.remove(meeting);
     }

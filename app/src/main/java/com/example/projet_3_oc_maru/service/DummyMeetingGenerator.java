@@ -18,7 +18,6 @@ public abstract class DummyMeetingGenerator {
             new Meeting(1,"Logistique", LocalDateTime.of(2021,02,14,14,00),LocalDateTime.of(2021,02,14,15,00) ,"maxime@lamzone.com,alex@lamzone.com",RoomMeeting.getRoomMeetingById(7)),
             new Meeting(2,"Qualité",LocalDateTime.of(2021,02,15,15,00),LocalDateTime.of(2021,02,15,16,00),"paul@lamzone.com,viviane@lamzone.com",RoomMeeting.getRoomMeetingById(6)),
             new Meeting(3,"Reception",LocalDateTime.of(2021,02,16,19,00),LocalDateTime.of(2021,02,16,20,00),"amandine@lamzone.com,luc@lamzone.com",RoomMeeting.getRoomMeetingById(5))
-
     );
 
     static List<Meeting> generateMeetings() {
