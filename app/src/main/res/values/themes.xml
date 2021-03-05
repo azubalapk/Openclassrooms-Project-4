@@ -19,7 +19,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Projet3OCMaRéu.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Projet3OCMaRéu.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"
 
-    <style name="Theme.Projet3OCMaRéu.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+        />
+
+    <style name="Theme.Projet3OCMaRéu.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 </resources>

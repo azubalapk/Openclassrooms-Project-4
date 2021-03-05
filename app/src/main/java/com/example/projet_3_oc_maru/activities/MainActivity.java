@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void setUpViews() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.outline_filter_list_24));
 
         fab = findViewById(R.id.fab);
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.MainFragment);
