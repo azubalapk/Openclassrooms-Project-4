@@ -76,9 +76,9 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
 
-        holder.textViewIdMeet.setText("Réunion "+meeting.getId()+"-");
+        holder.textViewIdMeet.setText("Réunion "+meeting.getId()+"-(");
 
-        holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString());
+        holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString()+")-");
 
 
         holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
