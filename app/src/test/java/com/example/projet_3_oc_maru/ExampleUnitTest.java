@@ -42,6 +42,14 @@ public class ExampleUnitTest {
     }
 
     @Test
+    public void getResWithSuccess() {
+        List<Meeting> res = service.getRes();
+        Meeting expectedRes   = DummyMeetingGenerator.DUMMY_ROOM_MEETS.get(0);
+        res.add(expectedRes);
+        assertTrue(res.contains(expectedRes));
+    }
+
+    @Test
     public void addMeetingWithSuccess() {
         Meeting meetingToAdd = DummyMeetingGenerator.DUMMY_ROOM_MEETS.get(0);
         service.createMeeting(meetingToAdd);
