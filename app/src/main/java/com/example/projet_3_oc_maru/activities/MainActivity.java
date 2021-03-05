@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void setUpViews() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.outline_filter_list_24));
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.outline_filter_list_white_24));
 
         fab = findViewById(R.id.fab);
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.MainFragment);
