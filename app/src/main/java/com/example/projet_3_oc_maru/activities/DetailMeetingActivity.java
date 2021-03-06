@@ -71,7 +71,7 @@ public class DetailMeetingActivity extends AppCompatActivity {
 
         textViewDetailHourMeetEnd.setText("Fin :"+ meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
-        textViewDetailParticipantsMeet.setText("Participants : "+meeting.getParticipants());
+        textViewDetailParticipantsMeet.setText("Participants : "+meeting.getParticipants().toString());
 
     }
 

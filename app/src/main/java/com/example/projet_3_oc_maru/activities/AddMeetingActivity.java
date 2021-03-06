@@ -28,15 +28,17 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 import java.util.TimeZone;
 
 public class AddMeetingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
-    EditText editTextSubject,editTextParticipants;
+    EditText editTextSubject;
     TextView textViewTimeBegin,textViewTimeEnd,textViewId,textViewDate;
     Button buttonTimePickerBegin,buttonTimePickerEnd,buttonCreateNewMeeting,buttonDate;
+    List<String> listParticipants;
     LocalDate localDate;
     LocalTime localTimeEnd,localTimeBegin;
     int  id,mHour, mMinute,mYear,mMonth,mDay,positionRoom;
@@ -78,7 +80,6 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         editTextSubject = findViewById(R.id.subjectMeeting);
         textViewTimeBegin = findViewById(R.id.timeBeginMeeting);
         textViewTimeEnd = findViewById(R.id.timeEndMeeting);
-        editTextParticipants = findViewById(R.id.participantsMeeting);
         textViewDate = findViewById(R.id.dateMeeting);
         buttonCreateNewMeeting = findViewById(R.id.create);
         buttonDate = findViewById(R.id.btn_date);
@@ -135,7 +136,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de fin",context);
                 
 
-            }else if(editTextParticipants.getText().toString().equals("")) {
+            }else if(listParticipants.isEmpty()) {
                 ToastUtil.DisplayToastLong("Veuillez SVP renseigner les adresses mail des participants", context);
             }else {
 
@@ -145,7 +146,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
                 Meeting meeting = new Meeting(id , editTextSubject.getText().toString(),
                         new DateTime(finalDateTimeBegin), new DateTime(finalDateTimeEnd),
-                        editTextParticipants.getText().toString(), RoomMeeting.getRoomMeetingById(positionRoom)
+                        listParticipants, RoomMeeting.getRoomMeetingById(positionRoom)
                 );
 
                 /* Gestion de la disponibilité des salles */

@@ -88,8 +88,14 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
         holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt)+"/"+meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
+        StringBuffer sb = new StringBuffer();
 
-        holder.textViewParticipantsMeet.setText(meeting.getParticipants());
+            for (String s : meeting.getParticipants()) {
+                sb.append(s);
+                sb.append(",");
+            }
+
+        holder.textViewParticipantsMeet.setText(sb.toString());
 
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
 

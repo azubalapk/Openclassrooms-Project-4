@@ -5,18 +5,21 @@ import android.os.Parcelable;
 
 import org.joda.time.DateTime;
 
+import java.io.Serializable;
+import java.util.List;
+
 public class Meeting implements Parcelable {
 
     private int id;
     private String subject;
     private DateTime dateTimeBegin;
     private DateTime dateTimeEnd;
-    private String participants;
+    private List<String> participants;
     private RoomMeeting meetingRoom;
     /* boolean pour liste filtrée ou liste complète) */
     private boolean isMeetingInFilterList;
 
-    public Meeting(int id, String subject,DateTime dateTimeBegin, DateTime dateTimeEnd , String participants, RoomMeeting meetingRoom){
+    public Meeting(int id, String subject, DateTime dateTimeBegin, DateTime dateTimeEnd , List<String> participants, RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
         this.dateTimeBegin=dateTimeBegin;
@@ -40,9 +43,8 @@ public class Meeting implements Parcelable {
         subject = in.readString();
         dateTimeBegin = (DateTime) in.readSerializable();
         dateTimeEnd = (DateTime) in.readSerializable();
-        participants = in.readString();
+        participants = (List<String>) in.readSerializable();
         meetingRoom = in.readParcelable(RoomMeeting.class.getClassLoader());
-
     }
 
     public static final Creator<Meeting> CREATOR = new Creator<Meeting>() {
@@ -74,7 +76,7 @@ public class Meeting implements Parcelable {
         return dateTimeEnd;
     }
 
-    public String getParticipants() {
+    public List<String> getParticipants() {
         return participants;
     }
 
@@ -93,11 +95,9 @@ public class Meeting implements Parcelable {
         this.dateTimeEnd = dateTimeEnd;
     }
 
-    public void setParticipants(String participants) { this.participants = participants; }
+    public void setParticipants(List<String> participants) { this.participants = participants; }
 
     public void setMeetingRoom(RoomMeeting meetingRoom) { this.meetingRoom = meetingRoom; }
-
-
 
     @Override
     public int describeContents() {
@@ -110,8 +110,7 @@ public class Meeting implements Parcelable {
         dest.writeString(subject);
         dest.writeSerializable(dateTimeBegin);
         dest.writeSerializable(dateTimeEnd);
-        dest.writeString(participants);
+        dest.writeSerializable((Serializable) participants);
         dest.writeParcelable(meetingRoom,flags);
-
     }
 }
