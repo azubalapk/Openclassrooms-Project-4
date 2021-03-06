@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi;
 import com.example.projet_3_oc_maru.service.DummyMeetingApiService;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
+
 public class DI {
     private static MeetingApiService service ;
 

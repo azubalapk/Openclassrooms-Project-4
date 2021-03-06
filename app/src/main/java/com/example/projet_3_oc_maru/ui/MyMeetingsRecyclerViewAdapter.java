@@ -2,31 +2,33 @@ package com.example.projet_3_oc_maru.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.projet_3_oc_maru.activities.DetailMeetingActivity;
-import com.example.projet_3_oc_maru.activities.MainActivity;
-import com.example.projet_3_oc_maru.fragments.MainFragment;
+import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingsRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Meeting> mMeetings;
+    private List<Meeting> mMeetings;
     OnCallbackAdapterToMainFragment mCallback;
     public static boolean isListFilter = false;
     public static List<Meeting> filterList = new ArrayList<>();
+
 
     public MyMeetingsRecyclerViewAdapter(List<Meeting> items) {
         //On vide la liste filterList
@@ -69,10 +71,11 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
     }
 
-        @RequiresApi(api = Build.VERSION_CODES.O)
+
         @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
 
@@ -83,7 +86,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
         holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
 
-        holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString()+"/"+meeting.getDateTimeEnd().toLocalTime().toString());
+        holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt)+"/"+meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
 
         holder.textViewParticipantsMeet.setText(meeting.getParticipants());
@@ -97,8 +100,8 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
                 /*Si liste filtrée vide, lancement activité avec liste principale*/
                 if (filterList.isEmpty() && isListFilter) {
-                    Intent intent = new Intent(holder.itemView.getContext(), MainActivity.class);
-                    holder.itemView.getContext().startActivity(intent);
+                    notifyDataSetChanged();
+                    mMeetings = DI.getMeetingApiService().getMeetings();
                     ToastUtil.DisplayToastLong("La liste filtrée est vide", holder.itemView.getContext());
                 }
 
@@ -142,5 +145,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
             imageButtonDeleteMeet=view.findViewById(R.id.imageButtonDeleteMeet);
         }
     }
+
+
 
 }

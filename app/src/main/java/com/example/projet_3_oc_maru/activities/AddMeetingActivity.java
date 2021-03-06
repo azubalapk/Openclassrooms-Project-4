@@ -23,9 +23,10 @@ import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.TimeZone;
@@ -42,7 +43,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     Spinner spinnerRoomMeeting;
     Context context;
 
-    @RequiresApi(api = VERSION_CODES.O)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    @RequiresApi(api = VERSION_CODES.O)
+
     public void setIdMeetingAndDisplayThis(){
         id = DI.getMeetingApiService().getMeetings().size()+1;
         textViewId.setText("Reunion "+id);
@@ -117,7 +118,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
 
 
-    @RequiresApi(api = VERSION_CODES.O)
+
     public void userClickOnButtonForCreateNewMeeting(){
         buttonCreateNewMeeting.setOnClickListener(v -> {
 
@@ -138,8 +139,12 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 ToastUtil.DisplayToastLong("Veuillez SVP renseigner les adresses mail des participants", context);
             }else {
 
+                DateTime finalDateTimeBegin = new DateTime(localDate.getYear(),localDate.getMonthOfYear(),localDate.getDayOfMonth(),localTimeBegin.getHourOfDay(),localTimeBegin.getMinuteOfHour());
+                DateTime finalDateTimeEnd = new DateTime(localDate.getYear(),localDate.getMonthOfYear(),localDate.getDayOfMonth(),localTimeEnd.getHourOfDay(),localTimeEnd.getMinuteOfHour());
+
+
                 Meeting meeting = new Meeting(id , editTextSubject.getText().toString(),
-                        LocalDateTime.of(localDate,localTimeBegin), LocalDateTime.of(localDate,localTimeEnd),
+                        new DateTime(finalDateTimeBegin), new DateTime(finalDateTimeEnd),
                         editTextParticipants.getText().toString(), RoomMeeting.getRoomMeetingById(positionRoom)
                 );
 
@@ -148,19 +153,19 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 boolean reserved = false;
                 for (Meeting m : DI.getMeetingApiService().getMeetings()) {
                     if (m.getMeetingRoom().getId().equals(positionRoom) &&
-                            ((LocalDateTime.of(localDate, localTimeBegin).isBefore(m.getDateTimeEnd())
-                                    && LocalDateTime.of(localDate, localTimeBegin).isAfter(m.getDateTimeBegin()))
-                                    || (LocalDateTime.of(localDate, localTimeEnd).isBefore(m.getDateTimeEnd())
-                                    && LocalDateTime.of(localDate, localTimeEnd).isAfter(m.getDateTimeBegin()))
-                                    || LocalDateTime.of(localDate, localTimeBegin).isEqual(m.getDateTimeBegin())
-                                    || LocalDateTime.of(localDate, localTimeEnd).isEqual(m.getDateTimeEnd())
-                                    || m.getDateTimeBegin().isAfter(LocalDateTime.of(localDate, localTimeBegin))
-                                    && m.getDateTimeBegin().isBefore(LocalDateTime.of(localDate, localTimeEnd))
-                                    || m.getDateTimeEnd().isBefore(LocalDateTime.of(localDate, localTimeEnd))
-                                    && m.getDateTimeEnd().isAfter(LocalDateTime.of(localDate, localTimeBegin)))) {
+                            ((finalDateTimeBegin.isBefore(m.getDateTimeEnd())
+                                    && finalDateTimeBegin.isAfter(m.getDateTimeBegin()))
+                                    || finalDateTimeEnd.isBefore(m.getDateTimeEnd())
+                                    && finalDateTimeEnd.isAfter(m.getDateTimeBegin()))
+                                    || finalDateTimeBegin.isEqual(m.getDateTimeBegin())
+                                    || finalDateTimeEnd.isEqual(m.getDateTimeEnd())
+                                    || m.getDateTimeBegin().isAfter(finalDateTimeBegin)
+                                    && m.getDateTimeBegin().isBefore(finalDateTimeEnd)
+                                    || m.getDateTimeEnd().isBefore(finalDateTimeEnd)
+                                    && m.getDateTimeEnd().isAfter(finalDateTimeBegin)) {
                         reserved = true;
                         break;
-                    } else if (LocalDateTime.of(localDate, localTimeBegin).isAfter(LocalDateTime.of(localDate, localTimeEnd)) || LocalDateTime.of(localDate, localTimeBegin).isEqual(LocalDateTime.of(localDate, localTimeEnd))) {
+                    } else if (finalDateTimeBegin.isAfter(finalDateTimeEnd) || finalDateTimeBegin.isEqual(finalDateTimeEnd)) {
 
                         timeProblem = true;
                     }
@@ -196,9 +201,9 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                           textViewDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                       }
 
-                         if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
-                             localDate =LocalDate.of(year,monthOfYear+1,dayOfMonth);
-                         }
+
+                             localDate =new LocalDate(year,monthOfYear+1,dayOfMonth);
+
                      }, mYear, mMonth, mDay);
              datePickerDialog.show();
          });
@@ -221,10 +226,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                         }else{
                             textViewTimeBegin.setText(hourOfDay + ":" + minute);
                         }
-
-                        if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
-                            localTimeBegin=LocalTime.of(hourOfDay,minute);
-                        }
+                            localTimeBegin=new LocalTime(hourOfDay,minute);
 
                     }, mHour, mMinute, true);
             timePickerDialog.show();
@@ -249,9 +251,9 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                             textViewTimeEnd.setText(hourOfDay + ":" + minute);
                         }
 
-                        if (Build.VERSION.SDK_INT >= VERSION_CODES.O) {
-                            localTimeEnd = LocalTime.of(hourOfDay,minute);
-                        }
+
+                            localTimeEnd = new LocalTime(hourOfDay,minute);
+
 
                     }, mHour, mMinute, true);
             timePickerDialog.show();

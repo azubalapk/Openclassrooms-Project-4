@@ -13,6 +13,7 @@ import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.fragments.MainFragment;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
+import com.example.projet_3_oc_maru.ui.MyMeetingsRecyclerViewAdapter;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,11 +23,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
 import java.util.Calendar;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements MyMeetingsRecyclerViewAdapter.OnCallbackAdapterToMainFragment {
     Toolbar toolbar;
     FloatingActionButton fab;
     MainFragment mainFragment;
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         (view, year, monthOfYear, dayOfMonth) -> {
 
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                filterItemDate(LocalDate.of(year,monthOfYear+1,dayOfMonth));
+                                filterItemDate(new LocalDate(year, monthOfYear, dayOfMonth));
 
                             }
                         }, mYear, mMonth, mDay);
@@ -194,8 +195,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
+    @Override
+    public void shareCallbackAdapterToMainFragment(Meeting meeting) {
+        toolbar.setTitle("Ma Réu");
+    }
 
 }

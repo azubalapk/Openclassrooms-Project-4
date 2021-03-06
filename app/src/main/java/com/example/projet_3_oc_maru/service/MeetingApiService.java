@@ -2,7 +2,9 @@ package com.example.projet_3_oc_maru.service;
 
 import com.example.projet_3_oc_maru.models.Meeting;
 
-import java.time.LocalDate;
+
+import org.joda.time.LocalDate;
+
 import java.util.List;
 
 /**

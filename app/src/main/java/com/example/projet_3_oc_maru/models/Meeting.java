@@ -1,28 +1,22 @@
 package com.example.projet_3_oc_maru.models;
 
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-
-import com.example.projet_3_oc_maru.di.DI;
-
-import java.time.LocalDateTime;
+import org.joda.time.DateTime;
 
 public class Meeting implements Parcelable {
 
     private int id;
     private String subject;
-    private LocalDateTime dateTimeBegin;
-    private LocalDateTime dateTimeEnd;
+    private DateTime dateTimeBegin;
+    private DateTime dateTimeEnd;
     private String participants;
     private RoomMeeting meetingRoom;
     /* boolean pour liste filtrée ou liste complète) */
     private boolean isMeetingInFilterList;
 
-    public Meeting(int id, String subject,LocalDateTime dateTimeBegin, LocalDateTime dateTimeEnd , String participants, RoomMeeting meetingRoom){
+    public Meeting(int id, String subject,DateTime dateTimeBegin, DateTime dateTimeEnd , String participants, RoomMeeting meetingRoom){
         this.id=id;
         this.subject=subject;
         this.dateTimeBegin=dateTimeBegin;
@@ -40,19 +34,18 @@ public class Meeting implements Parcelable {
         this.isMeetingInFilterList = isMeetingInFilterList;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     protected Meeting(Parcel in) {
         id = in.readInt();
         subject = in.readString();
-        dateTimeBegin = (LocalDateTime) in.readSerializable();
-        dateTimeEnd = (LocalDateTime) in.readSerializable();
+        dateTimeBegin = (DateTime) in.readSerializable();
+        dateTimeEnd = (DateTime) in.readSerializable();
         participants = in.readString();
         meetingRoom = in.readParcelable(RoomMeeting.class.getClassLoader());
 
     }
 
     public static final Creator<Meeting> CREATOR = new Creator<Meeting>() {
-        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public Meeting createFromParcel(Parcel in) {
             return new Meeting(in);
@@ -73,11 +66,11 @@ public class Meeting implements Parcelable {
         return subject;
     }
 
-    public LocalDateTime getDateTimeBegin() {
+    public DateTime getDateTimeBegin() {
         return dateTimeBegin;
     }
 
-    public LocalDateTime getDateTimeEnd() {
+    public DateTime getDateTimeEnd() {
         return dateTimeEnd;
     }
 
@@ -92,11 +85,11 @@ public class Meeting implements Parcelable {
 
     public void setSubject(String subject) { this.subject = subject; }
 
-    public void setDateTimeBegin(LocalDateTime dateTimeBegin) {
+    public void setDateTimeBegin(DateTime dateTimeBegin) {
         this.dateTimeBegin = dateTimeBegin;
     }
 
-    public void setDateTimeEnd(LocalDateTime dateTimeEnd) {
+    public void setDateTimeEnd(DateTime dateTimeEnd) {
         this.dateTimeEnd = dateTimeEnd;
     }
 
@@ -111,7 +104,6 @@ public class Meeting implements Parcelable {
         return 0;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);

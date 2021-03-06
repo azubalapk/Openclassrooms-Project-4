@@ -1,16 +1,16 @@
 package com.example.projet_3_oc_maru.service;
 
-import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 
 import com.example.projet_3_oc_maru.models.Meeting;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class DummyMeetingApiService implements MeetingApiService {
 
     private List<Meeting> res = new ArrayList<>();

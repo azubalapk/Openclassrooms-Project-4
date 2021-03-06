@@ -1,13 +1,10 @@
 package com.example.projet_3_oc_maru.fragments;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,11 +24,12 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         // Required empty public constructor
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getMeetingApiService();
+
     }
 
     @Override
@@ -42,8 +40,8 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-
         initList(mApiService.getMeetings());
+
         return view;
     }
 

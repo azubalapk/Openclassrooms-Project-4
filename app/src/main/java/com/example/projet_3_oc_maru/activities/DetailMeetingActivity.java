@@ -1,14 +1,16 @@
 package com.example.projet_3_oc_maru.activities;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
+
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.util.Objects;
 
 public class DetailMeetingActivity extends AppCompatActivity {
@@ -17,7 +19,7 @@ public class DetailMeetingActivity extends AppCompatActivity {
     Meeting meeting;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class DetailMeetingActivity extends AppCompatActivity {
         meeting = getIntent().getParcelableExtra("detailMeeting");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public void meetingNotNull(){
         if (meeting != null) {
             setUpViews();
@@ -50,8 +52,11 @@ public class DetailMeetingActivity extends AppCompatActivity {
         textViewDetailRoomMeet = findViewById(R.id.textViewDetailRoomMeet);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public void setTextAndImage(){
+
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
+
         imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
 
         textViewDetailIdMeet.setText("Numéro : "+meeting.getId());
@@ -62,9 +67,9 @@ public class DetailMeetingActivity extends AppCompatActivity {
 
         textViewDetailRoomMeet.setText("Salle : "+ meeting.getMeetingRoom().getmNameRoomMeeting());
 
-        textViewDetailHourMeetBegin.setText("Début :"+ meeting.getDateTimeBegin().toLocalTime().toString());
+        textViewDetailHourMeetBegin.setText("Début :"+ meeting.getDateTimeBegin().toLocalTime().toString(fmt));
 
-        textViewDetailHourMeetEnd.setText("Fin :"+ meeting.getDateTimeEnd().toLocalTime().toString());
+        textViewDetailHourMeetEnd.setText("Fin :"+ meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
         textViewDetailParticipantsMeet.setText("Participants : "+meeting.getParticipants());
 
