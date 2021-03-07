@@ -39,6 +39,7 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         initList(mApiService.getMeetings());
 

@@ -1,22 +1,33 @@
 package com.example.projet_3_oc_maru.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.ui.AdapterDetail;
 
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class DetailMeetingActivity extends AppCompatActivity {
     ImageView imageViewDetailMeet;
-    TextView textViewDetailHourMeetBegin,textViewDetailHourMeetEnd,textViewDetailIdMeet,textViewDetailDateMeet,textViewDetailSubjectMeet,textViewDetailParticipantsMeet,textViewDetailRoomMeet;
+    TextView textViewDetailHourMeetBegin,textViewDetailHourMeetEnd,textViewDetailIdMeet,textViewDetailDateMeet,textViewDetailSubjectMeet,textViewDetailRoomMeet;
     Meeting meeting;
+    RecyclerView recyclerview;
+    AdapterDetail adapterDetail;
+
 
 
 
@@ -27,6 +38,10 @@ public class DetailMeetingActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getMeetingParcelable();
         meetingNotNull();
+        Context context = getApplicationContext();
+        recyclerview.setLayoutManager(new LinearLayoutManager(context));
+        adapterDetail =new AdapterDetail(meeting.getParticipants());
+        recyclerview.setAdapter(adapterDetail);
     }
 
     public void getMeetingParcelable(){
@@ -47,9 +62,11 @@ public class DetailMeetingActivity extends AppCompatActivity {
         textViewDetailSubjectMeet = findViewById(R.id.textViewDetailSubjectMeet);
         textViewDetailHourMeetBegin = findViewById(R.id.textViewDetailHourMeetBegin);
         textViewDetailHourMeetEnd = findViewById(R.id.textViewDetailHourMeetEnd);
-        textViewDetailParticipantsMeet = findViewById(R.id.textViewDetailParticipantsMeet);
         textViewDetailDateMeet = findViewById(R.id.textViewDetailDateMeet);
         textViewDetailRoomMeet = findViewById(R.id.textViewDetailRoomMeet);
+        recyclerview = findViewById(R.id.list_participants);
+
+
     }
 
 
@@ -71,7 +88,7 @@ public class DetailMeetingActivity extends AppCompatActivity {
 
         textViewDetailHourMeetEnd.setText("Fin :"+ meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
-        textViewDetailParticipantsMeet.setText("Participants : "+meeting.getParticipants().toString());
+
 
     }
 
