@@ -27,6 +27,7 @@ public class DetailMeetingActivity extends AppCompatActivity {
     Meeting meeting;
     RecyclerView recyclerview;
     AdapterDetail adapterDetail;
+    List<String> participants;
 
 
 
@@ -39,8 +40,11 @@ public class DetailMeetingActivity extends AppCompatActivity {
         getMeetingParcelable();
         meetingNotNull();
         Context context = getApplicationContext();
+        participants = meeting.getParticipants();
+
         recyclerview.setLayoutManager(new LinearLayoutManager(context));
-        adapterDetail =new AdapterDetail(meeting.getParticipants());
+
+        adapterDetail =new AdapterDetail(participants);
         recyclerview.setAdapter(adapterDetail);
     }
 

@@ -12,13 +12,13 @@ import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
-import com.example.projet_3_oc_maru.ui.MyMeetingsRecyclerViewAdapter;
+import com.example.projet_3_oc_maru.ui.AdapterMain;
 import java.util.List;
 
-public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdapter.OnCallbackAdapterToMainFragment {
+public class MainFragment extends Fragment implements AdapterMain.OnCallbackAdapterToMainFragment {
     MeetingApiService mApiService;
     RecyclerView mRecyclerView;
-    MyMeetingsRecyclerViewAdapter mAdapter;
+    AdapterMain mAdapter;
 
     public MainFragment() {
         // Required empty public constructor
@@ -47,7 +47,7 @@ public class MainFragment extends Fragment implements MyMeetingsRecyclerViewAdap
     }
 
     public void initList(List<Meeting> meetings) {
-        mAdapter =new MyMeetingsRecyclerViewAdapter(meetings);
+        mAdapter =new AdapterMain(meetings);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnCallbackAdapterToMainFragment(this);
     }

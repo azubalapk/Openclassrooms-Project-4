@@ -18,11 +18,10 @@ import com.example.projet_3_oc_maru.utils.ToastUtil;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingsRecyclerViewAdapter.ViewHolder> {
+public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
 
     private List<Meeting> mMeetings;
     OnCallbackAdapterToMainFragment mCallback;
@@ -30,7 +29,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
     public static List<Meeting> filterList = new ArrayList<>();
 
 
-    public MyMeetingsRecyclerViewAdapter(List<Meeting> items) {
+    public AdapterMain(List<Meeting> items) {
         //On vide la liste filterList
         filterList.clear();
 
@@ -88,7 +87,7 @@ public class MyMeetingsRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetin
 
         holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt)+"/"+meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
-        holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0)+","+meeting.getParticipants().get(1));
+        holder.textViewParticipantsMeet.setText(meeting.getParticipants().toString());
 
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
 

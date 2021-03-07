@@ -13,7 +13,7 @@ import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.fragments.MainFragment;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
-import com.example.projet_3_oc_maru.ui.MyMeetingsRecyclerViewAdapter;
+import com.example.projet_3_oc_maru.ui.AdapterMain;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,7 +27,7 @@ import org.joda.time.LocalDate;
 import java.util.Calendar;
 
 
-public class MainActivity extends AppCompatActivity implements MyMeetingsRecyclerViewAdapter.OnCallbackAdapterToMainFragment {
+public class MainActivity extends AppCompatActivity implements AdapterMain.OnCallbackAdapterToMainFragment {
     Toolbar toolbar;
     FloatingActionButton fab;
     MainFragment mainFragment;
