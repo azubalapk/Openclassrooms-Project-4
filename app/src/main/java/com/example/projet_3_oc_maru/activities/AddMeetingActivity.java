@@ -10,11 +10,13 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,11 +25,18 @@ import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.models.RoomMeeting;
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.TimeZone;
@@ -35,15 +44,17 @@ import java.util.TimeZone;
 public class AddMeetingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
-    EditText editTextSubject;
+    EditText editTextSubject,editTextParticipant;
+    ChipGroup chipGroup;
     TextView textViewTimeBegin,textViewTimeEnd,textViewId,textViewDate;
-    Button buttonTimePickerBegin,buttonTimePickerEnd,buttonCreateNewMeeting,buttonDate;
-    List<String> listParticipants;
+    Button buttonTimePickerBegin,buttonTimePickerEnd,buttonCreateNewMeeting,buttonDate,buttonAdd;
+    ArrayList<String> listParticipants = new ArrayList();
     LocalDate localDate;
     LocalTime localTimeEnd,localTimeBegin;
     int  id,mHour, mMinute,mYear,mMonth,mDay,positionRoom;
     Spinner spinnerRoomMeeting;
     Context context;
+
 
 
     @Override
@@ -52,12 +63,14 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_add_meeting);
         getContext();
         setUpViews();
+        setIdMeetingAndDisplayThis();
+        setUpSpinnerRoomMeeting();
         userClickOnButtonForSelectDate();
         userClickOnButtonForSelectTimeBegin();
         userClickOnButtonForSelectTimeEnd();
+        userClickOnButtonForAddParticipant();
         userClickOnButtonForCreateNewMeeting();
-        setIdMeetingAndDisplayThis();
-        setUpSpinnerRoomMeeting();
+        //listParticipants.add("aaaaaaa");
 
     }
 
@@ -70,11 +83,11 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     public void getContext(){
         context = getApplicationContext();
     }
-   
-
-
 
     public void setUpViews() {
+        editTextParticipant =findViewById(R.id.editTextParticipants);
+        buttonAdd =findViewById(R.id.addParticipant);
+        chipGroup = findViewById(R.id.chipGroup);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         textViewId =findViewById(R.id.idMeeting);
         editTextSubject = findViewById(R.id.subjectMeeting);
@@ -118,9 +131,20 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         }
 
 
+    public void userClickOnButtonForAddParticipant(){
+        buttonAdd.setOnClickListener(v -> {
+            LayoutInflater inflater = LayoutInflater.from(this);
+            Chip newChip = (Chip) inflater.inflate(R.layout.layout_chip_entry, chipGroup, false);
+            newChip.setText(editTextParticipant.getText().toString());
+            chipGroup.addView(newChip);
+            listParticipants.add(newChip.getText().toString());
 
+        });
+    }
 
     public void userClickOnButtonForCreateNewMeeting(){
+
+
         buttonCreateNewMeeting.setOnClickListener(v -> {
 
             if (editTextSubject.getText().toString().equals("")) {
@@ -134,15 +158,12 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
             }else if (textViewTimeEnd.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de fin",context);
-                
 
-            }else if(listParticipants.isEmpty()) {
-                ToastUtil.DisplayToastLong("Veuillez SVP renseigner les adresses mail des participants", context);
-            }else {
+            }
+            else {
 
                 DateTime finalDateTimeBegin = new DateTime(localDate.getYear(),localDate.getMonthOfYear(),localDate.getDayOfMonth(),localTimeBegin.getHourOfDay(),localTimeBegin.getMinuteOfHour());
                 DateTime finalDateTimeEnd = new DateTime(localDate.getYear(),localDate.getMonthOfYear(),localDate.getDayOfMonth(),localTimeEnd.getHourOfDay(),localTimeEnd.getMinuteOfHour());
-
 
                 Meeting meeting = new Meeting(id , editTextSubject.getText().toString(),
                         new DateTime(finalDateTimeBegin), new DateTime(finalDateTimeEnd),
