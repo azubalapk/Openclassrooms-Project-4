@@ -87,7 +87,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
 
         holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt)+"/"+meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
-        holder.textViewParticipantsMeet.setText(meeting.getParticipants().toString());
+        holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0)+","+meeting.getParticipants().get(1));
 
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
 
