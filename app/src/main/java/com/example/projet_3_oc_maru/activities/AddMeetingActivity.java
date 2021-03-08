@@ -159,8 +159,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             }else if (textViewTimeEnd.getText().toString().equals("")) {
                 ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de fin",context);
 
-            }else if (listParticipants.isEmpty()){
-                ToastUtil.DisplayToastLong("Veuillez SVP définir au minimum un participants ",context);
+            }else if (listParticipants.size() < 2){
+                ToastUtil.DisplayToastLong("Veuillez SVP définir au minimum deux participants ",context);
             }
             else {
 
