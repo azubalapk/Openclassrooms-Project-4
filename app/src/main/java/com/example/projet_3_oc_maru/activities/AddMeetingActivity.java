@@ -31,6 +31,8 @@ import com.google.android.material.chip.ChipGroup;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -54,6 +56,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     int  id,mHour, mMinute,mYear,mMonth,mDay,positionRoom;
     Spinner spinnerRoomMeeting;
     Context context;
+    DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
 
 
 
@@ -219,14 +222,9 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
 
              DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                      (view, year, monthOfYear, dayOfMonth) -> {
-                      if(monthOfYear<10){
-                          textViewDate.setText(dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year);
-                      }else{
-                          textViewDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                      }
-
 
                              localDate =new LocalDate(year,monthOfYear+1,dayOfMonth);
+                             textViewDate.setText(localDate.toString());
 
                      }, mYear, mMonth, mDay);
              datePickerDialog.show();
@@ -241,16 +239,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
 
-                        if(minute == 0 && hourOfDay<10){
-                            textViewTimeBegin.setText("0"+hourOfDay + ":" + minute+"0");
-                        }else if(hourOfDay<10){
-                            textViewTimeBegin.setText("0"+hourOfDay + ":" + minute);
-                        }else if(minute ==0) {
-                            textViewTimeBegin.setText(hourOfDay + ":" + minute+"0");
-                        }else{
-                            textViewTimeBegin.setText(hourOfDay + ":" + minute);
-                        }
-                            localTimeBegin=new LocalTime(hourOfDay,minute);
+                localTimeBegin=new LocalTime(hourOfDay,minute);
+                textViewTimeBegin.setText(localTimeBegin.toString(fmt));
 
                     }, mHour, mMinute, true);
             timePickerDialog.show();
@@ -261,23 +251,11 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         buttonTimePickerEnd.setOnClickListener(v -> {
 
             getCurrentTime();
-
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     (view, hourOfDay, minute) -> {
 
-                        if(minute == 0 && hourOfDay<10){
-                            textViewTimeEnd.setText("0"+hourOfDay + ":" + minute+"0");
-                        }else if(hourOfDay<10){
-                            textViewTimeEnd.setText("0"+hourOfDay + ":" + minute);
-                        }else if(minute ==0) {
-                            textViewTimeEnd.setText(hourOfDay + ":" + minute+"0");
-                        }else{
-                            textViewTimeEnd.setText(hourOfDay + ":" + minute);
-                        }
-
-
                             localTimeEnd = new LocalTime(hourOfDay,minute);
-
+                            textViewTimeEnd.setText(localTimeEnd.toString(fmt));
 
                     }, mHour, mMinute, true);
             timePickerDialog.show();
