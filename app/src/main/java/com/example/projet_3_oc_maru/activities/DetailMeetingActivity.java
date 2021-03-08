@@ -80,8 +80,6 @@ public class DetailMeetingActivity extends AppCompatActivity {
 
         textViewDetailHourMeetEnd.setText("Fin :"+ meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
-
-
     }
 
     @Override

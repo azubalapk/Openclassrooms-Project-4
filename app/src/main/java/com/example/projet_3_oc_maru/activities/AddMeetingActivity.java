@@ -140,14 +140,15 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             Chip newChip = (Chip) inflater.inflate(R.layout.layout_chip_entry, chipGroup, false);
             newChip.setText(editTextParticipant.getText().toString());
 
-            if(listParticipants.contains(newChip.getText().toString())){
+            if(newChip.getText().toString().equals("")) {
+                ToastUtil.DisplayToastLong("Le nom du participants n' a pas été indiqué",context);
+            }else if(listParticipants.contains(newChip.getText().toString())){
                 ToastUtil.DisplayToastLong("Le participants existe déja dans cette réunion",context);
             }else {
                 chipGroup.addView(newChip);
                 listParticipants.add(newChip.getText().toString());
                 editTextParticipant.setText("");
             }
-
         });
     }
 
@@ -176,13 +177,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 DateTime finalDateTimeBegin = new DateTime(localDate.getYear(),localDate.getMonthOfYear(),localDate.getDayOfMonth(),localTimeBegin.getHourOfDay(),localTimeBegin.getMinuteOfHour());
                 DateTime finalDateTimeEnd = new DateTime(localDate.getYear(),localDate.getMonthOfYear(),localDate.getDayOfMonth(),localTimeEnd.getHourOfDay(),localTimeEnd.getMinuteOfHour());
 
-                Meeting meeting = new Meeting(id , editTextSubject.getText().toString(),
-                        new DateTime(finalDateTimeBegin), new DateTime(finalDateTimeEnd),
-                        listParticipants, RoomMeeting.getRoomMeetingById(positionRoom)
-                );
 
                 /* Gestion de la disponibilité des salles */
-                boolean timeProblem = false;
                 boolean reserved = false;
                 for (Meeting m : DI.getMeetingApiService().getMeetings()) {
                     if (m.getMeetingRoom().getId().equals(positionRoom) &&
@@ -198,18 +194,19 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                                     && m.getDateTimeEnd().isAfter(finalDateTimeBegin)) {
                         reserved = true;
                         break;
-                    } else if (finalDateTimeBegin.isAfter(finalDateTimeEnd) || finalDateTimeBegin.isEqual(finalDateTimeEnd)) {
-
-                        timeProblem = true;
                     }
                 }
-                if (timeProblem) {
+                if (finalDateTimeBegin.isAfter(finalDateTimeEnd) || finalDateTimeBegin.isEqual(finalDateTimeEnd)) {
                     ToastUtil.DisplayToastLong("Veuillez vérifier les heures de début et de fin", context);
 
                 } else if (reserved) {
                     ToastUtil.DisplayToastLong("Cette salle est déjà réservée", context);
 
                 } else {
+                    Meeting meeting = new Meeting(id , editTextSubject.getText().toString(),
+                            new DateTime(finalDateTimeBegin), new DateTime(finalDateTimeEnd),
+                            listParticipants, RoomMeeting.getRoomMeetingById(positionRoom)
+                    );
                     DI.getMeetingApiService().createMeeting(meeting);
                     finish();
                 }
