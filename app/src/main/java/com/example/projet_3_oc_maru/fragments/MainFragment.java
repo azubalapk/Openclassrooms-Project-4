@@ -64,7 +64,7 @@ public class MainFragment extends Fragment implements AdapterMain.OnCallbackAdap
     @Override
     public void shareCallbackAdapterToMainFragment() {
         MainActivity activity = (MainActivity) getActivity();
-        activity.resetToolbarTitle();
+        activity.changeToolbarTitle("MaRéu");
     }
 
 }

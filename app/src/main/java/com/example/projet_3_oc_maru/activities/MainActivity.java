@@ -13,12 +13,9 @@ import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.fragments.MainFragment;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
-import com.example.projet_3_oc_maru.ui.AdapterMain;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -35,9 +32,6 @@ public class MainActivity extends AppCompatActivity  {
     int mMonth,mYear,mDay;
 
 
-
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,52 +101,42 @@ public class MainActivity extends AppCompatActivity  {
 
             case R.id.Peach:
                 filterItemRoom("Peach");
-                toolbar.setTitle("Ma réunion - Salle Peach");
                 return true;
 
             case R.id.Mario:
                 filterItemRoom("Mario");
-                toolbar.setTitle("Ma réunion - Salle Mario");
                 return true;
 
             case R.id.Luigi:
                 filterItemRoom("Luigi");
-                toolbar.setTitle("Ma réunion - Salle Luigi");
                 return true;
 
             case R.id.Toad:
                 filterItemRoom("Toad");
-                toolbar.setTitle("Ma réunion - Salle Toad");
                 return true;
 
             case R.id.Bowser:
                 filterItemRoom("Bowser");
-                toolbar.setTitle("Ma réunion - Salle Bowser");
                 return true;
 
             case R.id.Yoshi:
                 filterItemRoom("Yoshi");
-                toolbar.setTitle("Ma réunion - Salle Yoshi");
                 return true;
 
             case R.id.Wario:
                 filterItemRoom("Wario");
-                toolbar.setTitle("Ma réunion - Salle Wario");
                 return true;
 
             case R.id.Daisy:
                 filterItemRoom("Daisy");
-                toolbar.setTitle("Ma réunion - Salle Daisy");
                 return true;
 
             case R.id.Harmonie:
                 filterItemRoom("Harmonie");
-                toolbar.setTitle("Ma réunion - Salle Harmonie");
                 return true;
 
             case R.id.Pokey:
                 filterItemRoom("Pokey");
-                toolbar.setTitle("Ma réunion - Salle Pokey");
                 return true;
 
             default:
@@ -171,13 +155,15 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
         if (!nothing) {
+            changeToolbarTitle("Ma réunion - "+salle);
             mainFragment.initList(mApiService.getMeetingsFilterRoom(salle));
         } else {
+            changeToolbarTitle("MaRéu");
             ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette salle", getApplicationContext());
+
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void filterItemDate(LocalDate date) {
 
         /* Filtre par salle */
@@ -189,14 +175,17 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
         if (!nothing) {
+            changeToolbarTitle("Ma réunion - "+date.toString());
             mainFragment.initList(mApiService.getMeetingsFilterDate(date));
         } else {
+            changeToolbarTitle("MaRéu");
             ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette date", getApplicationContext());
+
         }
     }
 
-    public void resetToolbarTitle(){
-        toolbar.setTitle("MaRéu");
+    public void changeToolbarTitle(String title){
+        toolbar.setTitle(title);
     }
 
 
