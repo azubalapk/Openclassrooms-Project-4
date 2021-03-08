@@ -13,6 +13,7 @@ import com.example.projet_3_oc_maru.activities.DetailMeetingActivity;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
+import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 
 import org.joda.time.format.DateTimeFormat;
@@ -27,7 +28,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
     OnCallbackAdapterToMainFragment mCallback;
     public static boolean isListFilter = false;
     public static List<Meeting> filterList = new ArrayList<>();
-
+    MeetingApiService mApiService = DI.getMeetingApiService();
 
     public AdapterMain(List<Meeting> items) {
         //On vide la liste filterList
@@ -68,6 +69,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
                 .inflate(R.layout.row_meeting, parent, false);
         return new ViewHolder(view);
 
+
     }
 
 
@@ -93,19 +95,24 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
 
             if (isListFilter) {
                 filterList.remove(meeting);
-                mCallback.shareCallbackAdapterToMainFragment(meeting);
                 notifyDataSetChanged();
+                mApiService.deleteMeeting(meeting);
+                mMeetings =mApiService.getMeetings();
 
                 /*Si liste filtrée vide, lancement activité avec liste principale*/
                 if (filterList.isEmpty() && isListFilter) {
                     notifyDataSetChanged();
-                    mMeetings = DI.getMeetingApiService().getMeetings();
+                    mMeetings = mApiService.getMeetings();
+                    //mCallback.shareCallbackAdapterToMainFragment(meeting);
                     ToastUtil.DisplayToastLong("La liste filtrée est vide", holder.itemView.getContext());
                 }
 
                 /* Sinon on se sert de l'event DeleteMeetingEvent */
             } else {
-                mCallback.shareCallbackAdapterToMainFragment(meeting);
+                notifyDataSetChanged();
+                mApiService.deleteMeeting(meeting);
+                mMeetings =mApiService.getMeetings();
+
         }
 
         });
