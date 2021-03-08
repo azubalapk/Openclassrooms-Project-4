@@ -51,6 +51,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
     TextView textViewTimeBegin,textViewTimeEnd,textViewId,textViewDate;
     Button buttonTimePickerBegin,buttonTimePickerEnd,buttonCreateNewMeeting,buttonDate,buttonAdd;
     ArrayList<String> listParticipants = new ArrayList();
+    ArrayList<String> finalListParticipants = new ArrayList();
     LocalDate localDate;
     LocalTime localTimeEnd,localTimeBegin;
     int  id,mHour, mMinute,mYear,mMonth,mDay,positionRoom;
@@ -73,7 +74,6 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         userClickOnButtonForSelectTimeEnd();
         userClickOnButtonForAddParticipant();
         userClickOnButtonForCreateNewMeeting();
-        //listParticipants.add("aaaaaaa");
 
     }
 
@@ -149,6 +149,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 listParticipants.add(newChip.getText().toString());
                 editTextParticipant.setText("");
             }
+
+            newChip.setOnCloseIconClickListener(v1 -> handleChipCloseIconClicked((Chip) v1));
         });
     }
 
@@ -205,7 +207,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 } else {
                     Meeting meeting = new Meeting(id , editTextSubject.getText().toString(),
                             new DateTime(finalDateTimeBegin), new DateTime(finalDateTimeEnd),
-                            listParticipants, RoomMeeting.getRoomMeetingById(positionRoom)
+                            finalListParticipants =listParticipants, RoomMeeting.getRoomMeetingById(positionRoom)
                     );
                     DI.getMeetingApiService().createMeeting(meeting);
                     finish();
@@ -272,6 +274,13 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
         mHour = c.get(Calendar.HOUR_OF_DAY);
         mMonth = c.get(Calendar.MONTH);
         mHour = c.get(Calendar.HOUR_OF_DAY);
+    }
+
+    // User close a Chip.
+    private void handleChipCloseIconClicked(Chip chip) {
+        ChipGroup parent = (ChipGroup) chip.getParent();
+        parent.removeView(chip);
+        listParticipants.remove(chip.getText().toString());
     }
 
 }
