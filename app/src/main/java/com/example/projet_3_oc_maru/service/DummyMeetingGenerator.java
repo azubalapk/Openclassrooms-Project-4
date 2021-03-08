@@ -3,22 +3,18 @@ package com.example.projet_3_oc_maru.service;
 
 
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.models.RoomMeeting;
 
 import org.joda.time.DateTime;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-@RequiresApi(api = Build.VERSION_CODES.R)
+
 public abstract class DummyMeetingGenerator {
     public static List<Meeting> DUMMY_ROOM_MEETS = Arrays.asList(
             new Meeting(1,"Logistique", new DateTime(2021,02,14,14,00),new DateTime(2021,02,14,15,00) ,Arrays.asList("maxime@lamzone.com","alex@lamzone.com"),RoomMeeting.getRoomMeetingById(7)),

@@ -21,6 +21,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+
 import java.util.Calendar;
 
 
@@ -90,10 +92,10 @@ public class MainActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                         (view, year, monthOfYear, dayOfMonth) -> {
 
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                filterItemDate(new LocalDate(year, monthOfYear, dayOfMonth));
 
-                            }
+                                filterItemDate(new LocalDate(year, monthOfYear+1, dayOfMonth));
+
+
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
 
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity  {
         /* Filtre par salle */
         boolean nothing = true;
         for (Meeting m : mApiService.getMeetings()) {
-            if (m.getDateTimeBegin().toLocalDate().equals(date)) {
+            if (m.getDateTimeBegin().toLocalDate().equals(date)){
                 nothing = false;
                 break;
             }
