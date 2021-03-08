@@ -141,6 +141,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             newChip.setText(editTextParticipant.getText().toString());
             chipGroup.addView(newChip);
             listParticipants.add(newChip.getText().toString());
+            editTextParticipant.setText("");
 
         });
     }
