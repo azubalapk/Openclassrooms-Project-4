@@ -27,7 +27,7 @@ import org.joda.time.LocalDate;
 import java.util.Calendar;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterMain.OnCallbackAdapterToMainFragment {
+public class MainActivity extends AppCompatActivity  {
     Toolbar toolbar;
     FloatingActionButton fab;
     MainFragment mainFragment;
@@ -195,9 +195,10 @@ public class MainActivity extends AppCompatActivity implements AdapterMain.OnCal
         }
     }
 
-    @Override
-    public void shareCallbackAdapterToMainFragment(Meeting meeting) {
-        toolbar.setTitle("Ma Réu");
+    public void resetToolbarTitle(){
+        toolbar.setTitle("MaRéu");
     }
+
+
 
 }

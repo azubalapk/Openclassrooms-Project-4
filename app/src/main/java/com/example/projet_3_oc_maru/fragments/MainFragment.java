@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.projet_3_oc_maru.activities.MainActivity;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
@@ -60,9 +62,9 @@ public class MainFragment extends Fragment implements AdapterMain.OnCallbackAdap
     }
 
     @Override
-    public void shareCallbackAdapterToMainFragment(Meeting meeting) {
-        mApiService.deleteMeeting(meeting);
-        mAdapter.notifyDataSetChanged();
+    public void shareCallbackAdapterToMainFragment() {
+        MainActivity activity = (MainActivity) getActivity();
+        activity.resetToolbarTitle();
     }
 
 }

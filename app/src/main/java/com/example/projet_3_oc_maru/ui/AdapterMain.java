@@ -60,7 +60,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
     }
 
     public interface OnCallbackAdapterToMainFragment {
-         void shareCallbackAdapterToMainFragment(Meeting meeting);
+         void shareCallbackAdapterToMainFragment();
     }
 
     @Override
@@ -103,7 +103,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
                 if (filterList.isEmpty() && isListFilter) {
                     notifyDataSetChanged();
                     mMeetings = mApiService.getMeetings();
-                    //mCallback.shareCallbackAdapterToMainFragment(meeting);
+                    mCallback.shareCallbackAdapterToMainFragment();
                     ToastUtil.DisplayToastLong("La liste filtrée est vide", holder.itemView.getContext());
                 }
 
