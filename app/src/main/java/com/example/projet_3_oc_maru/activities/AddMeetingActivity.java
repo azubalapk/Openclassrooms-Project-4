@@ -139,9 +139,14 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             LayoutInflater inflater = LayoutInflater.from(this);
             Chip newChip = (Chip) inflater.inflate(R.layout.layout_chip_entry, chipGroup, false);
             newChip.setText(editTextParticipant.getText().toString());
-            chipGroup.addView(newChip);
-            listParticipants.add(newChip.getText().toString());
-            editTextParticipant.setText("");
+
+            if(listParticipants.contains(newChip.getText().toString())){
+                ToastUtil.DisplayToastLong("Le participants existe déja dans cette réunion",context);
+            }else {
+                chipGroup.addView(newChip);
+                listParticipants.add(newChip.getText().toString());
+                editTextParticipant.setText("");
+            }
 
         });
     }
