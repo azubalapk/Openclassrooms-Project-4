@@ -183,17 +183,14 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 /* Gestion de la disponibilité des salles */
                 boolean reserved = false;
                 for (Meeting m : DI.getMeetingApiService().getMeetings()) {
-                    if (m.getMeetingRoom().getId().equals(positionRoom) &&
-                            ((finalDateTimeBegin.isBefore(m.getDateTimeEnd())
-                                    && finalDateTimeBegin.isAfter(m.getDateTimeBegin()))
-                                    || finalDateTimeEnd.isBefore(m.getDateTimeEnd())
-                                    && finalDateTimeEnd.isAfter(m.getDateTimeBegin()))
-                                    || finalDateTimeBegin.isEqual(m.getDateTimeBegin())
-                                    || finalDateTimeEnd.isEqual(m.getDateTimeEnd())
-                                    || m.getDateTimeBegin().isAfter(finalDateTimeBegin)
-                                    && m.getDateTimeBegin().isBefore(finalDateTimeEnd)
-                                    || m.getDateTimeEnd().isBefore(finalDateTimeEnd)
-                                    && m.getDateTimeEnd().isAfter(finalDateTimeBegin)) {
+                    if ((m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeBegin.isBefore(m.getDateTimeEnd()) && finalDateTimeBegin.isAfter(m.getDateTimeBegin()))
+                                    || (m.getMeetingRoom().getId().equals(positionRoom) &&finalDateTimeEnd.isBefore(m.getDateTimeEnd()) && finalDateTimeEnd.isAfter(m.getDateTimeBegin()))
+                                    || (m.getMeetingRoom().getId().equals(positionRoom) &&finalDateTimeBegin.isEqual(m.getDateTimeBegin()))
+                                    || (m.getMeetingRoom().getId().equals(positionRoom) &&finalDateTimeEnd.isEqual(m.getDateTimeEnd()))
+                                    || (m.getMeetingRoom().getId().equals(positionRoom) &&m.getDateTimeBegin().isAfter(finalDateTimeBegin) && m.getDateTimeBegin().isBefore(finalDateTimeEnd))
+                                    || (m.getMeetingRoom().getId().equals(positionRoom) &&m.getDateTimeEnd().isBefore(finalDateTimeEnd) && m.getDateTimeEnd().isAfter(finalDateTimeBegin))
+                    )
+                    {
                         reserved = true;
                         break;
                     }
