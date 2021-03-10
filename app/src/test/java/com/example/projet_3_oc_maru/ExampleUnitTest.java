@@ -84,4 +84,33 @@ public class ExampleUnitTest {
         assertTrue(service.getRes().isEmpty());
     }
 
+    @Test
+    public void theRoomIsAvailableOrNotAvailable(){
+        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+                new DateTime(2021, 02, 14, 13, 30),
+                new DateTime(2021, 02, 14, 15, 30),
+                7)
+        );
+        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+                new DateTime(2021, 02, 14, 14, 30),
+                new DateTime(2021, 02, 14, 14, 45),
+                7)
+        );
+        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+                new DateTime(2021, 02, 14, 12, 30),
+                new DateTime(2021, 02, 14, 14, 30),
+                7)
+        );
+        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+                new DateTime(2021, 02, 14, 14, 30),
+                new DateTime(2021, 02, 14, 15, 30),
+                7)
+        );
+        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+                new DateTime(2021, 02, 14, 14, 00),
+                new DateTime(2021, 02, 14, 15, 00),
+                7)
+        );
+    }
+
 }
