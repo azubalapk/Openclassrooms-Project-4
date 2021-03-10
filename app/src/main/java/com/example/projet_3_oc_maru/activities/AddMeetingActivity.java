@@ -42,6 +42,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddMeetingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -140,15 +142,24 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
             Chip newChip = (Chip) inflater.inflate(R.layout.layout_chip_entry, chipGroup, false);
             newChip.setText(editTextParticipant.getText().toString());
 
-            if(newChip.getText().toString().equals("")) {
-                ToastUtil.DisplayToastLong("Le nom du participants n' a pas été indiqué",context);
-            }else if(listParticipants.contains(newChip.getText().toString())){
+            String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(newChip.getText());
+
+
+
+             if(newChip.getText().toString().equals("")) {
+                 ToastUtil.DisplayToastLong("Le nom du participants n' a pas été indiqué", context);
+
+             }else if(matcher.matches()==false){
+                     ToastUtil.DisplayToastLong("Seul des emails sont acceptés",context);
+             }else if(listParticipants.contains(newChip.getText().toString())){
                 ToastUtil.DisplayToastLong("Le participants existe déja dans cette réunion",context);
-            }else {
+             }else {
                 chipGroup.addView(newChip);
                 listParticipants.add(newChip.getText().toString());
                 editTextParticipant.setText("");
-            }
+             }
 
             newChip.setOnCloseIconClickListener(v1 -> handleChipCloseIconClicked((Chip) v1));
         });
@@ -184,8 +195,8 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
                 boolean reserved = false;
                 for (Meeting m : DI.getMeetingApiService().getMeetings()) {
                     if ((m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeBegin.isBefore(m.getDateTimeEnd()) && finalDateTimeBegin.isAfter(m.getDateTimeBegin()))
-                                    || (m.getMeetingRoom().getId().equals(positionRoom) &&finalDateTimeEnd.isBefore(m.getDateTimeEnd()) && finalDateTimeEnd.isAfter(m.getDateTimeBegin()))
-                                    || (m.getMeetingRoom().getId().equals(positionRoom) &&finalDateTimeBegin.isEqual(m.getDateTimeBegin()))
+                                    || (m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeEnd.isBefore(m.getDateTimeEnd()) && finalDateTimeEnd.isAfter(m.getDateTimeBegin()))
+                                    || (m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeBegin.isEqual(m.getDateTimeBegin()))
                                     || (m.getMeetingRoom().getId().equals(positionRoom) &&finalDateTimeEnd.isEqual(m.getDateTimeEnd()))
                                     || (m.getMeetingRoom().getId().equals(positionRoom) &&m.getDateTimeBegin().isAfter(finalDateTimeBegin) && m.getDateTimeBegin().isBefore(finalDateTimeEnd))
                                     || (m.getMeetingRoom().getId().equals(positionRoom) &&m.getDateTimeEnd().isBefore(finalDateTimeEnd) && m.getDateTimeEnd().isAfter(finalDateTimeBegin))
