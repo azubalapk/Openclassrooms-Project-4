@@ -3,6 +3,7 @@ package com.example.projet_3_oc_maru.service;
 import com.example.projet_3_oc_maru.models.Meeting;
 
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public interface MeetingApiService {
     List<Meeting> getMeetingsFilterRoom(String salle);
 
     List<Meeting> getMeetingsFilterDate(LocalDate date);
+
+    Boolean theRoomIsAvailableOrNotAvailable(DateTime finalDateTimeBegin , DateTime finalDateTimeEnd, Integer positionRoom);
 
     void resetFilter();
 }

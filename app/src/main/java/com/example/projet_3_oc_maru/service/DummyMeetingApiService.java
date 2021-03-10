@@ -2,8 +2,10 @@ package com.example.projet_3_oc_maru.service;
 
 
 
+import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
@@ -73,6 +75,25 @@ public class DummyMeetingApiService implements MeetingApiService {
 
             m.setMeetingInFilterList(false);
         }
+    }
+
+    public Boolean theRoomIsAvailableOrNotAvailable(DateTime finalDateTimeBegin , DateTime finalDateTimeEnd, Integer positionRoom){
+        Boolean reserved = false;
+        for (Meeting m : DI.getMeetingApiService().getMeetings()) {
+            if ((m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeBegin.isBefore(m.getDateTimeEnd()) && finalDateTimeBegin.isAfter(m.getDateTimeBegin()))
+                    || (m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeEnd.isBefore(m.getDateTimeEnd()) && finalDateTimeEnd.isAfter(m.getDateTimeBegin()))
+                    || (m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeBegin.isEqual(m.getDateTimeBegin()))
+                    || (m.getMeetingRoom().getId().equals(positionRoom) &&finalDateTimeEnd.isEqual(m.getDateTimeEnd()))
+                    || (m.getMeetingRoom().getId().equals(positionRoom) &&m.getDateTimeBegin().isAfter(finalDateTimeBegin) && m.getDateTimeBegin().isBefore(finalDateTimeEnd))
+                    || (m.getMeetingRoom().getId().equals(positionRoom) &&m.getDateTimeEnd().isBefore(finalDateTimeEnd) && m.getDateTimeEnd().isAfter(finalDateTimeBegin))
+            )
+            {
+                 reserved = true;
+                break;
+            }
+        }
+
+        return reserved;
     }
 
 }
