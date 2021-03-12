@@ -25,7 +25,6 @@ import java.util.List;
 public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
 
     private List<Meeting> mMeetings;
-    OnCallbackAdapterToMainFragment mCallback;
     public static boolean isListFilter = false;
     public static List<Meeting> filterList = new ArrayList<>();
     MeetingApiService mApiService = DI.getMeetingApiService();
@@ -55,13 +54,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
 
     }
 
-    public void setOnCallbackAdapterToMainFragment(OnCallbackAdapterToMainFragment mCallback) {
-        this.mCallback = mCallback;
-    }
 
-    public interface OnCallbackAdapterToMainFragment {
-         void shareCallbackAdapterToMainFragment();
-    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -103,7 +96,6 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
                 if (filterList.isEmpty() && isListFilter) {
                     notifyDataSetChanged();
                     mMeetings = mApiService.getMeetings();
-                    mCallback.shareCallbackAdapterToMainFragment();
                     ToastUtil.DisplayToastLong("La liste filtrée est vide", holder.itemView.getContext());
                 }
 

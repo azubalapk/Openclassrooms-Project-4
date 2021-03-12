@@ -17,7 +17,7 @@ public interface MeetingApiService {
      * @return {@link List}
      * */
     List<Meeting> getMeetings();
-    List<Meeting> getRes();
+
 
     /**
      * Deletes a meeting

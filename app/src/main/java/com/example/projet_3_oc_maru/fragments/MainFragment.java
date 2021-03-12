@@ -17,7 +17,7 @@ import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.ui.AdapterMain;
 import java.util.List;
 
-public class MainFragment extends Fragment implements AdapterMain.OnCallbackAdapterToMainFragment {
+public class MainFragment extends Fragment  {
     MeetingApiService mApiService;
     RecyclerView mRecyclerView;
     AdapterMain mAdapter;
@@ -51,7 +51,6 @@ public class MainFragment extends Fragment implements AdapterMain.OnCallbackAdap
     public void initList(List<Meeting> meetings) {
         mAdapter =new AdapterMain(meetings);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnCallbackAdapterToMainFragment(this);
     }
 
 
@@ -61,10 +60,6 @@ public class MainFragment extends Fragment implements AdapterMain.OnCallbackAdap
         mAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void shareCallbackAdapterToMainFragment() {
-        MainActivity activity = (MainActivity) getActivity();
-        activity.changeToolbarTitle("MaRéu");
-    }
+
 
 }

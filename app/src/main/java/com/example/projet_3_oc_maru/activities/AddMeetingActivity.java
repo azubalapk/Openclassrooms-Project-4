@@ -151,7 +151,7 @@ public class AddMeetingActivity extends AppCompatActivity implements AdapterView
              if(newChip.getText().toString().equals("")) {
                  ToastUtil.DisplayToastLong("Le nom du participants n' a pas été indiqué", context);
 
-             }else if(matcher.matches()==false){
+             }else if(!matcher.matches()){
                      ToastUtil.DisplayToastLong("Seul des emails sont acceptés",context);
              }else if(listParticipants.contains(newChip.getText().toString())){
                 ToastUtil.DisplayToastLong("Le participants existe déja dans cette réunion",context);

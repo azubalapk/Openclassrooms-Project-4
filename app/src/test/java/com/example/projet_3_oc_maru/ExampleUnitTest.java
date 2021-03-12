@@ -30,8 +30,6 @@ public class ExampleUnitTest {
     private MeetingApiService service;
 
     @Before
-
-
     public void setup() {
         service = DI.getNewInstanceApiService();
     }
@@ -43,13 +41,7 @@ public class ExampleUnitTest {
         assertEquals(meetings,expectedMeetings);
     }
 
-    @Test
-    public void getResWithSuccess() {
-        List<Meeting> res = service.getRes();
-        Meeting expectedRes   = DummyMeetingGenerator.DUMMY_ROOM_MEETS.get(0);
-        res.add(expectedRes);
-        assertTrue(res.contains(expectedRes));
-    }
+
 
     @Test
     public void addMeetingWithSuccess() {
@@ -81,7 +73,9 @@ public class ExampleUnitTest {
     @Test
     public void resetFilter(){
         service.resetFilter();
-        assertTrue(service.getRes().isEmpty());
+        for (Meeting m :service.getMeetings()){
+            assertFalse(m.isMeetingInFilterList());
+        }
     }
 
     @Test

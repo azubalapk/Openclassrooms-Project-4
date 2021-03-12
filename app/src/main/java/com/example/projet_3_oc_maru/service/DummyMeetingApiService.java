@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DummyMeetingApiService implements MeetingApiService {
 
-    private List<Meeting> res = new ArrayList<>();
+
 
     private List<Meeting> meetings = DummyMeetingGenerator.generateMeetings();
 
@@ -23,10 +23,6 @@ public class DummyMeetingApiService implements MeetingApiService {
         return meetings;
     }
 
-    @Override
-    public List<Meeting> getRes() {
-        return res;
-    }
 
     @Override
     public void deleteMeeting(Meeting meeting) {
@@ -46,11 +42,10 @@ public class DummyMeetingApiService implements MeetingApiService {
         for (Meeting m : meetings) {
             if (m.getMeetingRoom().getmNameRoomMeeting().equals(salle)) {
                 m.setMeetingInFilterList(true);
-                res.add(m);
             }
         }
 
-        return res;
+        return meetings;
     }
 
     @Override
@@ -61,18 +56,14 @@ public class DummyMeetingApiService implements MeetingApiService {
         for (Meeting m : meetings) {
             if (m.getDateTimeBegin().toLocalDate().equals(date)) {
                 m.setMeetingInFilterList(true);
-                res.add(m);
             }
         }
-        return res;
+        return meetings;
     }
-
 
     @Override
     public void resetFilter() {
         for (Meeting m : meetings) {
-            res.clear();
-
             m.setMeetingInFilterList(false);
         }
     }
