@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activities.DetailMeetingActivity">
+    tools:context=".activities.DetailActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/mcv_detail_text"

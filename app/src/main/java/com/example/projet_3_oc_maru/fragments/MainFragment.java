@@ -9,29 +9,24 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projet_3_oc_maru.activities.MainActivity;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
-import com.example.projet_3_oc_maru.ui.AdapterMain;
+import com.example.projet_3_oc_maru.ui.AdapterMeetings;
 import java.util.List;
 
 public class MainFragment extends Fragment  {
     MeetingApiService mApiService;
     RecyclerView mRecyclerView;
-    AdapterMain mAdapter;
+    AdapterMeetings mAdapter;
 
-    public MainFragment() {
-        // Required empty public constructor
-    }
-
+    public MainFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getMeetingApiService();
-
     }
 
     @Override
@@ -41,25 +36,20 @@ public class MainFragment extends Fragment  {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         initList(mApiService.getMeetings());
-
         return view;
     }
 
     public void initList(List<Meeting> meetings) {
-        mAdapter =new AdapterMain(meetings);
+        mAdapter =new AdapterMeetings(meetings);
         mRecyclerView.setAdapter(mAdapter);
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
         mAdapter.notifyDataSetChanged();
     }
-
-
 
 }

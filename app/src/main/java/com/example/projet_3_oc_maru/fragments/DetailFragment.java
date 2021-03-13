@@ -12,21 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.projet_3_oc_maru.R;
-import com.example.projet_3_oc_maru.activities.DetailMeetingActivity;
-import com.example.projet_3_oc_maru.ui.AdapterDetail;
+import com.example.projet_3_oc_maru.activities.DetailActivity;
+import com.example.projet_3_oc_maru.ui.AdapterParticipants;
 
 import java.util.List;
 
 
 public class DetailFragment extends Fragment {
 
-    AdapterDetail adapterDetail;
+    AdapterParticipants adapterParticipants;
     RecyclerView recyclerView;
     List<String> participants;
+    DetailActivity activity;
+    Context context;
 
-    public DetailFragment() {
-        // Required empty public constructor
-    }
+    public DetailFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,14 +37,22 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
-        DetailMeetingActivity activity = (DetailMeetingActivity) getActivity();
-        participants = activity.getListParticipants();
-        Context context = view.getContext();
+        getDetailActivity();
         recyclerView = (RecyclerView) view;
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapterDetail =new AdapterDetail(participants);
-        recyclerView.setAdapter(adapterDetail);
-        // Inflate the layout for this fragment
+        context = view.getContext();
+        initializeListParticipantsAndSetUpRecyclerView();
+
         return view;
     }
+    public void getDetailActivity(){
+        activity = (DetailActivity) getActivity();
+    }
+
+    public void initializeListParticipantsAndSetUpRecyclerView(){
+        participants = activity.getListParticipants();
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        adapterParticipants =new AdapterParticipants(participants);
+        recyclerView.setAdapter(adapterParticipants);
+    }
+
 }

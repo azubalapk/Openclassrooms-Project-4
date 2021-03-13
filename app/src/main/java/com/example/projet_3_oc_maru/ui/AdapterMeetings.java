@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.projet_3_oc_maru.activities.DetailMeetingActivity;
+import com.example.projet_3_oc_maru.activities.DetailActivity;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
@@ -22,14 +22,14 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
+public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHolder> {
 
     private List<Meeting> mMeetings;
     public static boolean isListFilter = false;
     public static List<Meeting> filterList = new ArrayList<>();
     MeetingApiService mApiService = DI.getMeetingApiService();
 
-    public AdapterMain(List<Meeting> items) {
+    public AdapterMeetings(List<Meeting> items) {
         //On vide la liste filterList
         filterList.clear();
 
@@ -111,7 +111,7 @@ public class AdapterMain extends RecyclerView.Adapter<AdapterMain.ViewHolder> {
 
         holder.itemView.setOnClickListener(v -> {
             final Context context = holder.itemView.getContext();
-            Intent intent = new Intent(context, DetailMeetingActivity.class);
+            Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("detailMeeting", meeting);
             context.startActivity(intent);
         });

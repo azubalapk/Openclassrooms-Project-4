@@ -45,7 +45,7 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AddMeetingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
     EditText editTextSubject,editTextParticipant;

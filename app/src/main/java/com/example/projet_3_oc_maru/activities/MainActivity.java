@@ -2,7 +2,6 @@ package com.example.projet_3_oc_maru.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,7 +20,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
 
 import java.util.Calendar;
 
@@ -41,31 +39,25 @@ public class MainActivity extends AppCompatActivity  {
         setUpViews();
         userClickOnButtonForOpenAddMeetingActivity();
         mApiService = DI.getMeetingApiService();
-
-
     }
 
     public void setUpViews() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.outline_filter_list_white_24));
-
         fab = findViewById(R.id.fab);
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.MainFragment);
-
     }
 
     public void userClickOnButtonForOpenAddMeetingActivity(){
         fab.setOnClickListener(v -> {
-
-            Intent AddMeetingActivity = new Intent(MainActivity.this, AddMeetingActivity.class);
+            Intent AddMeetingActivity = new Intent(MainActivity.this, AddActivity.class);
             startActivity(AddMeetingActivity);
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
@@ -75,7 +67,7 @@ public class MainActivity extends AppCompatActivity  {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.allSalles:
-                changeToolbarTitle("MaRéu");
+                toolbar.setTitle("MaRéu");
                 mainFragment.initList(mApiService.getMeetings());
                 return true;
 
@@ -93,9 +85,7 @@ public class MainActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                         (view, year, monthOfYear, dayOfMonth) -> {
 
-
                                 filterItemDate(new LocalDate(year, monthOfYear+1, dayOfMonth));
-
 
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -148,7 +138,6 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void filterItemRoom(String salle) {
-
         /* Filtre par salle */
         boolean nothing = true;
         for (Meeting m : mApiService.getMeetings()) {
@@ -158,17 +147,16 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
         if (!nothing) {
-            changeToolbarTitle("Ma réunion - "+salle);
+            toolbar.setTitle("Ma réunion - "+salle);
             mainFragment.initList(mApiService.getMeetingsFilterRoom(salle));
         } else {
-            changeToolbarTitle("MaRéu");
+            toolbar.setTitle("MaRéu");
             ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette salle", getApplicationContext());
 
         }
     }
 
     private void filterItemDate(LocalDate date) {
-
         /* Filtre par salle */
         boolean nothing = true;
         for (Meeting m : mApiService.getMeetings()) {
@@ -178,18 +166,16 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
         if (!nothing) {
-            changeToolbarTitle("Ma réunion - "+date.toString());
+            toolbar.setTitle("Ma réunion - "+date.toString());
             mainFragment.initList(mApiService.getMeetingsFilterDate(date));
         } else {
-            changeToolbarTitle("MaRéu");
+            toolbar.setTitle("MaRéu");
             ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette date", getApplicationContext());
 
         }
     }
 
-    public void changeToolbarTitle(String title){
-        toolbar.setTitle(title);
-    }
+
 
 
 

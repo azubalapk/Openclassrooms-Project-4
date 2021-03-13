@@ -15,7 +15,7 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
-public class DetailMeetingActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
     ImageView imageViewDetailMeet;
     TextView textViewDetailHourMeetBegin,textViewDetailHourMeetEnd,textViewDetailIdMeet,textViewDetailDateMeet,textViewDetailSubjectMeet,textViewDetailRoomMeet;
     Meeting meeting;
