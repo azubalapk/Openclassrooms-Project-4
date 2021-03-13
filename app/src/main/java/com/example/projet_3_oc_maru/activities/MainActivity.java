@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity  {
             mainFragment.initList(mApiService.getMeetingsFilterRoom(salle));
         } else {
             toolbar.setTitle("MaRéu");
-            ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette salle", getApplicationContext());
+            ToastUtil.displayToastLong("Aucune réunion de prévue dans cette salle", getApplicationContext());
 
         }
     }
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity  {
             mainFragment.initList(mApiService.getMeetingsFilterDate(date));
         } else {
             toolbar.setTitle("MaRéu");
-            ToastUtil.DisplayToastLong("Aucune réunion de prévue dans cette date", getApplicationContext());
+            ToastUtil.displayToastLong("Aucune réunion de prévue dans cette date", getApplicationContext());
 
         }
     }

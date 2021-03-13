@@ -149,12 +149,12 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
 
 
              if(newChip.getText().toString().equals("")) {
-                 ToastUtil.DisplayToastLong("Le nom du participants n' a pas été indiqué", context);
+                 ToastUtil.displayToastLong("Le nom du participants n' a pas été indiqué", context);
 
              }else if(!matcher.matches()){
-                     ToastUtil.DisplayToastLong("Seul des emails sont acceptés",context);
+                     ToastUtil.displayToastLong("Seul des emails sont acceptés",context);
              }else if(listParticipants.contains(newChip.getText().toString())){
-                ToastUtil.DisplayToastLong("Le participants existe déja dans cette réunion",context);
+                ToastUtil.displayToastLong("Le participants existe déja dans cette réunion",context);
              }else {
                 chipGroup.addView(newChip);
                 listParticipants.add(newChip.getText().toString());
@@ -171,19 +171,19 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         buttonCreateNewMeeting.setOnClickListener(v -> {
 
             if (editTextSubject.getText().toString().equals("")) {
-                ToastUtil.DisplayToastLong("Veuillez SVP nommer le sujet de votre réunion",context);
+                ToastUtil.displayToastLong("Veuillez SVP nommer le sujet de votre réunion",context);
 
             }else if (textViewDate.getText().toString().equals("")) {
-                ToastUtil.DisplayToastLong("Veuillez SVP définir une date",context);
+                ToastUtil.displayToastLong("Veuillez SVP définir une date",context);
 
             }else if (textViewTimeBegin.getText().toString().equals("")) {
-                ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de début",context);
+                ToastUtil.displayToastLong("Veuillez SVP définir l'heure de début",context);
 
             }else if (textViewTimeEnd.getText().toString().equals("")) {
-                ToastUtil.DisplayToastLong("Veuillez SVP définir l'heure de fin",context);
+                ToastUtil.displayToastLong("Veuillez SVP définir l'heure de fin",context);
 
             }else if (listParticipants.size() < 2){
-                ToastUtil.DisplayToastLong("Veuillez SVP définir au minimum deux participants ",context);
+                ToastUtil.displayToastLong("Veuillez SVP définir au minimum deux participants ",context);
             }
             else {
 
@@ -197,10 +197,10 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 reserved =DI.getMeetingApiService().theRoomIsAvailableOrNotAvailable(finalDateTimeBegin,finalDateTimeEnd,positionRoom);
 
                 if (finalDateTimeBegin.isAfter(finalDateTimeEnd) || finalDateTimeBegin.isEqual(finalDateTimeEnd)) {
-                    ToastUtil.DisplayToastLong("Veuillez vérifier les heures de début et de fin", context);
+                    ToastUtil.displayToastLong("Veuillez vérifier les heures de début et de fin", context);
 
                 } else if (reserved) {
-                    ToastUtil.DisplayToastLong("Cette salle est déjà réservée", context);
+                    ToastUtil.displayToastLong("Cette salle est déjà réservée", context);
 
                 } else {
                     Meeting meeting = new Meeting(id , editTextSubject.getText().toString(),

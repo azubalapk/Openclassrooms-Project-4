@@ -51,7 +51,6 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
             mMeetings = filterList;
         } else mMeetings = items;
 
-
     }
 
 
@@ -61,10 +60,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.row_meeting, parent, false);
         return new ViewHolder(view);
-
-
     }
-
 
         @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
@@ -76,7 +72,6 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         holder.textViewIdMeet.setText("Réunion "+meeting.getId()+"-(");
 
         holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString()+")-");
-
 
         holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
 
@@ -104,7 +99,6 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
                 notifyDataSetChanged();
                 mApiService.deleteMeeting(meeting);
                 mMeetings =mApiService.getMeetings();
-
         }
 
         });
@@ -141,8 +135,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
             textViewParticipantsMeet= view.findViewById(R.id.textViewParticipantsMeet);
             imageButtonDeleteMeet=view.findViewById(R.id.imageButtonDeleteMeet);
         }
+
     }
-
-
 
 }
