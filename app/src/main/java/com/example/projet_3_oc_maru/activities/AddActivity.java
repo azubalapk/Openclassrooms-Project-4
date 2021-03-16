@@ -166,8 +166,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     }
 
     public void userClickOnButtonForCreateNewMeeting(){
-
-
+        
         buttonCreateNewMeeting.setOnClickListener(v -> {
 
             if (editTextSubject.getText().toString().equals("")) {

@@ -49,11 +49,10 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
 
         if (isListFilter) {
             mMeetings = filterList;
-        } else mMeetings = items;
+        }
+        else mMeetings = items;
 
     }
-
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -85,16 +84,11 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
                 filterList.remove(meeting);
                 notifyDataSetChanged();
                 mApiService.deleteMeeting(meeting);
-                mMeetings =mApiService.getMeetings();
 
-                /*Si liste filtrée vide, lancement activité avec liste principale*/
                 if (filterList.isEmpty() && isListFilter) {
-                    notifyDataSetChanged();
-                    mMeetings = mApiService.getMeetings();
-                    ToastUtil.DisplayToastLong("La liste filtrée est vide", holder.itemView.getContext());
+                    ToastUtil.displayToastLong("La liste filtrée est vide veuillez selectionner un autre filtre  ", holder.itemView.getContext());
                 }
 
-                /* Sinon on se sert de l'event DeleteMeetingEvent */
             } else {
                 notifyDataSetChanged();
                 mApiService.deleteMeeting(meeting);
