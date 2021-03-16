@@ -161,7 +161,11 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 editTextParticipant.setText("");
              }
 
-            newChip.setOnCloseIconClickListener(v1 -> handleChipCloseIconClicked((Chip) v1));
+            newChip.setOnCloseIconClickListener(v1 -> {
+                chipGroup.removeView(newChip);
+                listParticipants.remove(newChip.getText().toString());
+            });
+
         });
     }
 
@@ -271,13 +275,6 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         mHour = c.get(Calendar.HOUR_OF_DAY);
         mMonth = c.get(Calendar.MONTH);
         mHour = c.get(Calendar.HOUR_OF_DAY);
-    }
-
-    // User close a Chip.
-    private void handleChipCloseIconClicked(Chip chip) {
-        ChipGroup parent = (ChipGroup) chip.getParent();
-        parent.removeView(chip);
-        listParticipants.remove(chip.getText().toString());
     }
 
 }
