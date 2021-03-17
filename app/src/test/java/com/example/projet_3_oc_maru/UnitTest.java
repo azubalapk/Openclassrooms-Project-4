@@ -3,6 +3,7 @@ package com.example.projet_3_oc_maru;
 import androidx.annotation.NonNull;
 
 import com.example.projet_3_oc_maru.di.DI;
+import com.example.projet_3_oc_maru.fragments.DetailFragment;
 import com.example.projet_3_oc_maru.models.Meeting;
 
 import com.example.projet_3_oc_maru.models.RoomMeeting;
@@ -25,7 +26,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class UnitTest {
 
     private MeetingApiService service;
 
@@ -41,8 +42,6 @@ public class ExampleUnitTest {
         assertEquals(meetings,expectedMeetings);
     }
 
-
-
     @Test
     public void addMeetingWithSuccess() {
         Meeting meetingToAdd = DummyMeetingGenerator.DUMMY_ROOM_MEETS.get(0);
@@ -57,7 +56,6 @@ public class ExampleUnitTest {
         assertFalse(service.getMeetings().contains(meetingToDelete));
     }
 
-
     @Test
     public void getMeetingsFilterRoom() {
         String expectedMeetings = service.getMeetings().get(0).getMeetingRoom().getmNameRoomMeeting();
@@ -68,43 +66,6 @@ public class ExampleUnitTest {
     public void getMeetingFilterDate() {
         String expectedMeetings = service.getMeetings().get(0).getMeetingRoom().getmNameRoomMeeting();
         assertEquals(service.getMeetingsFilterDate(new LocalDate(2021, 02, 14)).get(0).getMeetingRoom().getmNameRoomMeeting(), expectedMeetings);
-    }
-
-    @Test
-    public void resetFilter(){
-        service.resetFilter();
-        for (Meeting m :service.getMeetings()){
-            assertFalse(m.isMeetingInFilterList());
-        }
-    }
-
-    @Test
-    public void theRoomIsAvailableOrNotAvailable(){
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
-                new DateTime(2021, 02, 14, 13, 30),
-                new DateTime(2021, 02, 14, 15, 30),
-                7)
-        );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
-                new DateTime(2021, 02, 14, 14, 30),
-                new DateTime(2021, 02, 14, 14, 45),
-                7)
-        );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
-                new DateTime(2021, 02, 14, 12, 30),
-                new DateTime(2021, 02, 14, 14, 30),
-                7)
-        );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
-                new DateTime(2021, 02, 14, 14, 30),
-                new DateTime(2021, 02, 14, 15, 30),
-                7)
-        );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
-                new DateTime(2021, 02, 14, 14, 00),
-                new DateTime(2021, 02, 14, 15, 00),
-                7)
-        );
     }
 
 }

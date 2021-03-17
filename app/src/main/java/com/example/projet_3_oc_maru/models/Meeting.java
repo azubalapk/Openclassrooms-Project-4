@@ -16,7 +16,6 @@ public class Meeting implements Parcelable {
     private DateTime dateTimeEnd;
     private List<String> participants;
     private RoomMeeting meetingRoom;
-    /* boolean pour liste filtrée ou liste complète) */
     private boolean isMeetingInFilterList;
 
     public Meeting(int id, String subject, DateTime dateTimeBegin, DateTime dateTimeEnd , List<String> participants, RoomMeeting meetingRoom){
