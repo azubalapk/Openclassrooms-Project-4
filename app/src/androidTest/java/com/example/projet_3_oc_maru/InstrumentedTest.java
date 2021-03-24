@@ -8,8 +8,10 @@ import android.view.ViewParent;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.PickerActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -18,6 +20,7 @@ import com.example.projet_3_oc_maru.activities.MainActivity;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
+import com.example.projet_3_oc_maru.utils.DeleteViewAction;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -37,6 +40,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
@@ -54,7 +58,7 @@ public class InstrumentedTest {
     @Before
     public void setUp() {
          activityRule.getScenario();
-         //apiService = DI.getMeetingApiService();
+         apiService = DI.getMeetingApiService();
     }
 
     @Test
@@ -64,7 +68,9 @@ public class InstrumentedTest {
 
     @Test
     public void deleteMeeting() {
-
+        onView(ViewMatchers.withId(R.id.list_meetings))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(2)));
 
     }
     @Test
@@ -122,5 +128,6 @@ public class InstrumentedTest {
         onView(withText("Toutes les réunions")).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(apiService.getMeetings().size())));
     }
+
 
 }
