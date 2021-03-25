@@ -68,13 +68,15 @@ public class InstrumentedTest {
 
     @Test
     public void deleteMeeting() {
+        final int sizeDelete = apiService.getMeetings().size();
         onView(ViewMatchers.withId(R.id.list_meetings))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
-        onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(2)));
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(sizeDelete-1)));
 
     }
     @Test
     public void addMeeting() {
+        final int sizeAdd = apiService.getMeetings().size();
         onView(withId(R.id.fab)).perform(click());
         onView(withId(R.id.subjectMeeting)).perform(typeText("Logistique")).check(matches(isDisplayed()));
 
@@ -102,7 +104,7 @@ public class InstrumentedTest {
         onView(withId(R.id.addParticipant)).perform(click()).check(matches(isDisplayed()));
         onView(withId(R.id.chipGroup)).check(matches(hasChildCount(2)));
         onView(withId(R.id.create)).perform(click());
-        onView(withId(R.id.list_meetings)).check(matches(hasChildCount(apiService.getMeetings().size()+1)));
+        onView(withId(R.id.list_meetings)).check(matches(hasChildCount(sizeAdd+1)));
 
     }
     @Test
