@@ -12,10 +12,13 @@ import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
+
+import com.example.projet_3_oc_maru.activities.DetailActivity;
 import com.example.projet_3_oc_maru.activities.MainActivity;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
@@ -37,6 +40,8 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
@@ -57,6 +62,7 @@ public class InstrumentedTest {
 
     @Before
     public void setUp() {
+        Intents.init();
          activityRule.getScenario();
          apiService = DI.getMeetingApiService();
     }
@@ -131,5 +137,11 @@ public class InstrumentedTest {
         onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(apiService.getMeetings().size())));
     }
 
+    @Test
+    public void launchDetailActivityAndContainMeetingClicked(){
+        onView(ViewMatchers.withId(R.id.list_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+
+        intended(hasComponent(DetailActivity.class.getName()));
+    }
 
 }
