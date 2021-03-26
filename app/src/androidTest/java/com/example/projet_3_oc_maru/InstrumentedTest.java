@@ -29,6 +29,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -65,6 +66,10 @@ public class InstrumentedTest {
         Intents.init();
          activityRule.getScenario();
          apiService = DI.getMeetingApiService();
+    }
+    @After
+    public void cleanUp() {
+        Intents.release();
     }
 
     @Test
