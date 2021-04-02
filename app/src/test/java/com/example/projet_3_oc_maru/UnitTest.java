@@ -38,8 +38,8 @@ public class UnitTest {
     @Test
     public void getMeetingsWithSuccess() {
         List<Meeting> meetings = service.getMeetings();
-        List<Meeting> expectedMeetings  = DummyMeetingGenerator.DUMMY_ROOM_MEETS;
-        assertEquals(meetings,expectedMeetings);
+        List<Meeting> expectedMeetings = DummyMeetingGenerator.DUMMY_ROOM_MEETS;
+        assertEquals(meetings, expectedMeetings);
     }
 
     @Test
@@ -58,18 +58,18 @@ public class UnitTest {
 
     @Test
     public void getMeetingsFilterRoom() {
-        String expectedMeetings = service.getMeetings().get(0).getMeetingRoom().getmNameRoomMeeting();
-        assertEquals(service.getMeetingsFilterRoom("Peach").get(0).getMeetingRoom().getmNameRoomMeeting(), expectedMeetings);
+        String expectedMeetings = service.getMeetings().get(0).getMeetingRoom().getNameRoomMeeting();
+        assertEquals(service.getMeetingsFilterRoom("Peach").get(0).getMeetingRoom().getNameRoomMeeting(), expectedMeetings);
     }
 
     @Test
     public void getMeetingFilterDate() {
-        String expectedMeetings = service.getMeetings().get(0).getMeetingRoom().getmNameRoomMeeting();
-        assertEquals(service.getMeetingsFilterDate(new LocalDate(2021, 02, 14)).get(0).getMeetingRoom().getmNameRoomMeeting(), expectedMeetings);
+        String expectedMeetings = service.getMeetings().get(0).getMeetingRoom().getNameRoomMeeting();
+        assertEquals(service.getMeetingsFilterDate(new LocalDate(2021, 02, 14)).get(0).getMeetingRoom().getNameRoomMeeting(), expectedMeetings);
     }
 
     @Test
-    public void theRoomIsNotAvailable(){
+    public void theRoomIsNotAvailable() {
         assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
                 new DateTime(2021, 02, 14, 13, 30),
                 new DateTime(2021, 02, 14, 15, 30),

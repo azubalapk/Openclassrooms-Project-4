@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
 
@@ -17,12 +18,9 @@ import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
     ImageView imageViewDetailMeet;
-    TextView textViewDetailHourMeetBegin,textViewDetailHourMeetEnd,textViewDetailIdMeet,textViewDetailDateMeet,textViewDetailSubjectMeet,textViewDetailRoomMeet;
+    TextView textViewDetailHourMeetBegin, textViewDetailHourMeetEnd, textViewDetailIdMeet, textViewDetailDateMeet, textViewDetailSubjectMeet, textViewDetailRoomMeet;
     Meeting meeting;
     List<String> participants;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,55 +29,39 @@ public class DetailActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getMeetingParcelable();
         meetingNotNull();
-
         participants = meeting.getParticipants();
-
-
     }
 
-    public void getMeetingParcelable(){
+    public void getMeetingParcelable() {
         meeting = getIntent().getParcelableExtra("detailMeeting");
     }
 
-
-    public void meetingNotNull(){
+    public void meetingNotNull() {
         if (meeting != null) {
             setUpViews();
             setTextAndImage();
         }
     }
 
-    public void setUpViews(){
+    public void setUpViews() {
         imageViewDetailMeet = findViewById(R.id.imageViewDetailMeet);
-        textViewDetailIdMeet =findViewById(R.id.textViewDetailIdMeet);
+        textViewDetailIdMeet = findViewById(R.id.textViewDetailIdMeet);
         textViewDetailSubjectMeet = findViewById(R.id.textViewDetailSubjectMeet);
         textViewDetailHourMeetBegin = findViewById(R.id.textViewDetailHourMeetBegin);
         textViewDetailHourMeetEnd = findViewById(R.id.textViewDetailHourMeetEnd);
         textViewDetailDateMeet = findViewById(R.id.textViewDetailDateMeet);
         textViewDetailRoomMeet = findViewById(R.id.textViewDetailRoomMeet);
-
-
     }
 
-
-    public void setTextAndImage(){
-
+    public void setTextAndImage() {
         DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
-
         imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
-
-        textViewDetailIdMeet.setText("Numéro : "+meeting.getId());
-
-        textViewDetailSubjectMeet.setText("A propos de : "+meeting.getSubject());
-
-        textViewDetailDateMeet.setText("Date : "+meeting.getDateTimeBegin().toLocalDate().toString());
-
-        textViewDetailRoomMeet.setText("Salle : "+ meeting.getMeetingRoom().getNameRoomMeeting());
-
-        textViewDetailHourMeetBegin.setText("Début :"+ meeting.getDateTimeBegin().toLocalTime().toString(fmt));
-
-        textViewDetailHourMeetEnd.setText("Fin :"+ meeting.getDateTimeEnd().toLocalTime().toString(fmt));
-
+        textViewDetailIdMeet.setText("Numéro : " + meeting.getId());
+        textViewDetailSubjectMeet.setText("A propos de : " + meeting.getSubject());
+        textViewDetailDateMeet.setText("Date : " + meeting.getDateTimeBegin().toLocalDate().toString());
+        textViewDetailRoomMeet.setText("Salle : " + meeting.getMeetingRoom().getNameRoomMeeting());
+        textViewDetailHourMeetBegin.setText("Début :" + meeting.getDateTimeBegin().toLocalTime().toString(fmt));
+        textViewDetailHourMeetEnd.setText("Fin :" + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
     }
 
     @Override
@@ -92,7 +74,8 @@ public class DetailActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    public List<String> getListParticipants(){
+
+    public List<String> getListParticipants() {
         return participants;
     }
 

@@ -14,6 +14,7 @@ import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,14 +24,12 @@ import org.joda.time.LocalDate;
 
 import java.util.Calendar;
 
-
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     FloatingActionButton fab;
     MainFragment mainFragment;
     MeetingApiService apiService;
-    int month,year,day;
-
+    int month, year, day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity  {
         mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.MainFragment);
     }
 
-    public void userClickOnButtonForOpenAddMeetingActivity(){
+    public void userClickOnButtonForOpenAddMeetingActivity() {
         fab.setOnClickListener(v -> {
             Intent AddMeetingActivity = new Intent(MainActivity.this, AddActivity.class);
             startActivity(AddMeetingActivity);
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                         (view, year, monthOfYear, dayOfMonth) -> {
 
-                                filterItemDate(new LocalDate(year, monthOfYear+1, dayOfMonth));
+                            filterItemDate(new LocalDate(year, monthOfYear + 1, dayOfMonth));
 
                         }, year, month, day);
                 datePickerDialog.show();
@@ -146,7 +145,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
         if (!nothing) {
-            toolbar.setTitle("Ma réunion - "+salle);
+            toolbar.setTitle("Ma réunion - " + salle);
             mainFragment.initList(apiService.getMeetingsFilterRoom(salle));
         } else {
             toolbar.setTitle(R.string.TitleToolbarMainActivity);
@@ -159,13 +158,13 @@ public class MainActivity extends AppCompatActivity  {
         /* Filtre par salle */
         boolean nothing = true;
         for (Meeting m : apiService.getMeetings()) {
-            if (m.getDateTimeBegin().toLocalDate().equals(date)){
+            if (m.getDateTimeBegin().toLocalDate().equals(date)) {
                 nothing = false;
                 break;
             }
         }
         if (!nothing) {
-            toolbar.setTitle("Ma réunion - "+date.toString());
+            toolbar.setTitle("Ma réunion - " + date.toString());
             mainFragment.initList(apiService.getMeetingsFilterDate(date));
         } else {
             toolbar.setTitle(R.string.TitleToolbarMainActivity);
@@ -173,9 +172,6 @@ public class MainActivity extends AppCompatActivity  {
 
         }
     }
-
-
-
 
 
 }

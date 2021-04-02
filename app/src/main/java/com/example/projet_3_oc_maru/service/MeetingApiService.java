@@ -14,19 +14,22 @@ import java.util.List;
 public interface MeetingApiService {
     /**
      * Get all my RoomMeets
+     *
      * @return {@link List}
-     * */
+     */
     List<Meeting> getMeetings();
 
 
     /**
      * Deletes a meeting
+     *
      * @param meeting
-     * */
+     */
     void deleteMeeting(Meeting meeting);
 
     /**
      * Create a meeting
+     *
      * @param meeting
      */
     void createMeeting(Meeting meeting);
@@ -38,7 +41,7 @@ public interface MeetingApiService {
 
     List<Meeting> getMeetingsFilterDate(LocalDate date);
 
-    Boolean theRoomIsAvailableOrNotAvailable(DateTime finalDateTimeBegin , DateTime finalDateTimeEnd, Integer positionRoom);
+    Boolean theRoomIsAvailableOrNotAvailable(DateTime finalDateTimeBegin, DateTime finalDateTimeEnd, Integer positionRoom);
 
     void resetFilter();
 }

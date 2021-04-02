@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.projet_3_oc_maru.activities.DetailActivity;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
@@ -49,8 +51,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
 
         if (isListFilter) {
             meetings = filterList;
-        }
-        else meetings = items;
+        } else meetings = items;
 
     }
 
@@ -61,22 +62,22 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         return new ViewHolder(view);
     }
 
-        @Override
+    @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
         DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
 
-        holder.textViewIdMeet.setText("Réunion "+meeting.getId()+"-(");
+        holder.textViewIdMeet.setText("Réunion " + meeting.getId() + "-(");
 
-        holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString()+")-");
+        holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString() + ")-");
 
-        holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getNameRoomMeeting());
+        holder.textViewRoomMeet.setText("Salle " + meeting.getMeetingRoom().getNameRoomMeeting());
 
-        holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt)+"/"+meeting.getDateTimeEnd().toLocalTime().toString(fmt));
+        holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt) + "/" + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
-        holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0)+","+meeting.getParticipants().get(1));
+        holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0) + "," + meeting.getParticipants().get(1));
 
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
 
@@ -92,8 +93,8 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
             } else {
                 notifyDataSetChanged();
                 apiService.deleteMeeting(meeting);
-                meetings =apiService.getMeetings();
-        }
+                meetings = apiService.getMeetings();
+            }
 
         });
 
@@ -104,6 +105,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
             context.startActivity(intent);
         });
     }
+
     @Override
     public int getItemCount() {
         return meetings.size();
@@ -121,13 +123,13 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
 
         public ViewHolder(View view) {
             super(view);
-            imageViewMeet= view.findViewById(R.id.imageViewMeet);
-            textViewIdMeet=view.findViewById(R.id.textViewIdMeet);
-            textViewDateMeet=view.findViewById(R.id.textViewDateMeet);
-            textViewHoursMeet=view.findViewById(R.id.textViewHoursMeet);
-            textViewRoomMeet=view.findViewById(R.id.textViewRoomMeet);
-            textViewParticipantsMeet= view.findViewById(R.id.textViewParticipantsMeet);
-            imageButtonDeleteMeet=view.findViewById(R.id.imageButtonDeleteMeet);
+            imageViewMeet = view.findViewById(R.id.imageViewMeet);
+            textViewIdMeet = view.findViewById(R.id.textViewIdMeet);
+            textViewDateMeet = view.findViewById(R.id.textViewDateMeet);
+            textViewHoursMeet = view.findViewById(R.id.textViewHoursMeet);
+            textViewRoomMeet = view.findViewById(R.id.textViewRoomMeet);
+            textViewParticipantsMeet = view.findViewById(R.id.textViewParticipantsMeet);
+            imageButtonDeleteMeet = view.findViewById(R.id.imageButtonDeleteMeet);
         }
 
     }

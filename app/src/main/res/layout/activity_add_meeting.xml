@@ -1,203 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="wrap_content">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".activities.AddActivity">
-
-
-
-    <TextView
-        android:id="@+id/idMeeting"
-        android:layout_width="200dp"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:lines="1"
-        android:minLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        tools:context=".activities.AddActivity">
 
-    <EditText
-        android:id="@+id/subjectMeeting"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Le sujet de la réunion"
-        android:inputType="textMultiLine"
-        android:lines="1"
-        android:minLines="1"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idMeeting"
-         />
 
-    <Button
-        android:layout_marginTop="10dp"
-        android:id="@+id/btn_time_begin"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button"
-        android:text="heure de debut"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subjectMeeting" />
+        <TextView
+            android:id="@+id/idMeeting"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:lines="1"
+            android:minLines="1"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_marginTop="10dp"
-        style="@style/Widget.MaterialComponents.Button"
-        android:id="@+id/btn_time_end"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="heure de fin"
-        app:layout_constraintTop_toBottomOf="@id/btn_time_begin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <EditText
+            android:id="@+id/subjectMeeting"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Le sujet de la réunion"
+            android:inputType="textMultiLine"
+            android:lines="1"
+            android:minLines="1"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/idMeeting" />
 
-    <Button
-        android:layout_marginTop="10dp"
-        android:id="@+id/btn_date"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button"
-        android:text="Selectionner la date"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_time_end" />
+        <Button
+            android:id="@+id/btn_time_begin"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="heure de debut"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subjectMeeting" />
 
-    <TextView
-        android:id="@+id/textViewAnnotation"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Indiquer la salle "
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_date"
-         />
+        <Button
+            android:id="@+id/btn_time_end"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="heure de fin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_time_begin" />
 
-    <Spinner
-        android:layout_marginTop="10dp"
-        android:id="@+id/roomMeetingSpinner"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewAnnotation" />
+        <Button
+            android:id="@+id/btn_date"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Selectionner la date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_time_end" />
 
-    <EditText
-        android:ems="10"
-        android:lines="1"
-        android:minLines="1"
-        android:layout_marginTop="10dp"
-        android:id="@+id/editTextParticipants"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="Indiquer l'email d'un participant  "
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/roomMeetingSpinner" />
+        <TextView
+            android:id="@+id/textViewAnnotation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Indiquer la salle "
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_date" />
 
-    <Button
-        android:layout_marginTop="10dp"
-        android:id="@+id/addParticipant"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Ajouter l'email "
-        app:cornerRadius="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextParticipants" />
+        <Spinner
+            android:id="@+id/roomMeetingSpinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewAnnotation" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="#F3EEEE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addParticipant" />
+        <EditText
+            android:id="@+id/editTextParticipants"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Indiquer l'email d'un participant  "
+            android:lines="1"
+            android:minLines="1"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/roomMeetingSpinner" />
 
-    <Button
-        android:layout_margin="10dp"
-        android:id="@+id/create"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Save"
-        app:cornerRadius="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chipGroup" />
+        <Button
+            android:id="@+id/addParticipant"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Ajouter l'email "
+            app:cornerRadius="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextParticipants" />
 
-    <TextView
-        android:id="@+id/timeBeginMeeting"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:lines="1"
-        android:minLines="1"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btn_time_begin"
-        app:layout_constraintRight_toLeftOf="@id/btn_time_begin"
-        app:layout_constraintTop_toTopOf="@id/btn_time_begin" />
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#F3EEEE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addParticipant" />
 
-    <TextView
-        android:id="@+id/timeEndMeeting"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:lines="1"
-        android:minLines="1"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btn_time_end"
-        app:layout_constraintRight_toLeftOf="@+id/btn_time_end"
-        app:layout_constraintTop_toTopOf="@id/btn_time_end" />
+        <Button
+            android:id="@+id/create"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Save"
+            app:cornerRadius="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chipGroup" />
 
-    <TextView
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="50dp"
-        android:id="@+id/dateMeeting"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:lines="1"
-        android:minLines="1"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/btn_date"
-        app:layout_constraintRight_toLeftOf="@+id/btn_date"
-        app:layout_constraintTop_toTopOf="@id/btn_date" />
+        <TextView
+            android:id="@+id/timeBeginMeeting"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:lines="1"
+            android:minLines="1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/btn_time_begin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btn_time_begin"
+            app:layout_constraintTop_toTopOf="@id/btn_time_begin" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/timeEndMeeting"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:lines="1"
+            android:minLines="1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/btn_time_end"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btn_time_end"
+            app:layout_constraintTop_toTopOf="@id/btn_time_end" />
+
+        <TextView
+            android:id="@+id/dateMeeting"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:lines="1"
+            android:minLines="1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/btn_date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btn_date"
+            app:layout_constraintTop_toTopOf="@id/btn_date" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

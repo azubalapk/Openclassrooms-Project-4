@@ -11,23 +11,24 @@ import java.util.List;
 public class Meeting implements Parcelable {
 
     private int id;
-    private String subject;
-    private DateTime dateTimeBegin;
-    private DateTime dateTimeEnd;
-    private List<String> participants;
-    private RoomMeeting meetingRoom;
+    private final String subject;
+    private final DateTime dateTimeBegin;
+    private final DateTime dateTimeEnd;
+    private final List<String> participants;
+    private final RoomMeeting meetingRoom;
     private boolean isMeetingInFilterList;
 
-    public Meeting(int id, String subject, DateTime dateTimeBegin, DateTime dateTimeEnd , List<String> participants, RoomMeeting meetingRoom){
-        this.id=id;
-        this.subject=subject;
-        this.dateTimeBegin=dateTimeBegin;
-        this.dateTimeEnd=dateTimeEnd;
-        this.participants=participants;
-        this.meetingRoom=meetingRoom;
+    public Meeting(int id, String subject, DateTime dateTimeBegin, DateTime dateTimeEnd, List<String> participants, RoomMeeting meetingRoom) {
+        this.id = id;
+        this.subject = subject;
+        this.dateTimeBegin = dateTimeBegin;
+        this.dateTimeEnd = dateTimeEnd;
+        this.participants = participants;
+        this.meetingRoom = meetingRoom;
         this.isMeetingInFilterList = false;
 
     }
+
     public boolean isMeetingInFilterList() {
         return isMeetingInFilterList;
     }
@@ -57,12 +58,14 @@ public class Meeting implements Parcelable {
         }
     };
 
-    /**Getters */
-    public int getId(){
+    /**
+     * Getters
+     */
+    public int getId() {
         return id;
     }
 
-    public String getSubject(){
+    public String getSubject() {
         return subject;
     }
 
@@ -78,10 +81,16 @@ public class Meeting implements Parcelable {
         return participants;
     }
 
-    public RoomMeeting getMeetingRoom() { return meetingRoom;}
+    public RoomMeeting getMeetingRoom() {
+        return meetingRoom;
+    }
 
-    /**Setters */
-    public void setId(int id) { this.id = id; }
+    /**
+     * Setters
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public int describeContents() {
@@ -95,6 +104,6 @@ public class Meeting implements Parcelable {
         dest.writeSerializable(dateTimeBegin);
         dest.writeSerializable(dateTimeEnd);
         dest.writeSerializable((Serializable) participants);
-        dest.writeParcelable(meetingRoom,flags);
+        dest.writeParcelable(meetingRoom, flags);
     }
 }

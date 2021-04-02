@@ -34,6 +34,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
@@ -64,9 +65,10 @@ public class InstrumentedTest {
     @Before
     public void setUp() {
         Intents.init();
-         activityRule.getScenario();
-         apiService = DI.getMeetingApiService();
+        activityRule.getScenario();
+        apiService = DI.getMeetingApiService();
     }
+
     @After
     public void cleanUp() {
         Intents.release();
@@ -82,9 +84,10 @@ public class InstrumentedTest {
         final int sizeDelete = apiService.getMeetings().size();
         onView(ViewMatchers.withId(R.id.list_meetings))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
-        onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(sizeDelete-1)));
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(sizeDelete - 1)));
 
     }
+
     @Test
     public void addMeeting() {
         final int sizeAdd = apiService.getMeetings().size();
@@ -92,15 +95,15 @@ public class InstrumentedTest {
         onView(withId(R.id.subjectMeeting)).perform(typeText("Logistique")).check(matches(isDisplayed()));
 
         onView(withId(R.id.btn_time_begin)).perform(click());
-        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14,30));
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 30));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.timeBeginMeeting)).check(matches(withText("14:30")));
         onView(withId(R.id.btn_time_end)).perform(click());
-        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(15,30));
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(15, 30));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.timeEndMeeting)).check(matches(withText("15:30")));
         onView(withId(R.id.btn_date)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021,3,23));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 3, 23));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.dateMeeting)).check(matches(withText("2021-03-23")));
 
@@ -115,26 +118,29 @@ public class InstrumentedTest {
         onView(withId(R.id.addParticipant)).perform(click()).check(matches(isDisplayed()));
         onView(withId(R.id.chipGroup)).check(matches(hasChildCount(2)));
         onView(withId(R.id.create)).perform(click());
-        onView(withId(R.id.list_meetings)).check(matches(hasChildCount(sizeAdd+1)));
+        onView(withId(R.id.list_meetings)).check(matches(hasChildCount(sizeAdd + 1)));
 
     }
+
     @Test
-    public void filterRoomIsWorking()  {
+    public void filterRoomIsWorking() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText("Filtrer")).perform(click());
         onView(withText("Sélectionner salle")).perform(click());
         onView(withText("Mario")).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(1)));
     }
+
     @Test
     public void filterDateIsWorking() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText("Filtrer")).perform(click());
         onView(withText("Sélectionner date")).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021,2,14));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 2, 14));
         onView(withId(android.R.id.button1)).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(1)));
     }
+
     @Test
     public void filterAllMeetingIsWorking() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
@@ -143,7 +149,7 @@ public class InstrumentedTest {
     }
 
     @Test
-    public void launchDetailActivityAndContainMeetingClicked(){
+    public void launchDetailActivityAndContainMeetingClicked() {
         onView(ViewMatchers.withId(R.id.list_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         intended(hasComponent(DetailActivity.class.getName()));
     }
