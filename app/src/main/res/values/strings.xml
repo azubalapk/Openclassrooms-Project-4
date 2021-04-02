@@ -11,6 +11,19 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="NoMeetingScheduledForThisDate">Aucune réunion de prévue à cette date</string>
+    <string name="NoMeetingScheduledInThisRoom">Aucune réunion de prévue dans cette salle</string>
+    <string name="TitleToolbarMainActivity">MaRéu</string>
+    <string name="PleaseNameTheSubjectOfMeeting">Veuillez SVP nommer le sujet de votre réunion</string>
+    <string name="PleaseDefineDateOfMeeting">Veuillez SVP définir une date</string>
+    <string name="PleaseDefineStartTime">Veuillez SVP définir l\'heure de début</string>
+    <string name="PleaseDefineEndTime">Veuillez SVP définir l\'heure de fin</string>
+    <string name="PleaseDefineAtLeastTwoParticipants">\"Veuillez SVP définir au minimum deux participants \"</string>
+    <string name="PleaseDefineTheNameOfPartcipants">Le nom du participants n\' a pas été indiqué</string>
+    <string name="TheParticipantsIsAlreadyExistInThisMeeting">Le participants existe déja dans cette réunion</string>
+    <string name="OnlyEmailsAccept">Seul des emails sont acceptés</string>
+    <string name="ThisRoomIsAlreadyReserved">Cette salle est déjà réservée</string>
+    <string name="PleaseCheckStartAndEndTimes">Veuillez vérifier les heures de début et de fin</string>
 
     <string-array name="roomsMeeting_array">
         <item>Birdo</item>

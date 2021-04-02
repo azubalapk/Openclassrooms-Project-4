@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity  {
     Toolbar toolbar;
     FloatingActionButton fab;
     MainFragment mainFragment;
-    MeetingApiService mApiService;
-    int mMonth,mYear,mDay;
+    MeetingApiService apiService;
+    int month,year,day;
 
 
     @Override
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         setUpViews();
         userClickOnButtonForOpenAddMeetingActivity();
-        mApiService = DI.getMeetingApiService();
+        apiService = DI.getMeetingApiService();
     }
 
     public void setUpViews() {
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity  {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.allSalles:
-                toolbar.setTitle("MaRéu");
-                mainFragment.initList(mApiService.getMeetings());
+                toolbar.setTitle(R.string.TitleToolbarMainActivity);
+                mainFragment.initList(apiService.getMeetings());
                 return true;
 
             case R.id.selection_salle:
@@ -78,16 +78,16 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.selection_date:
 
                 final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
+                year = c.get(Calendar.YEAR);
+                month = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                         (view, year, monthOfYear, dayOfMonth) -> {
 
                                 filterItemDate(new LocalDate(year, monthOfYear+1, dayOfMonth));
 
-                        }, mYear, mMonth, mDay);
+                        }, year, month, day);
                 datePickerDialog.show();
 
                 return true;
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity  {
     private void filterItemRoom(String salle) {
         /* Filtre par salle */
         boolean nothing = true;
-        for (Meeting m : mApiService.getMeetings()) {
+        for (Meeting m : apiService.getMeetings()) {
             if (m.getMeetingRoom().getmNameRoomMeeting().equals(salle)) {
                 nothing = false;
                 break;
@@ -148,10 +148,10 @@ public class MainActivity extends AppCompatActivity  {
         }
         if (!nothing) {
             toolbar.setTitle("Ma réunion - "+salle);
-            mainFragment.initList(mApiService.getMeetingsFilterRoom(salle));
+            mainFragment.initList(apiService.getMeetingsFilterRoom(salle));
         } else {
-            toolbar.setTitle("MaRéu");
-            ToastUtil.displayToastLong("Aucune réunion de prévue dans cette salle", getApplicationContext());
+            toolbar.setTitle(R.string.TitleToolbarMainActivity);
+            ToastUtil.displayToastLong(getString(R.string.NoMeetingScheduledInThisRoom), getApplicationContext());
 
         }
     }
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity  {
     private void filterItemDate(LocalDate date) {
         /* Filtre par salle */
         boolean nothing = true;
-        for (Meeting m : mApiService.getMeetings()) {
+        for (Meeting m : apiService.getMeetings()) {
             if (m.getDateTimeBegin().toLocalDate().equals(date)){
                 nothing = false;
                 break;
@@ -167,10 +167,10 @@ public class MainActivity extends AppCompatActivity  {
         }
         if (!nothing) {
             toolbar.setTitle("Ma réunion - "+date.toString());
-            mainFragment.initList(mApiService.getMeetingsFilterDate(date));
+            mainFragment.initList(apiService.getMeetingsFilterDate(date));
         } else {
-            toolbar.setTitle("MaRéu");
-            ToastUtil.displayToastLong("Aucune réunion de prévue dans cette date", getApplicationContext());
+            toolbar.setTitle(R.string.TitleToolbarMainActivity);
+            ToastUtil.displayToastLong(getString(R.string.NoMeetingScheduledForThisDate), getApplicationContext());
 
         }
     }

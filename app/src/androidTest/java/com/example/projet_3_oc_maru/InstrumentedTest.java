@@ -145,8 +145,6 @@ public class InstrumentedTest {
     @Test
     public void launchDetailActivityAndContainMeetingClicked(){
         onView(ViewMatchers.withId(R.id.list_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
-
         intended(hasComponent(DetailActivity.class.getName()));
     }
-
 }

@@ -69,7 +69,7 @@ public class UnitTest {
     }
 
     @Test
-    public void theRoomIsAvailableOrNotAvailable(){
+    public void theRoomIsNotAvailable(){
         assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
                 new DateTime(2021, 02, 14, 13, 30),
                 new DateTime(2021, 02, 14, 15, 30),
