@@ -17,16 +17,16 @@ import com.example.projet_3_oc_maru.ui.AdapterMeetings;
 import java.util.List;
 
 public class MainFragment extends Fragment  {
-    MeetingApiService mApiService;
-    RecyclerView mRecyclerView;
-    AdapterMeetings mAdapter;
+    MeetingApiService apiService;
+    RecyclerView recyclerView;
+    AdapterMeetings adapter;
 
     public MainFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mApiService = DI.getMeetingApiService();
+        apiService = DI.getMeetingApiService();
     }
 
     @Override
@@ -35,21 +35,21 @@ public class MainFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         Context context = view.getContext();
-        mRecyclerView = (RecyclerView) view;
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        initList(mApiService.getMeetings());
+        recyclerView = (RecyclerView) view;
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        initList(apiService.getMeetings());
         return view;
     }
 
     public void initList(List<Meeting> meetings) {
-        mAdapter =new AdapterMeetings(meetings);
-        mRecyclerView.setAdapter(mAdapter);
+        adapter =new AdapterMeetings(meetings);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mAdapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
 }

@@ -66,7 +66,7 @@ public class DetailActivity extends AppCompatActivity {
 
         DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
 
-        imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
+        imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
 
         textViewDetailIdMeet.setText("Numéro : "+meeting.getId());
 
@@ -74,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
 
         textViewDetailDateMeet.setText("Date : "+meeting.getDateTimeBegin().toLocalDate().toString());
 
-        textViewDetailRoomMeet.setText("Salle : "+ meeting.getMeetingRoom().getmNameRoomMeeting());
+        textViewDetailRoomMeet.setText("Salle : "+ meeting.getMeetingRoom().getNameRoomMeeting());
 
         textViewDetailHourMeetBegin.setText("Début :"+ meeting.getDateTimeBegin().toLocalTime().toString(fmt));
 

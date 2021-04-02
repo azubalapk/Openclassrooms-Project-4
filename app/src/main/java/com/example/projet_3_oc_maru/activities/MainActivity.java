@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
 
             case R.id.selection_salle:
-
                 return true;
 
             case R.id.selection_date:
@@ -141,7 +140,7 @@ public class MainActivity extends AppCompatActivity  {
         /* Filtre par salle */
         boolean nothing = true;
         for (Meeting m : apiService.getMeetings()) {
-            if (m.getMeetingRoom().getmNameRoomMeeting().equals(salle)) {
+            if (m.getMeetingRoom().getNameRoomMeeting().equals(salle)) {
                 nothing = false;
                 break;
             }

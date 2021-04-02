@@ -24,10 +24,10 @@ import java.util.List;
 
 public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHolder> {
 
-    private List<Meeting> mMeetings;
+    private List<Meeting> meetings;
     public static boolean isListFilter = false;
     public static List<Meeting> filterList = new ArrayList<>();
-    MeetingApiService mApiService = DI.getMeetingApiService();
+    MeetingApiService apiService = DI.getMeetingApiService();
 
     public AdapterMeetings(List<Meeting> items) {
         //On vide la liste filterList
@@ -48,9 +48,9 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         }
 
         if (isListFilter) {
-            mMeetings = filterList;
+            meetings = filterList;
         }
-        else mMeetings = items;
+        else meetings = items;
 
     }
 
@@ -63,16 +63,16 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
 
         @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Meeting meeting = mMeetings.get(position);
+        Meeting meeting = meetings.get(position);
         DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
 
-        holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getmRoomMeetingColor());
+        holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
 
         holder.textViewIdMeet.setText("Réunion "+meeting.getId()+"-(");
 
         holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString()+")-");
 
-        holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getmNameRoomMeeting());
+        holder.textViewRoomMeet.setText("Salle "+ meeting.getMeetingRoom().getNameRoomMeeting());
 
         holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt)+"/"+meeting.getDateTimeEnd().toLocalTime().toString(fmt));
 
@@ -83,7 +83,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
             if (isListFilter) {
                 filterList.remove(meeting);
                 notifyDataSetChanged();
-                mApiService.deleteMeeting(meeting);
+                apiService.deleteMeeting(meeting);
 
                 if (filterList.isEmpty() && isListFilter) {
                     ToastUtil.displayToastLong("La liste filtrée est vide veuillez selectionner un autre filtre  ", holder.itemView.getContext());
@@ -91,8 +91,8 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
 
             } else {
                 notifyDataSetChanged();
-                mApiService.deleteMeeting(meeting);
-                mMeetings =mApiService.getMeetings();
+                apiService.deleteMeeting(meeting);
+                meetings =apiService.getMeetings();
         }
 
         });
@@ -106,7 +106,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
     }
     @Override
     public int getItemCount() {
-        return mMeetings.size();
+        return meetings.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

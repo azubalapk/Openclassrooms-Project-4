@@ -6,14 +6,10 @@ package com.example.projet_3_oc_maru.service;
 
 import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.models.RoomMeeting;
-
 import org.joda.time.DateTime;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-
 
 public abstract class DummyMeetingGenerator {
     public static List<Meeting> DUMMY_ROOM_MEETS = Arrays.asList(

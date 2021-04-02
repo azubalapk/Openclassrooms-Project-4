@@ -36,7 +36,6 @@ public class Meeting implements Parcelable {
         this.isMeetingInFilterList = isMeetingInFilterList;
     }
 
-
     protected Meeting(Parcel in) {
         id = in.readInt();
         subject = in.readString();
@@ -83,20 +82,6 @@ public class Meeting implements Parcelable {
 
     /**Setters */
     public void setId(int id) { this.id = id; }
-
-    public void setSubject(String subject) { this.subject = subject; }
-
-    public void setDateTimeBegin(DateTime dateTimeBegin) {
-        this.dateTimeBegin = dateTimeBegin;
-    }
-
-    public void setDateTimeEnd(DateTime dateTimeEnd) {
-        this.dateTimeEnd = dateTimeEnd;
-    }
-
-    public void setParticipants(List<String> participants) { this.participants = participants; }
-
-    public void setMeetingRoom(RoomMeeting meetingRoom) { this.meetingRoom = meetingRoom; }
 
     @Override
     public int describeContents() {
