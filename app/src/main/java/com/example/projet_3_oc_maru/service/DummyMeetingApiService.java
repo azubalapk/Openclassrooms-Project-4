@@ -7,8 +7,6 @@ import com.example.projet_3_oc_maru.models.Meeting;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class DummyMeetingApiService implements MeetingApiService {

@@ -1,14 +1,9 @@
 package com.example.projet_3_oc_maru.activities;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,19 +21,13 @@ import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
@@ -119,7 +107,6 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         positionRoom = pos + 1;
-
     }
 
     public void onNothingSelected(AdapterView<?> parent) {}
@@ -133,8 +120,8 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 default:
                     return super.onOptionsItemSelected(item);
             }
-        }
 
+        }
 
     public void userClickOnButtonForAddParticipant(){
         buttonAdd.setOnClickListener(v -> {

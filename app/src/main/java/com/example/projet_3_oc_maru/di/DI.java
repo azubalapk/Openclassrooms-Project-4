@@ -1,18 +1,15 @@
 package com.example.projet_3_oc_maru.di;
 
-import android.os.Build;
-import androidx.annotation.RequiresApi;
 import com.example.projet_3_oc_maru.service.DummyMeetingApiService;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
 
-
 public class DI {
-    private static MeetingApiService service ;
+    private static MeetingApiService apiService ;
 
-    static { service = new DummyMeetingApiService(); }
+    static { apiService = new DummyMeetingApiService(); }
 
     public static MeetingApiService getMeetingApiService(){
-        return service;
+        return apiService;
     }
 
     public static MeetingApiService getNewInstanceApiService(){
