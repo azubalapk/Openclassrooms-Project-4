@@ -53,6 +53,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -146,6 +147,81 @@ public class InstrumentedTest {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText("Toutes les réunions")).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(apiService.getMeetings().size())));
+    }
+
+    @Test
+    public void theRoomIsNotAvailable(){
+        final int sizeAdd = apiService.getMeetings().size();
+        onView(withId(R.id.fab)).perform(click());
+        onView(withId(R.id.subjectMeeting)).perform(typeText("Logistique")).check(matches(isDisplayed()));
+
+        onView(withId(R.id.btn_time_begin)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(13, 30));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.btn_time_end)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(15, 30));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.btn_date)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 2, 14));
+        onView(withId(android.R.id.button1)).perform(click());
+
+
+        onView(withId(R.id.roomMeetingSpinner)).perform(click());
+        final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        String[] myArray = context.getResources().getStringArray(R.array.roomsMeeting_array);
+        onData(is(myArray[6])).perform(click());
+
+        onView(withId(R.id.editTextParticipants)).perform(typeText("clovis@gmail.com"), closeSoftKeyboard()).check(matches(isDisplayed()));
+        onView(withId(R.id.addParticipant)).perform(click()).check(matches(isDisplayed()));
+        onView(withId(R.id.editTextParticipants)).perform(typeText("ana@gmail.com"), closeSoftKeyboard()).check(matches(isDisplayed()));
+        onView(withId(R.id.addParticipant)).perform(click()).check(matches(isDisplayed()));
+        onView(withId(R.id.chipGroup)).check(matches(hasChildCount(2)));
+        onView(withId(R.id.create)).perform(click());
+
+        assertEquals(apiService.getMeetings().size(),sizeAdd);
+
+        onView(withId(R.id.btn_time_begin)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 15));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.btn_time_end)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 45));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        assertEquals(apiService.getMeetings().size(),sizeAdd);
+
+        onView(withId(R.id.btn_time_begin)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 00));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.btn_time_end)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(15, 00));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        assertEquals(apiService.getMeetings().size(),sizeAdd);
+
+        onView(withId(R.id.btn_time_begin)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(13, 30));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.btn_time_end)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 30));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        assertEquals(apiService.getMeetings().size(),sizeAdd);
+
+        onView(withId(R.id.btn_time_begin)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 30));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.btn_time_end)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(15, 30));
+        onView(withId(android.R.id.button1)).perform(click());
+
+        assertEquals(apiService.getMeetings().size(),sizeAdd);
+
     }
 
     @Test
