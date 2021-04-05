@@ -7,6 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.fragments.MainFragment;
@@ -14,11 +19,6 @@ import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 
 import org.joda.time.LocalDate;
 

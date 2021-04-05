@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.di.DI;
 import com.example.projet_3_oc_maru.models.Meeting;
-import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.ui.AdapterMeetings;
 
