@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet_3_oc_maru.activities.DetailActivity;
@@ -55,6 +56,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
 
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -111,7 +113,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         return meetings.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageViewMeet;
         public TextView textViewIdMeet;

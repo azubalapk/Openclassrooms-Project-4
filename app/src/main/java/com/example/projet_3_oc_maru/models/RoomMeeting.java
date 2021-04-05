@@ -53,7 +53,7 @@ public class RoomMeeting implements Parcelable {
     @NonNull
     public static RoomMeeting getRoomMeetingById(Integer id) {
         for (RoomMeeting roomMeeting : getAllRoomMeetings()) {
-            if (roomMeeting.id == id)
+            if (roomMeeting.id.equals(id))
                 return roomMeeting;
         }
         return null;
