@@ -26,7 +26,8 @@ public class DetailFragment extends Fragment {
     RecyclerView recyclerView;
     DetailActivity activity;
 
-    public DetailFragment() {}
+    public DetailFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,12 +45,13 @@ public class DetailFragment extends Fragment {
         initList(activity.getListParticipants());
         return view;
     }
-    public void getDetailActivity(){
+
+    public void getDetailActivity() {
         activity = (DetailActivity) getActivity();
     }
 
     public void initList(List<String> participants) {
-        adapterParticipants =new AdapterParticipants(participants);
+        adapterParticipants = new AdapterParticipants(participants);
         recyclerView.setAdapter(adapterParticipants);
     }
 }

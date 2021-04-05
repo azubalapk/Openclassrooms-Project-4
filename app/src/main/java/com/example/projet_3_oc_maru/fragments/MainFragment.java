@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,14 +15,16 @@ import com.example.projet_3_oc_maru.models.Meeting;
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.service.MeetingApiService;
 import com.example.projet_3_oc_maru.ui.AdapterMeetings;
+
 import java.util.List;
 
-public class MainFragment extends Fragment  {
+public class MainFragment extends Fragment {
     MeetingApiService apiService;
     RecyclerView recyclerView;
     AdapterMeetings adapter;
 
-    public MainFragment() {}
+    public MainFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,7 @@ public class MainFragment extends Fragment  {
     }
 
     public void initList(List<Meeting> meetings) {
-        adapter =new AdapterMeetings(meetings);
+        adapter = new AdapterMeetings(meetings);
         recyclerView.setAdapter(adapter);
     }
 
