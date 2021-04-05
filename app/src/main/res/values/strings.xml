@@ -24,6 +24,16 @@
     <string name="OnlyEmailsAccept">Seul des emails sont acceptés</string>
     <string name="ThisRoomIsAlreadyReserved">Cette salle est déjà réservée</string>
     <string name="PleaseCheckStartAndEndTimes">Veuillez vérifier les heures de début et de fin</string>
+    <string name="NameOfRoomPeach">Peach</string>
+    <string name="NameOfRoomMario">Mario</string>
+    <string name="NameOfRoomLuigi">Luigi</string>
+    <string name="NameOfRoomToad">Toad</string>
+    <string name="NameOfRoomBowser">Bowser</string>
+    <string name="NameOfRoomYoshi">Yoshi</string>
+    <string name="NameOfRoomWario">Wario</string>
+    <string name="NameOfRoomDaisy">Daisy</string>
+    <string name="NameOfRoomHarmonie">Harmonie</string>
+    <string name="NameOfRoomPokey">Pokey</string>
 
     <string-array name="roomsMeeting_array">
         <item>Birdo</item>

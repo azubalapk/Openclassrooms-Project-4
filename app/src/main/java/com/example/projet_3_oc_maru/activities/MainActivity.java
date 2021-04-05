@@ -91,43 +91,43 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.Peach:
-                filterItemRoom("Peach");
+                filterItemRoom(getString(R.string.NameOfRoomPeach));
                 return true;
 
             case R.id.Mario:
-                filterItemRoom("Mario");
+                filterItemRoom(getString(R.string.NameOfRoomMario));
                 return true;
 
             case R.id.Luigi:
-                filterItemRoom("Luigi");
+                filterItemRoom(getString(R.string.NameOfRoomLuigi));
                 return true;
 
             case R.id.Toad:
-                filterItemRoom("Toad");
+                filterItemRoom(getString(R.string.NameOfRoomToad));
                 return true;
 
             case R.id.Bowser:
-                filterItemRoom("Bowser");
+                filterItemRoom(getString(R.string.NameOfRoomBowser));
                 return true;
 
             case R.id.Yoshi:
-                filterItemRoom("Yoshi");
+                filterItemRoom(getString(R.string.NameOfRoomYoshi));
                 return true;
 
             case R.id.Wario:
-                filterItemRoom("Wario");
+                filterItemRoom(getString(R.string.NameOfRoomWario));
                 return true;
 
             case R.id.Daisy:
-                filterItemRoom("Daisy");
+                filterItemRoom(getString(R.string.NameOfRoomDaisy));
                 return true;
 
             case R.id.Harmonie:
-                filterItemRoom("Harmonie");
+                filterItemRoom(getString(R.string.NameOfRoomHarmonie));
                 return true;
 
             case R.id.Pokey:
-                filterItemRoom("Pokey");
+                filterItemRoom(getString(R.string.NameOfRoomPokey));
                 return true;
 
             default:
