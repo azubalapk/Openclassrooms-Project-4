@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.example.projet_3_oc_maru.R;
 import com.example.projet_3_oc_maru.activities.DetailActivity;
+import com.example.projet_3_oc_maru.models.Meeting;
+import com.example.projet_3_oc_maru.ui.AdapterMeetings;
 import com.example.projet_3_oc_maru.ui.AdapterParticipants;
 
 import java.util.List;
@@ -22,9 +24,7 @@ public class DetailFragment extends Fragment {
 
     AdapterParticipants adapterParticipants;
     RecyclerView recyclerView;
-    List<String> participants;
     DetailActivity activity;
-    Context context;
 
     public DetailFragment() {}
 
@@ -38,21 +38,18 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         getDetailActivity();
+        Context context = view.getContext();
         recyclerView = (RecyclerView) view;
-        context = view.getContext();
-        initializeListParticipantsAndSetUpRecyclerView();
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        initList(activity.getListParticipants());
         return view;
     }
     public void getDetailActivity(){
         activity = (DetailActivity) getActivity();
     }
 
-    public void initializeListParticipantsAndSetUpRecyclerView(){
-        participants = activity.getListParticipants();
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+    public void initList(List<String> participants) {
         adapterParticipants =new AdapterParticipants(participants);
         recyclerView.setAdapter(adapterParticipants);
     }
-
 }
