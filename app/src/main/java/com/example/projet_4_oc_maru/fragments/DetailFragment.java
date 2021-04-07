@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.fragments;
+package com.example.projet_4_oc_maru.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projet_3_oc_maru.R;
-import com.example.projet_3_oc_maru.activities.DetailActivity;
-import com.example.projet_3_oc_maru.ui.AdapterParticipants;
+import com.example.projet_4_oc_maru.R;
+import com.example.projet_4_oc_maru.activities.DetailActivity;
+import com.example.projet_4_oc_maru.ui.AdapterParticipants;
 
 import java.util.List;
 

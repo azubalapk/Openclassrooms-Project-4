@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.activities;
+package com.example.projet_4_oc_maru.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import com.example.projet_3_oc_maru.R;
-import com.example.projet_3_oc_maru.di.DI;
-import com.example.projet_3_oc_maru.fragments.MainFragment;
-import com.example.projet_3_oc_maru.models.Meeting;
-import com.example.projet_3_oc_maru.service.MeetingApiService;
-import com.example.projet_3_oc_maru.utils.ToastUtil;
+import com.example.projet_4_oc_maru.R;
+import com.example.projet_4_oc_maru.di.DI;
+import com.example.projet_4_oc_maru.fragments.MainFragment;
+import com.example.projet_4_oc_maru.models.Meeting;
+import com.example.projet_4_oc_maru.service.MeetingApiService;
+import com.example.projet_4_oc_maru.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.joda.time.LocalDate;

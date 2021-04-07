@@ -1,7 +1,7 @@
-package com.example.projet_3_oc_maru.di;
+package com.example.projet_4_oc_maru.di;
 
-import com.example.projet_3_oc_maru.service.DummyMeetingApiService;
-import com.example.projet_3_oc_maru.service.MeetingApiService;
+import com.example.projet_4_oc_maru.service.DummyMeetingApiService;
+import com.example.projet_4_oc_maru.service.MeetingApiService;
 
 public class DI {
     private static MeetingApiService apiService;

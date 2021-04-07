@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.activities;
+package com.example.projet_4_oc_maru.activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -16,11 +16,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projet_3_oc_maru.R;
-import com.example.projet_3_oc_maru.di.DI;
-import com.example.projet_3_oc_maru.models.Meeting;
-import com.example.projet_3_oc_maru.models.RoomMeeting;
-import com.example.projet_3_oc_maru.utils.ToastUtil;
+import com.example.projet_4_oc_maru.R;
+import com.example.projet_4_oc_maru.di.DI;
+import com.example.projet_4_oc_maru.models.Meeting;
+import com.example.projet_4_oc_maru.models.RoomMeeting;
+import com.example.projet_4_oc_maru.utils.ToastUtil;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 

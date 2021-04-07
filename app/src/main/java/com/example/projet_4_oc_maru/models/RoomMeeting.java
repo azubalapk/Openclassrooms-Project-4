@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.models;
+package com.example.projet_4_oc_maru.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

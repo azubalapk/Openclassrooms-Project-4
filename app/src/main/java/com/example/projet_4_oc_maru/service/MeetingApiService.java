@@ -1,6 +1,6 @@
-package com.example.projet_3_oc_maru.service;
+package com.example.projet_4_oc_maru.service;
 
-import com.example.projet_3_oc_maru.models.Meeting;
+import com.example.projet_4_oc_maru.models.Meeting;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;

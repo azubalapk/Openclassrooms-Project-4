@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.ui;
+package com.example.projet_4_oc_maru.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projet_3_oc_maru.R;
-import com.example.projet_3_oc_maru.activities.DetailActivity;
-import com.example.projet_3_oc_maru.di.DI;
-import com.example.projet_3_oc_maru.models.Meeting;
-import com.example.projet_3_oc_maru.service.MeetingApiService;
-import com.example.projet_3_oc_maru.utils.ToastUtil;
+import com.example.projet_4_oc_maru.R;
+import com.example.projet_4_oc_maru.activities.DetailActivity;
+import com.example.projet_4_oc_maru.di.DI;
+import com.example.projet_4_oc_maru.models.Meeting;
+import com.example.projet_4_oc_maru.service.MeetingApiService;
+import com.example.projet_4_oc_maru.utils.ToastUtil;
 
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;

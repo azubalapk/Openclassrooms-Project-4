@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.ui;
+package com.example.projet_4_oc_maru.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projet_3_oc_maru.R;
+import com.example.projet_4_oc_maru.R;
 
 import java.util.List;
 

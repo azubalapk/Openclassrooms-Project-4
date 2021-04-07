@@ -1,7 +1,7 @@
-package com.example.projet_3_oc_maru.service;
+package com.example.projet_4_oc_maru.service;
 
-import com.example.projet_3_oc_maru.models.Meeting;
-import com.example.projet_3_oc_maru.models.RoomMeeting;
+import com.example.projet_4_oc_maru.models.Meeting;
+import com.example.projet_4_oc_maru.models.RoomMeeting;
 
 import org.joda.time.DateTime;
 

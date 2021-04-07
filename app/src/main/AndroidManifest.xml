@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.projet_3_oc_maru">
+    package="com.example.projet_4_oc_maru">
 
     <application
         android:allowBackup="true"
@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projet3OCMaRéu">
-        <activity android:name=".activities.DetailActivity"></activity>
-        <activity android:name=".activities.AddActivity"></activity>
+        <activity android:name="com.example.projet_4_oc_maru.activities.DetailActivity"></activity>
+        <activity android:name="com.example.projet_4_oc_maru.activities.AddActivity"></activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.example.projet_4_oc_maru.activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Projet3OCMaRéu.NoActionBar">
             <intent-filter>

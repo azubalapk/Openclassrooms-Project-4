@@ -1,14 +1,10 @@
-package com.example.projet_3_oc_maru;
+package com.example.projet_4_oc_maru;
 
-import androidx.annotation.NonNull;
+import com.example.projet_4_oc_maru.di.DI;
+import com.example.projet_4_oc_maru.models.Meeting;
 
-import com.example.projet_3_oc_maru.di.DI;
-import com.example.projet_3_oc_maru.fragments.DetailFragment;
-import com.example.projet_3_oc_maru.models.Meeting;
-
-import com.example.projet_3_oc_maru.models.RoomMeeting;
-import com.example.projet_3_oc_maru.service.DummyMeetingGenerator;
-import com.example.projet_3_oc_maru.service.MeetingApiService;
+import com.example.projet_4_oc_maru.service.DummyMeetingGenerator;
+import com.example.projet_4_oc_maru.service.MeetingApiService;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -16,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;

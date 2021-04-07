@@ -1,4 +1,4 @@
-package com.example.projet_3_oc_maru.activities;
+package com.example.projet_4_oc_maru.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projet_3_oc_maru.R;
-import com.example.projet_3_oc_maru.models.Meeting;
+import com.example.projet_4_oc_maru.R;
+import com.example.projet_4_oc_maru.models.Meeting;
 
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;

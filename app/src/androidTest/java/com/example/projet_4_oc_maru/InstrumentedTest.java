@@ -1,15 +1,10 @@
-package com.example.projet_3_oc_maru;
+package com.example.projet_4_oc_maru;
 
 
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.intent.Intents;
@@ -18,17 +13,13 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.example.projet_3_oc_maru.activities.DetailActivity;
-import com.example.projet_3_oc_maru.activities.MainActivity;
-import com.example.projet_3_oc_maru.di.DI;
-import com.example.projet_3_oc_maru.models.Meeting;
-import com.example.projet_3_oc_maru.service.MeetingApiService;
-import com.example.projet_3_oc_maru.utils.DeleteViewAction;
+import com.example.projet_4_oc_maru.activities.DetailActivity;
+import com.example.projet_4_oc_maru.activities.MainActivity;
+import com.example.projet_4_oc_maru.di.DI;
+import com.example.projet_4_oc_maru.service.MeetingApiService;
+import com.example.projet_4_oc_maru.utils.DeleteViewAction;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
