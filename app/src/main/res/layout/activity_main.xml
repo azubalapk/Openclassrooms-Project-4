@@ -38,7 +38,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/MainFragment"
-        android:name="com.example.projet_3_oc_maru.fragments.MainFragment"
+        android:name="com.example.projet_4_oc_maru.fragments.MainFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
