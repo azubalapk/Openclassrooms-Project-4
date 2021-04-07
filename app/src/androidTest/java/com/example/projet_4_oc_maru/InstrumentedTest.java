@@ -38,11 +38,8 @@ import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 
@@ -141,7 +138,7 @@ public class InstrumentedTest {
     }
 
     @Test
-    public void theRoomIsNotAvailable(){
+    public void theRoomIsNotAvailable() {
         final int sizeAdd = apiService.getMeetings().size();
         onView(withId(R.id.fab)).perform(click());
         onView(withId(R.id.subjectMeeting)).perform(typeText("Logistique")).check(matches(isDisplayed()));
@@ -171,7 +168,7 @@ public class InstrumentedTest {
         onView(withId(R.id.chipGroup)).check(matches(hasChildCount(2)));
         onView(withId(R.id.create)).perform(click());
 
-        assertEquals(apiService.getMeetings().size(),sizeAdd);
+        assertEquals(apiService.getMeetings().size(), sizeAdd);
 
         onView(withId(R.id.btn_time_begin)).perform(click());
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 15));
@@ -181,7 +178,7 @@ public class InstrumentedTest {
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 45));
         onView(withId(android.R.id.button1)).perform(click());
 
-        assertEquals(apiService.getMeetings().size(),sizeAdd);
+        assertEquals(apiService.getMeetings().size(), sizeAdd);
 
         onView(withId(R.id.btn_time_begin)).perform(click());
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 00));
@@ -191,7 +188,7 @@ public class InstrumentedTest {
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(15, 00));
         onView(withId(android.R.id.button1)).perform(click());
 
-        assertEquals(apiService.getMeetings().size(),sizeAdd);
+        assertEquals(apiService.getMeetings().size(), sizeAdd);
 
         onView(withId(R.id.btn_time_begin)).perform(click());
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(13, 30));
@@ -201,7 +198,7 @@ public class InstrumentedTest {
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 30));
         onView(withId(android.R.id.button1)).perform(click());
 
-        assertEquals(apiService.getMeetings().size(),sizeAdd);
+        assertEquals(apiService.getMeetings().size(), sizeAdd);
 
         onView(withId(R.id.btn_time_begin)).perform(click());
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(14, 30));
@@ -211,7 +208,7 @@ public class InstrumentedTest {
         onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(15, 30));
         onView(withId(android.R.id.button1)).perform(click());
 
-        assertEquals(apiService.getMeetings().size(),sizeAdd);
+        assertEquals(apiService.getMeetings().size(), sizeAdd);
 
     }
 

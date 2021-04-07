@@ -2,7 +2,6 @@ package com.example.projet_4_oc_maru;
 
 import com.example.projet_4_oc_maru.di.DI;
 import com.example.projet_4_oc_maru.models.Meeting;
-
 import com.example.projet_4_oc_maru.service.DummyMeetingGenerator;
 import com.example.projet_4_oc_maru.service.MeetingApiService;
 
@@ -11,10 +10,11 @@ import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
