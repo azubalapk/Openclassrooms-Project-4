@@ -16,6 +16,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.example.projet_4_oc_maru.activities.DetailActivity;
 import com.example.projet_4_oc_maru.activities.MainActivity;
 import com.example.projet_4_oc_maru.di.DI;
+import com.example.projet_4_oc_maru.models.RoomMeeting;
 import com.example.projet_4_oc_maru.service.MeetingApiService;
 import com.example.projet_4_oc_maru.utils.DeleteViewAction;
 
@@ -214,7 +215,13 @@ public class InstrumentedTest {
 
     @Test
     public void launchDetailActivityAndContainMeetingClicked() {
-        onView(ViewMatchers.withId(R.id.list_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        onView(ViewMatchers.withId(R.id.list_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         intended(hasComponent(DetailActivity.class.getName()));
+        onView(withId(R.id.textViewDetailIdMeet)).check(matches(withText("Numéro : 1")));
+        onView(withId(R.id.textViewDetailRoomMeet)).check(matches(withText("Salle : Peach")));
+        onView(withId(R.id.textViewDetailDateMeet)).check(matches(withText("Date : 2021-02-14")));
+        onView(withId(R.id.textViewDetailSubjectMeet)).check(matches(withText("A propos de : Logistique")));
+        onView(withId(R.id.textViewDetailHourMeetBegin)).check(matches(withText("Début :14:00")));
+        onView(withId(R.id.textViewDetailHourMeetEnd)).check(matches(withText("Fin :15:00")));
     }
 }
