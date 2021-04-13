@@ -40,6 +40,7 @@ public class UnitTest {
     @Test
     public void addMeetingWithSuccess() {
         Meeting meetingToAdd = DummyMeetingGenerator.DUMMY_ROOM_MEETS.get(0);
+        service.deleteMeeting(meetingToAdd);
         service.createMeeting(meetingToAdd);
         assertTrue(service.getMeetings().contains(meetingToAdd));
     }
@@ -59,33 +60,33 @@ public class UnitTest {
 
     @Test
     public void getMeetingFilterDate() {
-        String expectedMeetings = service.getMeetings().get(0).getMeetingRoom().getNameRoomMeeting();
-        assertEquals(service.getMeetingsFilterDate(new LocalDate(2021, 02, 14)).get(0).getMeetingRoom().getNameRoomMeeting(), expectedMeetings);
+        DateTime expectedMeetings = service.getMeetings().get(0).getDateTimeBegin();
+        assertEquals(service.getMeetingsFilterDate(new LocalDate(2021, 02, 14)).get(0).getDateTimeBegin(), expectedMeetings);
     }
 
     @Test
     public void theRoomIsNotAvailable() {
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+        assertEquals(true, service.theRoomIsAvailableOrNotAvailable(
                 new DateTime(2021, 02, 14, 13, 30),
                 new DateTime(2021, 02, 14, 15, 30),
                 7)
         );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+        assertEquals(true, service.theRoomIsAvailableOrNotAvailable(
                 new DateTime(2021, 02, 14, 14, 30),
                 new DateTime(2021, 02, 14, 14, 45),
                 7)
         );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+        assertEquals(true, service.theRoomIsAvailableOrNotAvailable(
                 new DateTime(2021, 02, 14, 12, 30),
                 new DateTime(2021, 02, 14, 14, 30),
                 7)
         );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+        assertEquals(true, service.theRoomIsAvailableOrNotAvailable(
                 new DateTime(2021, 02, 14, 14, 30),
                 new DateTime(2021, 02, 14, 15, 30),
                 7)
         );
-        assertEquals(true, (boolean) service.theRoomIsAvailableOrNotAvailable(
+        assertEquals(true, service.theRoomIsAvailableOrNotAvailable(
                 new DateTime(2021, 02, 14, 14, 00),
                 new DateTime(2021, 02, 14, 15, 00),
                 7)

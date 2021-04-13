@@ -65,7 +65,7 @@ public class DummyMeetingApiService implements MeetingApiService {
 
     public Boolean theRoomIsAvailableOrNotAvailable(DateTime finalDateTimeBegin, DateTime finalDateTimeEnd, Integer positionRoom) {
         Boolean reserved = false;
-        for (Meeting m : DI.getMeetingApiService().getMeetings()) {
+        for (Meeting m : meetings) {
             if ((m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeBegin.isBefore(m.getDateTimeEnd()) && finalDateTimeBegin.isAfter(m.getDateTimeBegin()))
                     || (m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeEnd.isBefore(m.getDateTimeEnd()) && finalDateTimeEnd.isAfter(m.getDateTimeBegin()))
                     || (m.getMeetingRoom().getId().equals(positionRoom) && finalDateTimeBegin.isEqual(m.getDateTimeBegin()))

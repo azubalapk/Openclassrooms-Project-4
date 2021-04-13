@@ -4,7 +4,7 @@ import com.example.projet_4_oc_maru.service.DummyMeetingApiService;
 import com.example.projet_4_oc_maru.service.MeetingApiService;
 
 public class DI {
-    private static MeetingApiService apiService;
+    private static final MeetingApiService apiService;
 
     static {
         apiService = new DummyMeetingApiService();

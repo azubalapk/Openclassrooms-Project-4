@@ -5,6 +5,7 @@ import android.content.Context;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.intent.Intents;
@@ -21,6 +22,7 @@ import com.example.projet_4_oc_maru.service.MeetingApiService;
 import com.example.projet_4_oc_maru.utils.DeleteViewAction;
 
 import org.hamcrest.Matchers;
+import org.joda.time.LocalDate;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -119,6 +121,8 @@ public class InstrumentedTest {
         onView(withText("Sélectionner salle")).perform(click());
         onView(withText("Mario")).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(1)));
+
+
     }
 
     @Test
@@ -129,6 +133,7 @@ public class InstrumentedTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 2, 14));
         onView(withId(android.R.id.button1)).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(matches(hasChildCount(1)));
+
     }
 
     @Test
@@ -223,5 +228,7 @@ public class InstrumentedTest {
         onView(withId(R.id.textViewDetailSubjectMeet)).check(matches(withText("A propos de : Logistique")));
         onView(withId(R.id.textViewDetailHourMeetBegin)).check(matches(withText("Début :14:00")));
         onView(withId(R.id.textViewDetailHourMeetEnd)).check(matches(withText("Fin :15:00")));
+        onView(ViewMatchers.withId(R.id.list_participants)).check(matches(hasChildCount(2)));
+
     }
 }
