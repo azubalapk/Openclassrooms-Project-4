@@ -145,7 +145,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             } else {
                 chipGroup.addView(newChip);
                 listParticipants.add(newChip.getText().toString());
-                editTextParticipant.setText("");
+                editTextParticipant.setText(R.string.StringEmpty);
             }
 
             newChip.setOnCloseIconClickListener(v1 -> {
@@ -160,16 +160,16 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
 
         buttonCreateNewMeeting.setOnClickListener(v -> {
 
-            if (editTextSubject.getText().toString().equals("")) {
+            if (editTextSubject.getText().toString().equals(R.string.StringEmpty)) {
                 ToastUtil.displayToastLong(getString(R.string.pleaseNameTheSubjectOfMeeting), context);
 
-            } else if (textViewDate.getText().toString().equals("")) {
+            } else if (textViewDate.getText().toString().equals(R.string.StringEmpty)) {
                 ToastUtil.displayToastLong(getString(R.string.pleaseDefineDateOfMeeting), context);
 
-            } else if (textViewTimeBegin.getText().toString().equals("")) {
+            } else if (textViewTimeBegin.getText().toString().equals(R.string.StringEmpty)) {
                 ToastUtil.displayToastLong(getString(R.string.pleaseDefineStartTime), context);
 
-            } else if (textViewTimeEnd.getText().toString().equals("")) {
+            } else if (textViewTimeEnd.getText().toString().equals(R.string.StringEmpty)) {
                 ToastUtil.displayToastLong(getString(R.string.pleaseDefineEndTime), context);
 
             } else if (listParticipants.size() < 2) {

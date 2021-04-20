@@ -10,13 +10,13 @@
         <item
             android:id="@+id/allSalles"
             android:checkable="false"
-            android:title="Toutes les réunions" />
+            android:title="@string/menu_allMeetings" />
 
 
         <item
             android:id="@+id/Filtrer"
             android:checkable="false"
-            android:title="Filtrer">
+            android:title="@string/menu_wordFilter">
 
             <menu>
 
@@ -24,12 +24,12 @@
                 <item
                     android:id="@+id/selection_date"
                     android:checkable="false"
-                    android:title="Sélectionner date" />
+                    android:title="@string/menu_selectDate" />
 
                 <item
                     android:id="@+id/selection_salle"
                     android:checkable="false"
-                    android:title="Sélectionner salle">
+                    android:title="@string/menu_selectRoomMeeting">
 
                     <menu>
 
@@ -37,53 +37,53 @@
                         <item
                             android:id="@+id/Peach"
                             android:checkable="false"
-                            android:title="Peach" />
+                            android:title="@string/nameOfRoomPeach" />
 
                         <item
                             android:id="@+id/Mario"
                             android:checkable="false"
-                            android:title="Mario" />
+                            android:title="@string/nameOfRoomMario" />
 
                         <item
                             android:id="@+id/Luigi"
                             android:checkable="false"
-                            android:title="Luigi" />
+                            android:title="@string/nameOfRoomLuigi" />
 
                         <item
                             android:id="@+id/Toad"
                             android:checkable="false"
-                            android:title="Toad" />
+                            android:title="@string/nameOfRoomToad" />
 
                         <item
                             android:id="@+id/Bowser"
                             android:checkable="false"
-                            android:title="Bowser" />
+                            android:title="@string/nameOfRoomBowser" />
 
                         <item
                             android:id="@+id/Yoshi"
                             android:checkable="false"
-                            android:title="Yoshi" />
+                            android:title="@string/nameOfRoomYoshi" />
 
                         <item
                             android:id="@+id/Wario"
                             android:checkable="false"
-                            android:title="Wario" />
+                            android:title="@string/nameOfRoomWario" />
 
 
                         <item
                             android:id="@+id/Daisy"
                             android:checkable="false"
-                            android:title="Daisy" />
+                            android:title="@string/nameOfRoomDaisy" />
 
                         <item
                             android:id="@+id/Harmonie"
                             android:checkable="false"
-                            android:title="Harmonie" />
+                            android:title="@string/nameOfRoomHarmonie" />
 
                         <item
                             android:id="@+id/Pokey"
                             android:checkable="false"
-                            android:title="Pokey" />
+                            android:title="@string/nameOfRoomPokey" />
                     </menu>
                 </item>
 
