@@ -61,7 +61,7 @@ public class RoomMeeting implements Parcelable {
     @NonNull
     public static RoomMeeting[] getAllRoomMeetings() {
         return new RoomMeeting[]{
-                new RoomMeeting(1, "Birdo", 0xFF6D726F),
+                new RoomMeeting(1, "Pokey", 0xFF6D726F),
                 new RoomMeeting(2, "Daisy", 0xFF5D210C),
                 new RoomMeeting(3, "Donkey Kong", 0xFFDF3CB8),
                 new RoomMeeting(4, "Harmonie", 0xFF813CDF),
