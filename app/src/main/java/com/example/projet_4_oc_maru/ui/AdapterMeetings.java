@@ -71,11 +71,11 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         DateTimeFormatter fmt = DateTimeFormat.forPattern(holder.itemView.getContext().getString(R.string.patternHour));
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
-        holder.textViewIdMeet.setText(holder.itemView.getContext().getString(R.string.beforeTextViewIdMeet) + meeting.getId() + "-(");
-        holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString() + ")-");
+        holder.textViewIdMeet.setText(holder.itemView.getContext().getString(R.string.beforeTextViewIdMeet) + meeting.getId() + holder.itemView.getContext().getString(R.string.beforeDashAndBracket));
+        holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString() + holder.itemView.getContext().getString(R.string.endDashAndBracket));
         holder.textViewRoomMeet.setText(holder.itemView.getContext().getString(R.string.beforeTextViewRoomMeet) + meeting.getMeetingRoom().getNameRoomMeeting());
-        holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt) + "/" + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
-        holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0) + "," + meeting.getParticipants().get(1));
+        holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt) + holder.itemView.getContext().getString(R.string.slash) + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
+        holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0) + holder.itemView.getContext().getString(R.string.comma) + meeting.getParticipants().get(1));
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
 
             if (isListFilter) {
