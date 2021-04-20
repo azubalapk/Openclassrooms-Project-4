@@ -51,7 +51,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     int id, mHour, mMinute, mYear, mMonth, mDay, positionRoom;
     Spinner spinnerRoomMeeting;
     Context context;
-    DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
+    DateTimeFormatter fmt ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +66,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         userClickOnButtonForSelectTimeEnd();
         userClickOnButtonForAddParticipant();
         userClickOnButtonForCreateNewMeeting();
+        fmt = DateTimeFormat.forPattern(getString(R.string.patternHour));
     }
 
     public void setIdMeetingAndDisplayThis() {

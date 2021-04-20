@@ -54,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void setTextAndImage() {
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
+        DateTimeFormatter fmt = DateTimeFormat.forPattern(getString(R.string.patternHour));
         imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
         textViewDetailIdMeet.setText("Numéro : " + meeting.getId());
         textViewDetailSubjectMeet.setText("A propos de : " + meeting.getSubject());

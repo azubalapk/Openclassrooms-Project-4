@@ -67,7 +67,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
+        DateTimeFormatter fmt = DateTimeFormat.forPattern(holder.itemView.getContext().getString(R.string.patternHour));
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
         holder.textViewIdMeet.setText("Réunion " + meeting.getId() + "-(");

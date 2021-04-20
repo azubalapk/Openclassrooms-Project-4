@@ -29,6 +29,7 @@
     <string name="timeZone">GMT+1</string>
     <string name="beforeTextViewId">Réunion </string>
     <string name="regexEmail"><![CDATA[^[\\w!#$%&\'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&\'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$]]></string>
+    <string name="patternHour">HH:mm</string>
 
     <string-array name="roomsMeeting_array">
         <item>Pokey</item>
