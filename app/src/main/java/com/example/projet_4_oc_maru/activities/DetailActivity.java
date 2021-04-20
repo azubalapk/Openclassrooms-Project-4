@@ -56,12 +56,12 @@ public class DetailActivity extends AppCompatActivity {
     public void setTextAndImage() {
         DateTimeFormatter fmt = DateTimeFormat.forPattern(getString(R.string.patternHour));
         imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
-        textViewDetailIdMeet.setText("Numéro : " + meeting.getId());
-        textViewDetailSubjectMeet.setText("A propos de : " + meeting.getSubject());
-        textViewDetailDateMeet.setText("Date : " + meeting.getDateTimeBegin().toLocalDate().toString());
-        textViewDetailRoomMeet.setText("Salle : " + meeting.getMeetingRoom().getNameRoomMeeting());
-        textViewDetailHourMeetBegin.setText("Début :" + meeting.getDateTimeBegin().toLocalTime().toString(fmt));
-        textViewDetailHourMeetEnd.setText("Fin :" + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
+        textViewDetailIdMeet.setText(getString(R.string.beforeTextViewDetailIdMeet) + meeting.getId());
+        textViewDetailSubjectMeet.setText(getString(R.string.beforeTextViewDetailSubjectMeet) + meeting.getSubject());
+        textViewDetailDateMeet.setText(getString(R.string.beforeTextViewDetailDateMeet) + meeting.getDateTimeBegin().toLocalDate().toString());
+        textViewDetailRoomMeet.setText(getString(R.string.beforeTextViewDetailRoomMeet) + meeting.getMeetingRoom().getNameRoomMeeting());
+        textViewDetailHourMeetBegin.setText(getString(R.string.beforeTextViewDetailHourMeetBegin) + meeting.getDateTimeBegin().toLocalTime().toString(fmt));
+        textViewDetailHourMeetEnd.setText(getString(R.string.beforeTextViewDetailHourMeetEnd) + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
     }
 
     @Override

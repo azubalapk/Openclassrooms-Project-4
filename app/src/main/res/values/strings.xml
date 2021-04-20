@@ -30,6 +30,12 @@
     <string name="beforeTextViewId">Réunion </string>
     <string name="regexEmail"><![CDATA[^[\\w!#$%&\'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&\'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$]]></string>
     <string name="patternHour">HH:mm</string>
+    <string name="beforeTextViewDetailIdMeet">Numéro : </string>
+    <string name="beforeTextViewDetailSubjectMeet">A propos de : </string>
+    <string name="beforeTextViewDetailDateMeet">Date : </string>
+    <string name="beforeTextViewDetailRoomMeet">Salle : </string>
+    <string name="beforeTextViewDetailHourMeetBegin">Début : </string>
+    <string name="beforeTextViewDetailHourMeetEnd">Fin : </string>
 
     <string-array name="roomsMeeting_array">
         <item>Pokey</item>
