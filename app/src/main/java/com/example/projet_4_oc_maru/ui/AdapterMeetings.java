@@ -2,6 +2,7 @@ package com.example.projet_4_oc_maru.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,9 +71,9 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         DateTimeFormatter fmt = DateTimeFormat.forPattern(holder.itemView.getContext().getString(R.string.patternHour));
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
-        holder.textViewIdMeet.setText("Réunion " + meeting.getId() + "-(");
+        holder.textViewIdMeet.setText(holder.itemView.getContext().getString(R.string.beforeTextViewIdMeet) + meeting.getId() + "-(");
         holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString() + ")-");
-        holder.textViewRoomMeet.setText("Salle " + meeting.getMeetingRoom().getNameRoomMeeting());
+        holder.textViewRoomMeet.setText(holder.itemView.getContext().getString(R.string.beforeTextViewRoomMeet) + meeting.getMeetingRoom().getNameRoomMeeting());
         holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt) + "/" + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
         holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0) + "," + meeting.getParticipants().get(1));
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
