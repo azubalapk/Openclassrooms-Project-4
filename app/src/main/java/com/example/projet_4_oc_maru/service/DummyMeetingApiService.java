@@ -1,7 +1,6 @@
 package com.example.projet_4_oc_maru.service;
 
 
-import com.example.projet_4_oc_maru.di.DI;
 import com.example.projet_4_oc_maru.models.Meeting;
 
 import org.joda.time.DateTime;

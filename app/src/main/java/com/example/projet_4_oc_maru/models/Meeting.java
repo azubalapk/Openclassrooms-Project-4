@@ -2,7 +2,9 @@ package com.example.projet_4_oc_maru.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import org.joda.time.DateTime;
+
 import java.io.Serializable;
 import java.util.List;
 

@@ -51,7 +51,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     int id, mHour, mMinute, mYear, mMonth, mDay, positionRoom;
     Spinner spinnerRoomMeeting;
     Context context;
-    DateTimeFormatter fmt ;
+    DateTimeFormatter fmt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

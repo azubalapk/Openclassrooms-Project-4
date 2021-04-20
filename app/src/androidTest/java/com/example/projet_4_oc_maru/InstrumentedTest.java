@@ -5,7 +5,6 @@ import android.content.Context;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
-import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.intent.Intents;
@@ -17,12 +16,10 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.example.projet_4_oc_maru.activities.DetailActivity;
 import com.example.projet_4_oc_maru.activities.MainActivity;
 import com.example.projet_4_oc_maru.di.DI;
-import com.example.projet_4_oc_maru.models.RoomMeeting;
 import com.example.projet_4_oc_maru.service.MeetingApiService;
 import com.example.projet_4_oc_maru.utils.DeleteViewAction;
 
 import org.hamcrest.Matchers;
-import org.joda.time.LocalDate;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
