@@ -130,7 +130,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             Chip newChip = (Chip) inflater.inflate(R.layout.layout_chip_entry, chipGroup, false);
             newChip.setText(editTextParticipant.getText().toString());
 
-            String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+            String regex = getString(R.string.regexEmail);
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(newChip.getText());
 
