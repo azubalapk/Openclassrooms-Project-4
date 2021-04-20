@@ -135,7 +135,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(newChip.getText());
 
-            if (newChip.getText().toString().equals("")) {
+            if (newChip.getText().toString().equals(R.string.StringEmpty)) {
                 ToastUtil.displayToastLong(getString(R.string.pleaseDefineTheNameOfPartcipants), context);
 
             } else if (!matcher.matches()) {
