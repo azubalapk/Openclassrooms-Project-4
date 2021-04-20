@@ -89,7 +89,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
                 apiService.deleteMeeting(meeting);
 
                 if (filterList.isEmpty() && isListFilter) {
-                    ToastUtil.displayToastLong(holder.itemView.getContext().getString(R.string.PleaseSelectOtherFilter), holder.itemView.getContext());
+                    ToastUtil.displayToastLong(holder.itemView.getContext().getString(R.string.pleaseSelectOtherFilter), holder.itemView.getContext());
                 }
 
             } else {
@@ -103,7 +103,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         holder.itemView.setOnClickListener(v -> {
             final Context context = holder.itemView.getContext();
             Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra("detailMeeting", meeting);
+            intent.putExtra(holder.itemView.getContext().getString(R.string.parcelableMeetingKeyWord), meeting);
             context.startActivity(intent);
         });
     }

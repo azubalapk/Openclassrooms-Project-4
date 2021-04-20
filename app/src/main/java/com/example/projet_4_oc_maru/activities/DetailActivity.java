@@ -33,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void getMeetingParcelable() {
-        meeting = getIntent().getParcelableExtra("detailMeeting");
+        meeting = getIntent().getParcelableExtra(getString(R.string.parcelableMeetingKeyWord));
     }
 
     public void meetingNotNull() {

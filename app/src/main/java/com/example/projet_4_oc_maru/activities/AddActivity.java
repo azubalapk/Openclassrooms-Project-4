@@ -135,12 +135,12 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             Matcher matcher = pattern.matcher(newChip.getText());
 
             if (newChip.getText().toString().equals("")) {
-                ToastUtil.displayToastLong(getString(R.string.PleaseDefineTheNameOfPartcipants), context);
+                ToastUtil.displayToastLong(getString(R.string.pleaseDefineTheNameOfPartcipants), context);
 
             } else if (!matcher.matches()) {
-                ToastUtil.displayToastLong(getString(R.string.OnlyEmailsAccept), context);
+                ToastUtil.displayToastLong(getString(R.string.onlyEmailsAccept), context);
             } else if (listParticipants.contains(newChip.getText().toString())) {
-                ToastUtil.displayToastLong(getString(R.string.TheParticipantsIsAlreadyExistInThisMeeting), context);
+                ToastUtil.displayToastLong(getString(R.string.theParticipantsIsAlreadyExistInThisMeeting), context);
             } else {
                 chipGroup.addView(newChip);
                 listParticipants.add(newChip.getText().toString());
@@ -160,19 +160,19 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         buttonCreateNewMeeting.setOnClickListener(v -> {
 
             if (editTextSubject.getText().toString().equals("")) {
-                ToastUtil.displayToastLong(getString(R.string.PleaseNameTheSubjectOfMeeting), context);
+                ToastUtil.displayToastLong(getString(R.string.pleaseNameTheSubjectOfMeeting), context);
 
             } else if (textViewDate.getText().toString().equals("")) {
-                ToastUtil.displayToastLong(getString(R.string.PleaseDefineDateOfMeeting), context);
+                ToastUtil.displayToastLong(getString(R.string.pleaseDefineDateOfMeeting), context);
 
             } else if (textViewTimeBegin.getText().toString().equals("")) {
-                ToastUtil.displayToastLong(getString(R.string.PleaseDefineStartTime), context);
+                ToastUtil.displayToastLong(getString(R.string.pleaseDefineStartTime), context);
 
             } else if (textViewTimeEnd.getText().toString().equals("")) {
-                ToastUtil.displayToastLong(getString(R.string.PleaseDefineEndTime), context);
+                ToastUtil.displayToastLong(getString(R.string.pleaseDefineEndTime), context);
 
             } else if (listParticipants.size() < 2) {
-                ToastUtil.displayToastLong(getString(R.string.PleaseDefineAtLeastTwoParticipants), context);
+                ToastUtil.displayToastLong(getString(R.string.pleaseDefineAtLeastTwoParticipants), context);
             } else {
 
                 DateTime finalDateTimeBegin = new DateTime(localDate.getYear(), localDate.getMonthOfYear(), localDate.getDayOfMonth(), localTimeBegin.getHourOfDay(), localTimeBegin.getMinuteOfHour());
@@ -184,10 +184,10 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 reserved = DI.getMeetingApiService().theRoomIsAvailableOrNotAvailable(finalDateTimeBegin, finalDateTimeEnd, positionRoom);
 
                 if (finalDateTimeBegin.isAfter(finalDateTimeEnd) || finalDateTimeBegin.isEqual(finalDateTimeEnd)) {
-                    ToastUtil.displayToastLong(getString(R.string.PleaseCheckStartAndEndTimes), context);
+                    ToastUtil.displayToastLong(getString(R.string.pleaseCheckStartAndEndTimes), context);
 
                 } else if (reserved) {
-                    ToastUtil.displayToastLong(getString(R.string.ThisRoomIsAlreadyReserved), context);
+                    ToastUtil.displayToastLong(getString(R.string.thisRoomIsAlreadyReserved), context);
 
                 } else {
                     Meeting meeting = new Meeting(id, editTextSubject.getText().toString(),

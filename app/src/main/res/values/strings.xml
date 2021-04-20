@@ -1,30 +1,30 @@
 <resources>
     <string name="app_name">MaRéu</string>
 
-    <string name="NoMeetingScheduledForThisDate">Aucune réunion de prévue à cette date</string>
-    <string name="NoMeetingScheduledInThisRoom">Aucune réunion de prévue dans cette salle</string>
-    <string name="TitleToolbarMainActivity">MaRéu</string>
-    <string name="PleaseNameTheSubjectOfMeeting">Veuillez SVP nommer le sujet de votre réunion</string>
-    <string name="PleaseDefineDateOfMeeting">Veuillez SVP définir une date</string>
-    <string name="PleaseDefineStartTime">Veuillez SVP définir l\'heure de début</string>
-    <string name="PleaseDefineEndTime">Veuillez SVP définir l\'heure de fin</string>
-    <string name="PleaseDefineAtLeastTwoParticipants">\"Veuillez SVP définir au minimum deux participants \"</string>
-    <string name="PleaseDefineTheNameOfPartcipants">Le nom du participants n\' a pas été indiqué</string>
-    <string name="TheParticipantsIsAlreadyExistInThisMeeting">Le participants existe déja dans cette réunion</string>
-    <string name="OnlyEmailsAccept">Seul des emails sont acceptés</string>
-    <string name="ThisRoomIsAlreadyReserved">Cette salle est déjà réservée</string>
-    <string name="PleaseCheckStartAndEndTimes">Veuillez vérifier les heures de début et de fin</string>
-    <string name="NameOfRoomPeach">Peach</string>
-    <string name="NameOfRoomMario">Mario</string>
-    <string name="NameOfRoomLuigi">Luigi</string>
-    <string name="NameOfRoomToad">Toad</string>
-    <string name="NameOfRoomBowser">Bowser</string>
-    <string name="NameOfRoomYoshi">Yoshi</string>
-    <string name="NameOfRoomWario">Wario</string>
-    <string name="NameOfRoomDaisy">Daisy</string>
-    <string name="NameOfRoomHarmonie">Harmonie</string>
-    <string name="NameOfRoomPokey">Pokey</string>
-    <string name="PleaseSelectOtherFilter">\La liste filtrée est vide veuillez selectionner un autre filtre  \</string>
+    <string name="noMeetingScheduledForThisDate">Aucune réunion de prévue à cette date</string>
+    <string name="noMeetingScheduledInThisRoom">Aucune réunion de prévue dans cette salle</string>
+    <string name="pleaseNameTheSubjectOfMeeting">Veuillez SVP nommer le sujet de votre réunion</string>
+    <string name="pleaseDefineDateOfMeeting">Veuillez SVP définir une date</string>
+    <string name="pleaseDefineStartTime">Veuillez SVP définir l\'heure de début</string>
+    <string name="pleaseDefineEndTime">Veuillez SVP définir l\'heure de fin</string>
+    <string name="pleaseDefineAtLeastTwoParticipants">\"Veuillez SVP définir au minimum deux participants \"</string>
+    <string name="pleaseDefineTheNameOfPartcipants">Le nom du participants n\' a pas été indiqué</string>
+    <string name="theParticipantsIsAlreadyExistInThisMeeting">Le participants existe déja dans cette réunion</string>
+    <string name="onlyEmailsAccept">Seul des emails sont acceptés</string>
+    <string name="thisRoomIsAlreadyReserved">Cette salle est déjà réservée</string>
+    <string name="pleaseCheckStartAndEndTimes">Veuillez vérifier les heures de début et de fin</string>
+    <string name="nameOfRoomPeach">Peach</string>
+    <string name="nameOfRoomMario">Mario</string>
+    <string name="nameOfRoomLuigi">Luigi</string>
+    <string name="nameOfRoomToad">Toad</string>
+    <string name="nameOfRoomBowser">Bowser</string>
+    <string name="nameOfRoomYoshi">Yoshi</string>
+    <string name="nameOfRoomWario">Wario</string>
+    <string name="nameOfRoomDaisy">Daisy</string>
+    <string name="nameOfRoomHarmonie">Harmonie</string>
+    <string name="nameOfRoomPokey">Pokey</string>
+    <string name="pleaseSelectOtherFilter">\La liste filtrée est vide veuillez selectionner un autre filtre  \</string>
+    <string name="parcelableMeetingKeyWord">detailMeeting</string>
 
     <string-array name="roomsMeeting_array">
         <item>Pokey</item>
