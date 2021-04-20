@@ -89,7 +89,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
                 apiService.deleteMeeting(meeting);
 
                 if (filterList.isEmpty() && isListFilter) {
-                    ToastUtil.displayToastLong("La liste filtrée est vide veuillez selectionner un autre filtre  ", holder.itemView.getContext());
+                    ToastUtil.displayToastLong(holder.itemView.getContext().getString(R.string.PleaseSelectOtherFilter), holder.itemView.getContext());
                 }
 
             } else {

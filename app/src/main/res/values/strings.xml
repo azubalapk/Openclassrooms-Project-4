@@ -24,6 +24,7 @@
     <string name="NameOfRoomDaisy">Daisy</string>
     <string name="NameOfRoomHarmonie">Harmonie</string>
     <string name="NameOfRoomPokey">Pokey</string>
+    <string name="PleaseSelectOtherFilter">\La liste filtrée est vide veuillez selectionner un autre filtre  \</string>
 
     <string-array name="roomsMeeting_array">
         <item>Pokey</item>
