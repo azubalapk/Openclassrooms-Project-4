@@ -145,10 +145,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if (!nothing) {
-            toolbar.setTitle("Ma réunion - " + salle);
+            toolbar.setTitle(getString(R.string.app_name_filter) + salle);
             mainFragment.initList(apiService.getMeetingsFilterRoom(salle));
         } else {
-            toolbar.setTitle(R.string.app_name);
+            toolbar.setTitle(getString(R.string.app_name));
             ToastUtil.displayToastLong(getString(R.string.noMeetingScheduledInThisRoom), getApplicationContext());
 
         }
@@ -164,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if (!nothing) {
-            toolbar.setTitle("Ma réunion - " + date.toString());
+            toolbar.setTitle(getString(R.string.app_name_filter) + date.toString());
             mainFragment.initList(apiService.getMeetingsFilterDate(date));
         } else {
-            toolbar.setTitle(R.string.app_name);
+            toolbar.setTitle(getString(R.string.app_name));
             ToastUtil.displayToastLong(getString(R.string.noMeetingScheduledForThisDate), getApplicationContext());
 
         }

@@ -70,7 +70,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
 
     public void setIdMeetingAndDisplayThis() {
         id = DI.getMeetingApiService().getMeetings().size() + 1;
-        textViewId.setText("Reunion " + id);
+        textViewId.setText(getString(R.string.beforeTextViewId) + id);
     }
 
     public void getContext() {
@@ -254,7 +254,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
 
     public void getCurrentTime() {
         final Calendar c = Calendar.getInstance();
-        TimeZone tz = TimeZone.getTimeZone("GMT+1");
+        TimeZone tz = TimeZone.getTimeZone(getString(R.string.timeZone));
         c.setTimeZone(tz);
         mMinute = c.get(Calendar.MINUTE);
         mHour = c.get(Calendar.HOUR_OF_DAY);

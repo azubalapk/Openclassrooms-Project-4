@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MaRéu</string>
+    <string name="app_name_filter">MaRéu - </string>
 
     <string name="noMeetingScheduledForThisDate">Aucune réunion de prévue à cette date</string>
     <string name="noMeetingScheduledInThisRoom">Aucune réunion de prévue dans cette salle</string>
@@ -25,6 +26,8 @@
     <string name="nameOfRoomPokey">Pokey</string>
     <string name="pleaseSelectOtherFilter">\La liste filtrée est vide veuillez selectionner un autre filtre  \</string>
     <string name="parcelableMeetingKeyWord">detailMeeting</string>
+    <string name="timeZone">GMT+1</string>
+    <string name="beforeTextViewId">\Réunion \</string>
 
     <string-array name="roomsMeeting_array">
         <item>Pokey</item>

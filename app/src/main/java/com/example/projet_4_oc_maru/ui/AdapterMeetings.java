@@ -70,17 +70,11 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
-
         holder.textViewIdMeet.setText("Réunion " + meeting.getId() + "-(");
-
         holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString() + ")-");
-
         holder.textViewRoomMeet.setText("Salle " + meeting.getMeetingRoom().getNameRoomMeeting());
-
         holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt) + "/" + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
-
         holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0) + "," + meeting.getParticipants().get(1));
-
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
 
             if (isListFilter) {
