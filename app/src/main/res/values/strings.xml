@@ -47,12 +47,12 @@
     <string name="menu_selectRoomMeeting">Sélectionner salle</string>
     <string name="menu_wordFilter">Filtrer</string>
     <string name="menu_allMeetings">Toutes les réunions</string>
-    <string name="subjectMeeting">Le sujet de la réunion</string>
-    <string name="timeBegin">heure de debut</string>
-    <string name="timeEnd">heure de fin</string>
-    <string name="selectDate">Selectionner la date</string>
-    <string name="selectRoomMeeting">Indiquer la salle</string>
-    <string name="selectEmail">Indiquer l\'email d\'un participant</string>
+    <string name="subjectMeetingEditText">Le sujet de la réunion</string>
+    <string name="timeBeginButton">heure de debut</string>
+    <string name="timeEndButton">heure de fin</string>
+    <string name="selectDateButton">Selectionner la date</string>
+    <string name="selectRoomMeetingTextView">Indiquer la salle</string>
+    <string name="selectEmailEditText">Indiquer l\'email d\'un participant</string>
     <string name="addEmailButton">Ajouter l\'email</string>
     <string name="saveButton">Save</string>
 
