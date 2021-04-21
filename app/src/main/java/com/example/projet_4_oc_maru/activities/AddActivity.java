@@ -66,7 +66,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         userClickOnButtonForSelectTimeEnd();
         userClickOnButtonForAddParticipant();
         userClickOnButtonForCreateNewMeeting();
-        fmt = DateTimeFormat.forPattern(getString(R.string.pattern_Hour));
+        fmt = DateTimeFormat.forPattern("HH:mm");
     }
 
     public void setIdMeetingAndDisplayThis() {
@@ -131,7 +131,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
             Chip newChip = (Chip) inflater.inflate(R.layout.layout_chip_entry, chipGroup, false);
             newChip.setText(editTextParticipant.getText().toString());
 
-            String regex = getString(R.string.regex_email);
+            String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(newChip.getText());
 
@@ -255,7 +255,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
 
     public void getCurrentTime() {
         final Calendar c = Calendar.getInstance();
-        TimeZone tz = TimeZone.getTimeZone(getString(R.string.timeZone_CET));
+        TimeZone tz = TimeZone.getTimeZone("GMT+1");
         c.setTimeZone(tz);
         mMinute = c.get(Calendar.MINUTE);
         mHour = c.get(Calendar.HOUR_OF_DAY);

@@ -33,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void getMeetingParcelable() {
-        meeting = getIntent().getParcelableExtra(getString(R.string.keyword_parcelableToDetailActivity));
+        meeting = getIntent().getParcelableExtra("detailMeeting");
     }
 
     public void meetingNotNull() {
@@ -54,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void setTextAndImage() {
-        DateTimeFormatter fmt = DateTimeFormat.forPattern(getString(R.string.pattern_Hour));
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
         imageViewDetailMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
         textViewDetailIdMeet.setText(getString(R.string.textView_beforeDetailId) + meeting.getId());
         textViewDetailSubjectMeet.setText(getString(R.string.textView_beforeDetailSubject) + meeting.getSubject());

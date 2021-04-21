@@ -25,11 +25,7 @@
     <string name="name_ofRoomHarmonie">"Harmonie"</string>
     <string name="name_ofRoomPokey">"Pokey"</string>
     <string name="toast_pleaseSelectOtherFilter">"La liste filtrée est vide veuillez selectionner un autre filtre  </string>
-    <string name="keyword_parcelableToDetailActivity">"detailMeeting"</string>
-    <string name="timeZone_CET">"GMT+1"</string>
     <string name="textView_beforeId">"Réunion "</string>
-    <string name="regex_email"><![CDATA[^[\\w!#$%&\'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&\'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$]]></string>
-    <string name="pattern_Hour">"HH:mm"</string>
     <string name="textView_beforeDetailId">"Numéro : "</string>
     <string name="textView_beforeDetailSubject">"A propos de : "</string>
     <string name="textView_beforeDetailDate">"Date : "</string>
@@ -53,7 +49,7 @@
     <string name="textView_selectRoomMeeting">Indiquer la salle</string>
     <string name="editText_selectEmail">Indiquer l\'email d\'un participant</string>
     <string name="button_addEmail">Ajouter l\'email</string>
-    <string name="button_save">Save</string>
+    <string name="button_save">Sauvegarder</string>
 
     <string-array name="array_RoomMeetings">
         <item>Pokey</item>

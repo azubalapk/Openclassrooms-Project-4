@@ -67,7 +67,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
-        DateTimeFormatter fmt = DateTimeFormat.forPattern(holder.itemView.getContext().getString(R.string.pattern_Hour));
+        DateTimeFormatter fmt = DateTimeFormat.forPattern("HH:mm");
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
         holder.textViewIdMeet.setText(holder.itemView.getContext().getString(R.string.textView_beforeId) + meeting.getId() + holder.itemView.getContext().getString(R.string.beforeDashAndBracket));
@@ -97,7 +97,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         holder.itemView.setOnClickListener(v -> {
             final Context context = holder.itemView.getContext();
             Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra(holder.itemView.getContext().getString(R.string.keyword_parcelableToDetailActivity), meeting);
+            intent.putExtra("detailMeeting", meeting);
             context.startActivity(intent);
         });
     }
