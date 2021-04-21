@@ -67,12 +67,12 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = meetings.get(position);
-        DateTimeFormatter fmt = DateTimeFormat.forPattern(holder.itemView.getContext().getString(R.string.patternHour));
+        DateTimeFormatter fmt = DateTimeFormat.forPattern(holder.itemView.getContext().getString(R.string.pattern_Hour));
 
         holder.imageViewMeet.setColorFilter(meeting.getMeetingRoom().getRoomMeetingColor());
-        holder.textViewIdMeet.setText(holder.itemView.getContext().getString(R.string.beforeTextViewIdMeet) + meeting.getId() + holder.itemView.getContext().getString(R.string.beforeDashAndBracket));
+        holder.textViewIdMeet.setText(holder.itemView.getContext().getString(R.string.textView_beforeId) + meeting.getId() + holder.itemView.getContext().getString(R.string.beforeDashAndBracket));
         holder.textViewDateMeet.setText(meeting.getDateTimeBegin().toLocalDate().toString() + holder.itemView.getContext().getString(R.string.endDashAndBracket));
-        holder.textViewRoomMeet.setText(holder.itemView.getContext().getString(R.string.beforeTextViewRoomMeet) + meeting.getMeetingRoom().getNameRoomMeeting());
+        holder.textViewRoomMeet.setText(holder.itemView.getContext().getString(R.string.textView_beforeRoomMeet) + meeting.getMeetingRoom().getNameRoomMeeting());
         holder.textViewHoursMeet.setText(meeting.getDateTimeBegin().toLocalTime().toString(fmt) + holder.itemView.getContext().getString(R.string.slash) + meeting.getDateTimeEnd().toLocalTime().toString(fmt));
         holder.textViewParticipantsMeet.setText(meeting.getParticipants().get(0) + holder.itemView.getContext().getString(R.string.comma) + meeting.getParticipants().get(1));
         holder.imageButtonDeleteMeet.setOnClickListener(v -> {
@@ -83,7 +83,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
                 apiService.deleteMeeting(meeting);
 
                 if (filterList.isEmpty() && isListFilter) {
-                    ToastUtil.displayToastLong(holder.itemView.getContext().getString(R.string.pleaseSelectOtherFilter), holder.itemView.getContext());
+                    ToastUtil.displayToastLong(holder.itemView.getContext().getString(R.string.toast_pleaseSelectOtherFilter), holder.itemView.getContext());
                 }
 
             } else {
@@ -97,7 +97,7 @@ public class AdapterMeetings extends RecyclerView.Adapter<AdapterMeetings.ViewHo
         holder.itemView.setOnClickListener(v -> {
             final Context context = holder.itemView.getContext();
             Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra(holder.itemView.getContext().getString(R.string.parcelableMeetingKeyWord), meeting);
+            intent.putExtra(holder.itemView.getContext().getString(R.string.keyword_parcelableToDetailActivity), meeting);
             context.startActivity(intent);
         });
     }

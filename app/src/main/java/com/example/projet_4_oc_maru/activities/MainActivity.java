@@ -91,43 +91,43 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.Peach:
-                filterItemRoom(getString(R.string.nameOfRoomPeach));
+                filterItemRoom(getString(R.string.name_ofRoomPeach));
                 return true;
 
             case R.id.Mario:
-                filterItemRoom(getString(R.string.nameOfRoomMario));
+                filterItemRoom(getString(R.string.name_ofRoomMario));
                 return true;
 
             case R.id.Luigi:
-                filterItemRoom(getString(R.string.nameOfRoomLuigi));
+                filterItemRoom(getString(R.string.name_ofRoomLuigi));
                 return true;
 
             case R.id.Toad:
-                filterItemRoom(getString(R.string.nameOfRoomToad));
+                filterItemRoom(getString(R.string.name_ofRoomToad));
                 return true;
 
             case R.id.Bowser:
-                filterItemRoom(getString(R.string.nameOfRoomBowser));
+                filterItemRoom(getString(R.string.name_ofRoomBowser));
                 return true;
 
             case R.id.Yoshi:
-                filterItemRoom(getString(R.string.nameOfRoomYoshi));
+                filterItemRoom(getString(R.string.name_ofRoomYoshi));
                 return true;
 
             case R.id.Wario:
-                filterItemRoom(getString(R.string.nameOfRoomWario));
+                filterItemRoom(getString(R.string.name_ofRoomWario));
                 return true;
 
             case R.id.Daisy:
-                filterItemRoom(getString(R.string.nameOfRoomDaisy));
+                filterItemRoom(getString(R.string.name_ofRoomDaisy));
                 return true;
 
             case R.id.Harmonie:
-                filterItemRoom(getString(R.string.nameOfRoomHarmonie));
+                filterItemRoom(getString(R.string.name_ofRoomHarmonie));
                 return true;
 
             case R.id.Pokey:
-                filterItemRoom(getString(R.string.nameOfRoomPokey));
+                filterItemRoom(getString(R.string.name_ofRoomPokey));
                 return true;
 
             default:
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             mainFragment.initList(apiService.getMeetingsFilterRoom(salle));
         } else {
             toolbar.setTitle(getString(R.string.app_name));
-            ToastUtil.displayToastLong(getString(R.string.noMeetingScheduledInThisRoom), getApplicationContext());
+            ToastUtil.displayToastLong(getString(R.string.toast_noMeetingScheduledInThisRoom), getApplicationContext());
 
         }
     }
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             mainFragment.initList(apiService.getMeetingsFilterDate(date));
         } else {
             toolbar.setTitle(getString(R.string.app_name));
-            ToastUtil.displayToastLong(getString(R.string.noMeetingScheduledForThisDate), getApplicationContext());
+            ToastUtil.displayToastLong(getString(R.string.toast_noMeetingScheduledForThisDate), getApplicationContext());
 
         }
     }

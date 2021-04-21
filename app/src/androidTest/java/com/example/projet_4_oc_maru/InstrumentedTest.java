@@ -98,7 +98,7 @@ public class InstrumentedTest {
 
         onView(withId(R.id.roomMeetingSpinner)).perform(click());
         final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        String[] myArray = context.getResources().getStringArray(R.array.roomsMeeting_array);
+        String[] myArray = context.getResources().getStringArray(R.array.array_RoomMeetings);
         onData(is(myArray[2])).perform(click());
 
         onView(withId(R.id.editTextParticipants)).perform(typeText("clovis@gmail.com"), closeSoftKeyboard()).check(matches(isDisplayed()));
@@ -161,7 +161,7 @@ public class InstrumentedTest {
 
         onView(withId(R.id.roomMeetingSpinner)).perform(click());
         final Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        String[] myArray = context.getResources().getStringArray(R.array.roomsMeeting_array);
+        String[] myArray = context.getResources().getStringArray(R.array.array_RoomMeetings);
         onData(is(myArray[6])).perform(click());
 
         onView(withId(R.id.editTextParticipants)).perform(typeText("clovis@gmail.com"), closeSoftKeyboard()).check(matches(isDisplayed()));
